@@ -1,6 +1,6 @@
 import React from 'react';
-import Container from './Container';
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Container from './Container';
 import SocialLink from './SocialLink';
 
 const Footer: React.FC = () => (

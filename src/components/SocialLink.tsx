@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 type SocialIconProps = { url: string; children: React.ReactNode };
