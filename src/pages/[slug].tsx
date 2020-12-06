@@ -4,19 +4,24 @@ import { NextSeo } from 'next-seo';
 import { parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import { getPostBySlug, getPostSlugs } from '@/shared/Posts';
-import { PostHeader } from '@/shared/Post';
-import Callout from '@/components/Mdx/Callout';
-import Image from '@/components/Mdx/Image';
-import Breadcrumb from '@/components/Mdx/Breadcrumb';
+import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Post';
+import { Breadcrumb, Image, Callout } from '@/components/Mdx/';
+
+import Supporter from '@/components/Supporter';
 
 interface Props {
   slug: string;
   content: string;
   frontMatter: PostHeader;
+  readingTime: string;
 }
 
-const PostPage: NextPage<Props> = ({ slug, content, frontMatter }) => {
+const PostPage: NextPage<Props> = ({
+  slug,
+  content,
+  frontMatter,
+  readingTime,
+}) => {
   const { title, description, date, hero, modifiedAt } = frontMatter;
   const datePublished = parseISO(date);
   const dateModified = modifiedAt
@@ -50,15 +55,20 @@ const PostPage: NextPage<Props> = ({ slug, content, frontMatter }) => {
         }}
       />
       <div className="flex flex-wrap">
-        <div className="w-full lg:w-4/6">
+        <div className="w-full lg:w-5/6">
           <article className="prose lg:prose-xl max-w-full">
             {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
             <h1 className="text-center">{title}</h1>
+            <p className="text-center font-mono text-base">
+              <time>{modifiedAt}</time>
+              <span className="inline-flex text-sm px-2"> — </span>
+              {readingTime && <span>{readingTime}</span>}
+            </p>
             {mdxContent}
           </article>
         </div>
-        <div className="w-full lg:w-2/6">
-          <h1>Sidebar</h1>
+        <div className="w-full lg:w-1/6">
+          <Supporter />
         </div>
       </div>
     </div>
@@ -77,13 +87,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params.slug as string;
 
-  const { mdxContent, frontMatter } = await getPostBySlug(slug);
+  const { mdxContent, frontMatter, readingTime } = await getPostBySlug(slug);
 
   return {
     props: {
       slug,
       content: mdxContent,
       frontMatter,
+      readingTime,
     },
   };
 };

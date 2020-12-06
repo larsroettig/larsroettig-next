@@ -20,7 +20,7 @@ const Hero: React.FC = () => (
             alt="Profile"
           />
         </div>
-        <div className="my-2 px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
+        <div className="py-10 md:my-2  px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
           <div className="m-auto" style={{ maxWidth: `600px` }}>
             <h1 className="text-3xl tracking-tight sm:text-4xl">
               <span className="block font-extrabold py-5">
