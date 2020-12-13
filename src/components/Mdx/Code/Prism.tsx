@@ -2,12 +2,6 @@
 import React from 'react';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
-import Prism from 'prism-react-renderer/prism';
-
-// Following advice from this issue https://github.com/FormidableLabs/prism-react-renderer/issues/53
-(typeof global !== `undefined` ? global : window).Prism = Prism;
-// Add syntax highlighting support for PHP
-require(`prismjs/components/prism-php`);
 
 export interface CodeProps {
   codeString?: string;

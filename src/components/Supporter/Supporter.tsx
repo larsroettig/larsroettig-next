@@ -1,5 +1,6 @@
 import React from 'react';
-import { useMobileScreen } from '@/shared/useMobileScreen';
+
+import useMobileScreen from '@/shared/useMobileScreen';
 import supporterList from './supporterList';
 import SupporterItem from './Item';
 

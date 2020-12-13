@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image } from '@/components/Mdx';
-import { useMobileScreen } from '@/shared/useMobileScreen';
+import useMobileScreen from '@/shared/useMobileScreen';
 
 interface Supporter {
   name: string;
