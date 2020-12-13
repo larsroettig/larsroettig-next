@@ -2,7 +2,19 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      typography: {
+        default: {
+          css: {
+            pre: false,
+            code: false,
+            'pre code': false,
+            'code::before': false,
+            'code::after': false,
+          },
+        },
+      },
+    },
   },
   variants: {
     extend: {},

@@ -13,7 +13,7 @@ const Supporter: React.FC = () => {
   };
   const SupporterList: React.FC = () => {
     const supporter = supporterList.map((data) => (
-      <SupporterItem supporter={data} />
+      <SupporterItem key={data.name} supporter={data} />
     ));
     return <>{supporter}</>;
   };

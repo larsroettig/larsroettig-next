@@ -5,9 +5,16 @@ import { parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Post';
-import { Breadcrumb, Image, Callout } from '@/components/Mdx/';
+import {
+  Breadcrumb,
+  Image,
+  Callout,
+  CodePre,
+  CodePrism,
+} from '@/components/Mdx/';
 
 import Supporter from '@/components/Supporter';
+import EditOnGithub from '@/components/EditOnGithub';
 
 interface Props {
   slug: string;
@@ -15,6 +22,18 @@ interface Props {
   frontMatter: PostHeader;
   readingTime: string;
 }
+
+const components = {
+  components: {
+    Callout,
+    Image,
+    Breadcrumb,
+    pre: (props: any) => {
+      return <CodePre {...props} />;
+    },
+    code: CodePrism,
+  },
+};
 
 const PostPage: NextPage<Props> = ({
   slug,
@@ -29,13 +48,7 @@ const PostPage: NextPage<Props> = ({
     : undefined;
   const url = `https://larsroettig.dev/${slug}`;
 
-  const mdxContent = hydrate(content, {
-    components: {
-      Callout,
-      Image,
-      Breadcrumb,
-    },
-  });
+  const mdxContent = hydrate(content, components);
 
   return (
     <div className="container mx-auto px-2 sm:px-6 lg:px-8">
@@ -56,7 +69,7 @@ const PostPage: NextPage<Props> = ({
       />
       <div className="flex flex-wrap">
         <div className="w-full lg:w-5/6">
-          <article className="prose lg:prose-xl max-w-full">
+          <article className="prose lg:prose-xl max-w-full mb-10">
             {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
             <h1 className="text-center">{title}</h1>
             <p className="text-center font-mono text-base">
@@ -64,7 +77,9 @@ const PostPage: NextPage<Props> = ({
               <span className="inline-flex text-sm px-2"> — </span>
               {readingTime && <span>{readingTime}</span>}
             </p>
+            <EditOnGithub slug={slug} />
             {mdxContent}
+            <EditOnGithub slug={slug} />
           </article>
         </div>
         <div className="w-full lg:w-1/6">
@@ -87,7 +102,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const slug = params.slug as string;
 
-  const { mdxContent, frontMatter, readingTime } = await getPostBySlug(slug);
+  const { mdxContent, frontMatter, readingTime } = await getPostBySlug(
+    slug,
+    components,
+  );
 
   return {
     props: {

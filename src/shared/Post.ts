@@ -5,6 +5,7 @@ import renderToString from 'next-mdx-remote/render-to-string';
 
 const readingTime = require(`reading-time`);
 const remarkSlug = require(`remark-slug`);
+const remarkHeadings = require(`remark-autolink-headings`);
 
 export const CONTENT_PATH = `content`;
 export const POSTS_PATH = path.join(CONTENT_PATH, `posts`);
@@ -17,25 +18,29 @@ export const getPostSlugs = (): string[] => {
 export function getAllPostData(): PostHeader[] {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
   const postData = postPaths.map((slug) => {
-    const fullPath = path.resolve(POSTS_PATH, `${slug}/index.mdx`);
+    const fullPath = path.resolve(POSTS_PATH, `${slug}`);
     const fileContents = fs.readFileSync(fullPath, `utf8`);
     const { data } = matter(fileContents);
-    data.slug = slug;
+    data.slug = slug.replace(`.mdx`, ``);
     return data;
   });
 
   return postData;
 }
 
-export const getPostBySlug = async (slug: string): Promise<Post> => {
-  const fullPath = path.resolve(POSTS_PATH, `${slug}/index.mdx`);
+export const getPostBySlug = async (
+  slug: string,
+  components = {},
+): Promise<Post> => {
+  const fullPath = path.resolve(POSTS_PATH, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, `utf8`);
   const { content, data } = matter(fileContents);
 
   const mdxContent = await renderToString(content, {
     scope: data,
+    components,
     mdxOptions: {
-      remarkPlugins: [remarkSlug],
+      remarkPlugins: [remarkSlug, remarkHeadings],
       filepath: path.join(POSTS_PATH, slug),
     },
   });
