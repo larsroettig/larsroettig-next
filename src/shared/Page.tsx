@@ -2,10 +2,17 @@ import { NextPage } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 import { NextSeo } from 'next-seo';
 import React from 'react';
+import Mailto from 'react-protected-mailto';
+
+const components = {
+  components: {
+    Mailto,
+  },
+};
 
 const Page: NextPage<any> = ({ content, frontMatter }) => {
   const { title, description } = frontMatter;
-  const mdxContent = hydrate(content);
+  const mdxContent = hydrate(content, components);
   return (
     <>
       <NextSeo title={title} description={description} />

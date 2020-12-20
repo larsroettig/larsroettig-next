@@ -60,6 +60,7 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "3.11.0",
+    "react-protected-mailto": "1.0.3",
     "react-scroll-up-button": "1.6.4",
     "react-share": "4.3.1",
     "reading-time": "1.2.1",
