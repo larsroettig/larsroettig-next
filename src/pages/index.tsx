@@ -1,9 +1,10 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
-import Hero from '@/components/Hero';
-import { getAllPostData, PostHeader } from '@/shared/Post';
 import { GetStaticProps, NextPage } from 'next';
-import Grid from '@/components/Card';
+
+import Hero from '../components/Hero';
+import { getAllPostData, PostHeader } from '../shared/Content';
+import Grid from '../components/Card';
 
 interface Props {
   posts: PostHeader[];

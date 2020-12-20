@@ -27,7 +27,7 @@ const SupporterItem: React.FC<SupporterProps> = (supporter) => {
     <Image src={image.desktop} alt={alt} />
   );
   return (
-    <div className="py-2">
+    <div className="py-2" data-cy="supporter-image">
       <a href={website}>{SupporterImage}</a>
     </div>
   );

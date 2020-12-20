@@ -9,7 +9,7 @@ const EditOnGithub: React.FC<EditOnGithubProps> = ({ slug }) => {
   const editLink = `${config.gitRepo}/${slug}.mdx`;
   return (
     <a
-      className="no-underline hover:underline text-gray-200"
+      className="no-underline hover:underline text-gray-100 text-sm"
       target="_blank"
       rel="noopener noreferrer"
       href={editLink}

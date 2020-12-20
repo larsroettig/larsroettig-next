@@ -14,14 +14,31 @@
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },
-  "plugins": ["import", "jsx-a11y", "react", "react-hooks", "prettier"],
-  "extends": ["airbnb", "eslint-config-prettier", "prettier/react"],
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb",
+    "eslint-config-prettier",
+    "prettier/react",
+    "plugin:cypress/recommended"
+  ],
   "rules": {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
+    "cypress/no-assigning-return-values": "error",
+    "cypress/no-unnecessary-waiting": "error",
+    "cypress/assertion-before-screenshot": "warn",
+    "cypress/no-force": "warn",
+    "cypress/no-async-tests": "error",
+
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -32,13 +49,19 @@
         "jsx": "never"
       }
     ],
-    "quotes": ["error", "backtick"]
+    "quotes": [
+      "error",
+      "backtick"
+    ]
   },
   "overrides": [
     {
       "files": "**/*.+(ts|tsx)",
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "plugins": [
+        "@typescript-eslint/eslint-plugin",
+        "cypress"
+      ],
       "extends": [
         "plugin:@typescript-eslint/recommended",
         "eslint-config-prettier/@typescript-eslint"
@@ -50,8 +73,12 @@
             "allowExpressions": true
           }
         ],
-        "no-use-before-define": [0],
-        "@typescript-eslint/no-use-before-define": [1],
+        "no-use-before-define": [
+          0
+        ],
+        "@typescript-eslint/no-use-before-define": [
+          1
+        ],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/quotes": [

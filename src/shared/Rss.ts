@@ -1,4 +1,4 @@
-import { PostRss } from '@/shared/Post';
+import { PostRss } from '@/shared/Content';
 
 const generateRssItem = (post: PostRss): string => `
   <item>

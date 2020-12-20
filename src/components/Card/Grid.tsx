@@ -1,7 +1,7 @@
 import React from 'react';
 import { compareDesc } from 'date-fns';
 
-import { PostHeader } from '@/shared/Post';
+import { PostHeader } from '@/shared/Content';
 import Container from '../Container';
 import Card from './Card';
 

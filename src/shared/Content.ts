@@ -7,8 +7,8 @@ const readingTime = require(`reading-time`);
 const remarkSlug = require(`remark-slug`);
 const remarkHeadings = require(`remark-autolink-headings`);
 
-export const CONTENT_PATH = `content`;
-export const POSTS_PATH = path.join(CONTENT_PATH, `posts`);
+export const PAGES_PATH = path.join(`content`, `pages`);
+export const POSTS_PATH = path.join(`content`, `posts`);
 
 export const getPostSlugs = (): string[] => {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
@@ -17,15 +17,13 @@ export const getPostSlugs = (): string[] => {
 
 export function getAllPostData(): PostHeader[] {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
-  const postData = postPaths.map((slug) => {
+  return postPaths.map((slug) => {
     const fullPath = path.resolve(POSTS_PATH, `${slug}`);
     const fileContents = fs.readFileSync(fullPath, `utf8`);
     const { data } = matter(fileContents);
     data.slug = slug.replace(`.mdx`, ``);
     return data;
   });
-
-  return postData;
 }
 
 export const getPostBySlug = async (
@@ -48,7 +46,24 @@ export const getPostBySlug = async (
   const stats = readingTime(mdxContent.renderedOutput);
   return { slug, mdxContent, frontMatter: data, readingTime: stats.text };
 };
-export interface PostPath {
+
+export const getPageBySlug = async (slug: string): Promise<Page> => {
+  const fullPath = path.resolve(PAGES_PATH, `${slug}.mdx`);
+  const fileContents = fs.readFileSync(fullPath, `utf8`);
+  const { content, data } = matter(fileContents);
+
+  const mdxContent = await renderToString(content, {
+    scope: data,
+    mdxOptions: {
+      remarkPlugins: [remarkSlug, remarkHeadings],
+      filepath: path.join(POSTS_PATH, slug),
+    },
+  });
+
+  return { slug, mdxContent, frontMatter: data };
+};
+
+export interface Path {
   slug: string;
 }
 
@@ -63,15 +78,25 @@ export interface PostHeader {
   slug?: string;
 }
 
-export interface PostRss extends PostPath {
+export interface PostRss extends Path {
   title?: string;
   date?: string;
   modifiedAt?: string;
   description?: string;
 }
 
-export interface Post extends PostPath {
+export interface Post extends Path {
   mdxContent: string;
   readingTime: string;
   frontMatter: PostHeader;
+}
+
+export interface PageHeader {
+  title?: string;
+  description?: string;
+}
+
+export interface Page extends Path {
+  mdxContent: string;
+  frontMatter: PageHeader;
 }

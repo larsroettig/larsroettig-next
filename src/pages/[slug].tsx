@@ -4,14 +4,14 @@ import { NextSeo } from 'next-seo';
 import { parseISO } from 'date-fns';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
-import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Post';
+import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Content';
 import {
   Breadcrumb,
   Image,
   Callout,
   CodePre,
   CodePrism,
-} from '@/components/Mdx/';
+} from '@/components/Mdx';
 
 import Supporter from '@/components/Supporter';
 import EditOnGithub from '@/components/EditOnGithub';
