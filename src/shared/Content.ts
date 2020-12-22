@@ -17,13 +17,15 @@ export const getPostSlugs = (): string[] => {
 
 export function getAllPostData(): PostHeader[] {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
-  return postPaths.map((slug) => {
+  const postData = postPaths.map((slug) => {
     const fullPath = path.resolve(POSTS_PATH, `${slug}`);
     const fileContents = fs.readFileSync(fullPath, `utf8`);
     const { data } = matter(fileContents);
     data.slug = slug.replace(`.mdx`, ``);
     return data;
   });
+
+  return postData;
 }
 
 export const getPostBySlug = async (

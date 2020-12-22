@@ -3,6 +3,7 @@ const withPlugins = require(`next-compose-plugins`);
 const withPWA = require(`next-pwa`);
 const optimizedImages = require(`next-optimized-images`);
 const withBundleAnalyzer = require(`@next/bundle-analyzer`);
+const withPreact = require(`next-plugin-preact`);
 
 const nextConfig = {
   reactStrictMode: true,
@@ -10,6 +11,7 @@ const nextConfig = {
 
 module.exports = withPlugins(
   [
+    withPreact(),
     withBundleAnalyzer({
       enabled: process.env.ANALYZE === `true`,
     }),
