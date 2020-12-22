@@ -51,7 +51,7 @@
     "next": "10.0.4",
     "next-compose-plugins": "2.2.1",
     "next-mdx-remote": "1.0.0",
-    "next-optimized-images": "3.0.0-canary.10",
+    "next-optimized-images": "2.6.2",
     "next-plugin-preact": "3.0.3",
     "next-pwa": "5.0.0",
     "next-seo": "4.17.0",

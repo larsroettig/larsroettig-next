@@ -1,7 +1,6 @@
 /*  eslint-disable global-require */
 import React from 'react';
 import 'lazysizes';
-import Img from 'react-optimized-image';
 
 interface iImage {
   src: string;
@@ -10,14 +9,19 @@ interface iImage {
 }
 
 const Image: React.FC<iImage> = ({ src, alt, className = `` }) => {
+  // eslint-disable-next-line import/no-dynamic-require
+  const imgSrc = require(`../../../images/${src}`);
+  // eslint-disable-next-line import/no-dynamic-require
+  const webPSrc = require(`../../../images/${src}?webp`);
+  // eslint-disable-next-line import/no-dynamic-require
+  const lqipSrc = require(`../../../images/${src}?lqip`);
+
   return (
-    <Img
-      webp
-      // eslint-disable-next-line import/no-dynamic-require
-      src={require(`../../../images/${src}`)}
-      alt={alt}
-      className={className}
-    />
+    <picture className={className}>
+      <source type="image/webp" data-srcset={webPSrc} />
+      <source type="image/png" data-srcset={imgSrc} />
+      <img className={`lazyload blur ${className}`} alt={alt} src={lqipSrc} />
+    </picture>
   );
 };
 
