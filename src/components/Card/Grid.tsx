@@ -1,5 +1,4 @@
 import React from 'react';
-import { compareDesc } from 'date-fns';
 
 import { PostHeader } from '@/shared/Content';
 import Container from '../Container';
@@ -16,22 +15,15 @@ const Grid: React.FC<GridProps> = ({ posts }) => {
         Blog
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
-        {posts
-          .sort((first, second) =>
-            compareDesc(
-              new Date(first.modifiedAt),
-              new Date(second.modifiedAt),
-            ),
-          )
-          .map((post) => (
-            <Card
-              key={post.slug}
-              title={post.title}
-              description={post.description}
-              href={`/${post.slug}`}
-              img={post.hero}
-            />
-          ))}
+        {posts.map((post) => (
+          <Card
+            key={post.slug}
+            title={post.title}
+            description={post.description}
+            href={`/${post.slug}`}
+            img={post.hero}
+          />
+        ))}
       </div>
     </Container>
   );

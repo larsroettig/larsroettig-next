@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import renderToString from 'next-mdx-remote/render-to-string';
+import { compareDesc } from 'date-fns';
 
 const readingTime = require(`reading-time`);
 const remarkSlug = require(`remark-slug`);
@@ -24,6 +25,10 @@ export function getAllPostData(): PostHeader[] {
     data.slug = slug.replace(`.mdx`, ``);
     return data;
   });
+
+  postData.sort((first, second) =>
+    compareDesc(new Date(first.date), new Date(second.date)),
+  );
 
   return postData;
 }

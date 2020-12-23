@@ -9,7 +9,7 @@ const Footer: React.FC = () => (
     <Container>
       <div className="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-700 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
         <div className="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
-          <LarsLogo color="#fff" />
+          <LarsLogo />
         </div>
         <div className="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
           <p className="text-xl font-semibold text-white">Legal</p>
