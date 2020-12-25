@@ -48,7 +48,7 @@ const PostPage: NextPage<Props> = ({
   const dateModified = modifiedAt
     ? parseISO(modifiedAt).toISOString()
     : undefined;
-  const url = `${config.baseUrl}${slug}`;
+  const url = `${config.baseUrl}/${slug}`;
 
   const mdxContent = hydrate(content, components);
 
