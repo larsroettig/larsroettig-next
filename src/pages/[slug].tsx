@@ -15,6 +15,8 @@ import {
 
 import Supporter from '@/components/Supporter';
 import EditOnGithub from '@/components/EditOnGithub';
+import Share from '@/components/Share';
+import config from '../config.json';
 
 interface Props {
   slug: string;
@@ -46,7 +48,7 @@ const PostPage: NextPage<Props> = ({
   const dateModified = modifiedAt
     ? parseISO(modifiedAt).toISOString()
     : undefined;
-  const url = `https://larsroettig.dev/${slug}`;
+  const url = `${config.baseUrl}${slug}`;
 
   const mdxContent = hydrate(content, components);
 
@@ -69,7 +71,7 @@ const PostPage: NextPage<Props> = ({
       />
       <div className="flex flex-wrap">
         <div className="w-full lg:w-5/6">
-          <article className="prose lg:prose-xl max-w-full mb-10">
+          <div className="prose lg:prose-xl max-w-full mb-10 ">
             {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
             <h1 className="text-center">{title}</h1>
             <p className="text-center font-mono text-base">
@@ -78,11 +80,12 @@ const PostPage: NextPage<Props> = ({
               {readingTime && <span>{readingTime}</span>}
             </p>
             <EditOnGithub slug={slug} />
-            {mdxContent}
+            <div>{mdxContent}</div>
             <EditOnGithub slug={slug} />
-          </article>
+          </div>
         </div>
         <div className="w-full lg:w-1/6">
+          <Share url={url} title={title} />
           <Supporter />
         </div>
       </div>

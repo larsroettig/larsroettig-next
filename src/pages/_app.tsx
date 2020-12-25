@@ -32,6 +32,12 @@ function MyApp({ Component, pageProps }: AppProps): any {
         <link rel="manifest" href="/manifest.json" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <script
+          async
+          defer
+          data-domain="larsroettig.dev"
+          src="https://stats.larsroettig.dev/js/plausible.outbound-links.js"
+        />
       </Head>
       <Header />
       <Component {...pageProps} />

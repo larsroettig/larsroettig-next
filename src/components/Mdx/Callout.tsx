@@ -13,7 +13,9 @@ const Callout: React.FC<CalloutProps> = ({ type = null, children }) => {
 
   const addtionalClasses = variantStyles[type ?? `info`];
   return (
-    <div className={`p-1 my-1 break-words ${addtionalClasses}`}>{children}</div>
+    <div className={`p-2 my-2 break-words border-l-4 ${addtionalClasses}`}>
+      {children}
+    </div>
   );
 };
 
