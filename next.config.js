@@ -3,7 +3,6 @@ const withPlugins = require(`next-compose-plugins`);
 const withPWA = require(`next-pwa`);
 const optimizedImages = require(`next-optimized-images`);
 const withBundleAnalyzer = require(`@next/bundle-analyzer`);
-const withPreact = require(`next-plugin-preact`);
 
 const nextConfig = {
   reactStrictMode: true,
@@ -11,11 +10,19 @@ const nextConfig = {
     locales: [`en`],
     defaultLocale: `en`,
   },
+  webpack: (config) => {
+    Object.assign(config.resolve.alias, {
+      react: `preact/compat`,
+      'react-dom/test-utils': `preact/test-utils`,
+      'react-dom': `preact/compat`,
+    });
+
+    return config;
+  },
 };
 
 module.exports = withPlugins(
   [
-    withPreact(),
     withBundleAnalyzer({
       enabled: process.env.ANALYZE === `true`,
     }),
@@ -29,6 +36,7 @@ module.exports = withPlugins(
     optimizedImages,
     {
       inlineImageLimit: 8192,
+      loader: `responsive-loader`,
       handleImages: [`jpeg`, `png`, `webp`],
       removeOriginalExtension: false,
       optimizeImages: true,
@@ -38,6 +46,10 @@ module.exports = withPlugins(
       },
       optipng: {
         optimizationLevel: 3,
+      },
+      responsive: {
+        // eslint-disable-next-line global-require
+        adapter: require('responsive-loader/sharp'),
       },
       pngquant: false,
       webp: {

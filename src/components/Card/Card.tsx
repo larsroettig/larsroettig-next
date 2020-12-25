@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image } from '@/components/Mdx/';
+import Image from '@/components/Image/';
 
 interface iCard {
   title: string;
@@ -12,7 +12,7 @@ const Card: React.FC<iCard> = ({ title, href, description, img = `` }) => {
   return (
     <div className="overflow-hidden shadow-lg">
       <a href={href}>
-        {img ? <Image src={img} alt={`Teaser for ${title}`} /> : ``}
+        {img ? <Image src={img} alt={`Teaser for ${title}`} responsive /> : ``}
       </a>
       <div className="flex items-center justify-between leading-tight p-2 md:p-4">
         <span className="text-lg">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from '../Image';
+import Image from './Image';
 import Container from '../Container';
 
 const src = require(`./larsroettig.png`);
