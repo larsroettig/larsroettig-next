@@ -70,6 +70,7 @@
     "react-protected-mailto": "1.0.3",
     "react-scroll-up-button": "1.6.4",
     "react-share": "4.3.1",
+    "react-use-clipboard": "1.0.2",
     "reading-time": "1.2.1",
     "remark-autolink-headings": "6.0.1",
     "remark-copy-linked-files": "1.2.0",

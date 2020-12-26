@@ -12,26 +12,26 @@ p > code li > code {
   margin-bottom: 1rem;
 }
 
-pre.prism-code{
-    padding: 1rem;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    overflow: initial;
-    float: left;
+pre.prism-code {
+  padding: 1rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  overflow: initial;
+  float: left;
 }
 
 pre[class*='language-']:before {
-    border-radius: 0 0 0.25rem 0.25rem;
-    background-color: #fff;
-    color: #000;
-    font-size: 12px;
-    letter-spacing: 0.025rem;
-    padding: 0.1rem 0.5rem;
-    position: absolute;
-    left: 1rem;
-    text-align: right;
-    text-transform: uppercase;
-    top: 0;
+  border-radius: 0 0 0.25rem 0.25rem;
+  background-color: #fff;
+  color: #000;
+  font-size: 12px;
+  letter-spacing: 0.025rem;
+  padding: 0.1rem 0.5rem;
+  position: absolute;
+  left: 1rem;
+  text-align: right;
+  text-transform: uppercase;
+  top: 0;
 }
 pre[class~='language-javascript']:before {
   content: 'js';
@@ -132,16 +132,33 @@ pre[class~='language-diff']:before {
 }
 
 .scroll-container {
-    position: fixed;
-    padding: 5px;
-    right: -100px;
-    bottom: 150px;
-    cursor: pointer;
-    background-color: #1F2937;
-    color:#fff;
-    border-radius: 20px;
-  }
+  position: fixed;
+  padding: 5px;
+  right: -100px;
+  bottom: 150px;
+  cursor: pointer;
+  background-color: #1f2937;
+  color: #fff;
+  border-radius: 20px;
+}
 
-  .scroll-transtion{
-    right: 20px;
+.scroll-transtion {
+  right: 20px;
+}
+.copy-button {
+  position: absolute;
+  right: 22px;
+  top: 10px;
+  padding: 5px 9px;
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  background: none;
+  display: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 640px) {
+  .copy-button {
+    display: block;
   }
+}
