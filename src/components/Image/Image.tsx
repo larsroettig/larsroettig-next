@@ -23,9 +23,7 @@ const Image: React.FC<iImage> = ({
     // eslint-disable-next-line import/no-dynamic-require
     const imgSrc = require(`../../../images/${src}`);
     // eslint-disable-next-line import/no-dynamic-require
-    const webPSrc = require(`../../../images/${src}?webp`);
-    // eslint-disable-next-line import/no-dynamic-require
-    const lqipSrc = require(`../../../images/${src}?lqip`);
+    const webPSrc = require(`../../../images/${src}?format=webp`);
 
     return (
       <LazyLoadComponent>
