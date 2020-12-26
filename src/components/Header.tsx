@@ -9,12 +9,9 @@ const Header: React.FC = () => {
       <Container>
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className=" w-auto static block justify-start">
-            <a
-              className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
-              href="/"
-            >
+            <div className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white">
               <LarsLogo />
-            </a>
+            </div>
           </div>
           <div className=" flex-grow items-center flex">
             <ul className="flex flex-row list-none ml-auto">
