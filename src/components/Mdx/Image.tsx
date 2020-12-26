@@ -9,7 +9,20 @@ interface iImage {
   className?: string;
 }
 
-const Picture: React.FC<iImage> = ({ src, alt, className = `` }) => (
-  <Image src={src} alt={alt} className={className} responsive />
-);
+const Picture: React.FC<iImage> = ({ src, alt, className = `` }) => {
+  const image = require(`../../../images/${src}?resize&sizes[]=640&sizes[]=768&sizes[]=1024&sizes[]=1280`);
+  const imageWebP = require(`../../../images/${src}?resize&sizes[]=640&sizes[]=768&sizes[]=1024&sizes[]=1280&format=webp`);
+
+  return (
+    <Image
+      image={image}
+      imageWebP={imageWebP}
+      width="1280"
+      heigth="780"
+      alt={alt}
+      className={className}
+      responsive
+    />
+  );
+};
 export default Picture;

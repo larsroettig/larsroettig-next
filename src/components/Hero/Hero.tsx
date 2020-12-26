@@ -10,7 +10,8 @@ const Hero: React.FC = () => (
         <div className="px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
           <Image
             className="w-96"
-            src="larsroettig.png"
+            image={require(`../../../images/larsroettig.png?resize&size=380`)}
+            imageWebP={require(`../../../images/larsroettig.png?resize&size=380&format=webp`)}
             alt="Profile"
             width="380"
             heigth="450"

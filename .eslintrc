@@ -38,7 +38,8 @@
     "cypress/assertion-before-screenshot": "warn",
     "cypress/no-force": "warn",
     "cypress/no-async-tests": "error",
-
+    "global-require": 0 ,
+    "import/no-dynamic-require": 0,
     "import/extensions": [
       "error",
       "ignorePackages",
