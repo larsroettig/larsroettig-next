@@ -28,8 +28,8 @@ const Image: React.FC<iImage> = ({
     return (
       <LazyLoadComponent>
         <picture className={className}>
-          <source type="image/webp" data-srcset={webPSrc} />
-          <source type="image/png" data-srcset={imgSrc} />
+          <source type="image/webp" srcSet={webPSrc} />
+          <source type="image/png" srcSet={imgSrc} />
           <img alt={alt} src={imgSrc} width={width} height={heigth} />
         </picture>
       </LazyLoadComponent>
@@ -44,8 +44,8 @@ const Image: React.FC<iImage> = ({
   return (
     <LazyLoadComponent>
       <picture className={className}>
-        <source type="image/webp" data-srcset={imageWebP.srcSet} />
-        <source type="image/png" data-srcset={image.srcSet} />
+        <source type="image/webp" srcSet={imageWebP.srcSet} />
+        <source type="image/png" srcSet={image.srcSet} />
         <img alt={alt} height={width} src={image.src} width={heigth} />
       </picture>
     </LazyLoadComponent>
