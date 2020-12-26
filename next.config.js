@@ -38,7 +38,7 @@ module.exports = withPlugins(
       inlineImageLimit: 8192,
       loader: `responsive-loader`,
       handleImages: [`jpeg`, `png`, `webp`],
-      removeOriginalExtension: false,
+      removeOriginalExtension: true,
       optimizeImages: true,
       optimizeImagesInDev: false,
       mozjpeg: {
