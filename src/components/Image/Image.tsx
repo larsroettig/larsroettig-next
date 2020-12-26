@@ -1,18 +1,22 @@
 /*  eslint-disable global-require */
 import React from 'react';
-import 'lazysizes';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 interface iImage {
   src: string;
   alt: string;
   className?: string;
-  responsive: boolean;
+  width?: string;
+  heigth?: string;
+  responsive?: boolean;
 }
 
 const Image: React.FC<iImage> = ({
   src,
   alt,
   className = ``,
+  width = `1000`,
+  heigth = `1000`,
   responsive = false,
 }) => {
   if (responsive === false) {
@@ -24,27 +28,29 @@ const Image: React.FC<iImage> = ({
     const lqipSrc = require(`../../../images/${src}?lqip`);
 
     return (
-      <picture className={className}>
-        <source type="image/webp" data-srcset={webPSrc} />
-        <source type="image/png" data-srcset={imgSrc} />
-        <img className={`lazyload blur ${className}`} alt={alt} src={lqipSrc} />
-      </picture>
+      <LazyLoadComponent>
+        <picture className={className}>
+          <source type="image/webp" data-srcset={webPSrc} />
+          <source type="image/png" data-srcset={imgSrc} />
+          <img alt={alt} src={imgSrc} width={width} height={heigth} />
+        </picture>
+      </LazyLoadComponent>
     );
   }
 
   // eslint-disable-next-line import/no-dynamic-require
-  const imgSrc = require(`../../../images/${src}?resize&sizes[]=400&sizes[]=600&sizes[]=1000`);
+  const image = require(`../../../images/${src}?resize&sizes[]=400&sizes[]=600&sizes[]=1000`);
   // eslint-disable-next-line import/no-dynamic-require
-  const webPSrc = require(`../../../images/${src}?webp&?resize&sizes[]=400&sizes[]=600&sizes[]=1000`);
-  // eslint-disable-next-line import/no-dynamic-require
-  const lqipSrc = require(`../../../images/${src}?lqip`);
+  const imageWebP = require(`../../../images/${src}?resize&sizes[]=400&sizes[]=600&sizes[]=1000&format=webp`);
 
   return (
-    <picture>
-      <source srcSet={webPSrc.srcSet} type="image/webp" />
-      <source srcSet={imgSrc.srcSet} type="image/png" />
-      <img alt={alt} src={lqipSrc} sizes="(min-width: 1024px) 1024px, 100vw" />
-    </picture>
+    <LazyLoadComponent>
+      <picture className={className}>
+        <source type="image/webp" data-srcset={imageWebP.srcSet} />
+        <source type="image/png" data-srcset={image.srcSet} />
+        <img alt={alt} height={width} src={image.src} width={heigth} />
+      </picture>
+    </LazyLoadComponent>
   );
 };
 
