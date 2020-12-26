@@ -6,13 +6,17 @@ interface iImage {
   src: string;
   alt: string;
   className?: string;
-  responsive: boolean;
+  width?: string;
+  heigth?: string;
+  responsive?: boolean;
 }
 
 const Image: React.FC<iImage> = ({
   src,
   alt,
   className = ``,
+  width = `1000`,
+  heigth = `1000`,
   responsive = false,
 }) => {
   if (responsive === false) {
@@ -24,11 +28,13 @@ const Image: React.FC<iImage> = ({
     const lqipSrc = require(`../../../images/${src}?lqip`);
 
     return (
-      <picture className={className}>
-        <source type="image/webp" data-srcset={webPSrc} />
-        <source type="image/png" data-srcset={imgSrc} />
-        <img className={`lazyload blur ${className}`} alt={alt} src={lqipSrc} />
-      </picture>
+      <LazyLoadComponent>
+        <picture className={className}>
+          <source type="image/webp" data-srcset={webPSrc} />
+          <source type="image/png" data-srcset={imgSrc} />
+          <img alt={alt} src={imgSrc} width={width} height={heigth} />
+        </picture>
+      </LazyLoadComponent>
     );
   }
 
@@ -40,9 +46,9 @@ const Image: React.FC<iImage> = ({
   return (
     <LazyLoadComponent>
       <picture className={className}>
-        <source type="image/webp" data-srcset={image.srcSet} />
-        <source type="image/jpg" data-srcset={imageWebP.srcSet} />
-        <img alt={alt} height={1000} src={image.src} width={1000} />
+        <source type="image/webp" data-srcset={imageWebP.srcSet} />
+        <source type="image/png" data-srcset={image.srcSet} />
+        <img alt={alt} height={width} src={image.src} width={heigth} />
       </picture>
     </LazyLoadComponent>
   );

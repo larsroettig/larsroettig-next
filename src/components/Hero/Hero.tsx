@@ -1,11 +1,7 @@
 import React from 'react';
 
-import Image from './Image';
+import Image from '../Image';
 import Container from '../Container';
-
-const src = require(`./larsroettig.png`);
-const webpSrc = require(`./larsroettig.png?webp`);
-const previewSrc = require(`./larsroettig.png?lqip`);
 
 const Hero: React.FC = () => (
   <div className="bg-gray-800 text-gray-100 p-10 pb-0 mb-10">
@@ -14,10 +10,10 @@ const Hero: React.FC = () => (
         <div className="px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
           <Image
             className="w-96"
-            src={src}
-            webpSrc={webpSrc}
-            previewSrc={previewSrc}
+            src="larsroettig.png"
             alt="Profile"
+            width="380"
+            heigth="450"
           />
         </div>
         <div className="py-10 md:my-2  px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
