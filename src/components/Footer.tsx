@@ -11,7 +11,7 @@ import SocialLink from './SocialLink';
 import LarsLogo from './Brand';
 
 const Footer: React.FC = () => (
-  <footer className="bg-gray-800 text-gray-300 px-6 lg:px-8 py-12">
+  <footer className="bg-gray-800 text-gray-300 px-6 lg:px-8 py-12 content-auto">
     <Container>
       <div className="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-700 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
         <div className="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">

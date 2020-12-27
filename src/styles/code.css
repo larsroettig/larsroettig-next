@@ -162,3 +162,7 @@ pre[class~='language-diff']:before {
     display: block;
   }
 }
+
+.content-auto {
+  content-visibility: auto;
+}
