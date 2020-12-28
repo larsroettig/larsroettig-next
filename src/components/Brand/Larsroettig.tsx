@@ -5,7 +5,7 @@ const LarsLogo: React.FC = () => (
     <a href="/" aria-label="back to homepage">
       <img
         className="float-left"
-        src="larsroettig.svg"
+        src="larsroettig-logo.svg"
         alt="Logo from larsroettig.dev"
         height="32"
         width="32"
