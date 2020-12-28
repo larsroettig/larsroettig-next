@@ -26,7 +26,8 @@ const Image: React.FC<iImage> = ({
         <source type="image/webp" data-srcset={imageWebP} />
         <img
           alt={alt}
-          src={image}
+          src="/gray.jpg"
+          data-src={image.src}
           width={width}
           height={heigth}
           className="lazyload"
