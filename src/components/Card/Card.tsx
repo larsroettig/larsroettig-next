@@ -17,6 +17,8 @@ const Card: React.FC<iCard> = ({ title, href, description, img = `` }) => {
         image={image}
         imageWebP={imageWebP}
         alt={`Teaser for ${title}`}
+        width="480"
+        heigth="270"
         responsive
       />
     );
