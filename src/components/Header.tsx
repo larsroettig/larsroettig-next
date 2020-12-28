@@ -5,7 +5,7 @@ import LarsLogo from './Brand';
 
 const Header: React.FC = () => {
   return (
-    <nav className="bg-gray-800 relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+    <nav className="bg-gray-800 relative flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg h-14">
       <Container>
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <div className=" w-auto static block justify-start">

@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  FaFacebookF,
-  FaGithub,
-  FaLinkedin,
-  FaRss,
-  FaTwitter,
-} from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaRss, FaTwitter } from 'react-icons/fa';
 import Container from './Container';
 import SocialLink from './SocialLink';
 import LarsLogo from './Brand';
 
 const Footer: React.FC = () => (
-  <footer className="bg-gray-800 text-gray-300 px-6 lg:px-8 py-12 content-auto">
+  <footer className="bg-gray-800 text-gray-300 px-6 lg:px-8 py-12 content-auto h-40">
     <Container>
       <div className="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-700 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
         <div className="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
@@ -24,7 +18,7 @@ const Footer: React.FC = () => (
               <li className="mb-2">
                 <a
                   href="/imprint"
-                  className="font-normal text-base hover:text-gray-100"
+                  className="font-normal text-base text-white hover:text-gray-100"
                 >
                   Imprint
                 </a>
@@ -32,7 +26,7 @@ const Footer: React.FC = () => (
               <li className="mb-2">
                 <a
                   href="/privacy-statement"
-                  className="font-normal text-base hover:text-gray-100"
+                  className="font-normal text-base text-white hover:text-gray-100"
                 >
                   Privacy Statement
                 </a>
