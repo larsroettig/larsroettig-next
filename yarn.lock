@@ -4197,11 +4197,6 @@ cypress@6.1.0:
     url "^0.11.0"
     yauzl "^2.10.0"
 
-cytoscape-clipboard@2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/cytoscape-clipboard/-/cytoscape-clipboard-2.2.1.tgz#be4fdb4049fe91975a4855f71e875e1faa463b85"
-  integrity sha512-9TUSA138FZFBqEKmwDwpx4BRIScJkZRZUfxaiQIzek01rOYObOhH2NOIFbvDiitGtBUoW2bQjAizQW+vDDm9Qw==
-
 cz-conventional-changelog@3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/cz-conventional-changelog/-/cz-conventional-changelog-3.3.0.tgz#9246947c90404149b3fe2cf7ee91acad3b7d22d2"
