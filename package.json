@@ -21,6 +21,7 @@
     "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
     "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
     "e2e": "start-test dev 3000 cy:open",
+    "e2e:ci": "cypress-expect run --passing 1",
     "cy:open": "cypress open",
     "pree2e": "rm -rf .nyc_output coverage .next || true",
     "check-coverage-limits": "nyc report --reporter=text-summary --check-coverage --statements 100"
@@ -41,6 +42,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "10.0.3",
     "@tailwindcss/typography": "0.3.1",
+    "cypress-expect": "2.2.1",
     "date-fns": "2.16.1",
     "fast-glob": "3.2.4",
     "feed": "4.2.1",
@@ -113,7 +115,8 @@
     "start-server-and-test": "1.11.6",
     "tailwindcss": "2.0.1",
     "ts-node": "9.1.1",
-    "typescript": "4.0.5"
+    "typescript": "4.0.5",
+    "cytoscape-clipboard": "2.2.1"
   },
   "config": {
     "commitizen": {
