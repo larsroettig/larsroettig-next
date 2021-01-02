@@ -4,7 +4,7 @@ const LarsLogo: React.FC = () => (
   <span className="flex items-center">
     <img
       className="float-left"
-      src="larsroettig-logo.svg"
+      src="/larsroettig-logo.svg"
       alt="Logo from larsroettig.dev"
       height="32"
       width="32"
