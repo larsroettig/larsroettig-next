@@ -163,6 +163,6 @@ pre[class~='language-diff']:before {
   }
 }
 
-.content-auto {
-  content-visibility: auto;
+.aboutImg {
+    margin: 0 !important;
 }

@@ -4,9 +4,14 @@ import { NextSeo } from 'next-seo';
 import React from 'react';
 import Mailto from 'react-protected-mailto';
 
+import { Image } from '@/components/Mdx';
+import Employer from '@/components/About/employer';
+
 const components = {
   components: {
     Mailto,
+    Image,
+    Employer,
   },
 };
 

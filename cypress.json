@@ -1,8 +1,4 @@
 {
-    "baseUrl": "http://localhost:3000",
-    "env": {
-      "codeCoverage": {
-        "url": "/api/__coverage__"
-      }
-    }
-  }
+  "baseUrl": "http://localhost:3000",
+  "projectId": "7qkm8c"
+}
