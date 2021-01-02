@@ -12,8 +12,8 @@ interface iCard {
 
 const Card: React.FC<iCard> = ({ title, href, description, img = `` }) => {
   const getImage = (src: string): any => {
-    const image = require(`../../../images/${src}?resize=640`);
-    const imageWebP = require(`../../../images/${src}?resize=640&format=webp`);
+    const image = require(`../../../images/${src}?resize&size=640`);
+    const imageWebP = require(`../../../images/${src}?resize&size=640&format=webp`);
     return (
       <Image
         image={image}
@@ -21,7 +21,6 @@ const Card: React.FC<iCard> = ({ title, href, description, img = `` }) => {
         alt={`Teaser for ${title}`}
         width="480"
         heigth="270"
-        responsive
       />
     );
   };
