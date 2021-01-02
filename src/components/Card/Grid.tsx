@@ -1,8 +1,9 @@
 import React from 'react';
-
+import dynamic from 'next/dynamic';
 import { PostHeader } from '@/shared/Content';
 import Container from '../Container';
-import Card from './Card';
+
+const Card = dynamic(() => import(`./Card`));
 
 interface GridProps {
   posts: PostHeader[];

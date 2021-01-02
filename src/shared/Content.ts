@@ -54,13 +54,17 @@ export const getPostBySlug = async (
   return { slug, mdxContent, frontMatter: data, readingTime: stats.text };
 };
 
-export const getPageBySlug = async (slug: string): Promise<Page> => {
+export const getPageBySlug = async (
+  slug: string,
+  components = {},
+): Promise<Page> => {
   const fullPath = path.resolve(PAGES_PATH, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, `utf8`);
   const { content, data } = matter(fileContents);
 
   const mdxContent = await renderToString(content, {
     scope: data,
+    components,
     mdxOptions: {
       remarkPlugins: [remarkSlug, remarkHeadings],
       filepath: path.join(POSTS_PATH, slug),

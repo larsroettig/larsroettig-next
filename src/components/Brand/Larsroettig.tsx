@@ -9,7 +9,7 @@ const LarsLogo: React.FC = () => (
       height="32"
       width="32"
     />
-    <span className="font-mono text-xl md:text-2xl font-extrabold tracking-tight hidden sm:inline">
+    <span className="font-mono text-xl md:text-2xl font-extrabold tracking-tight hidden lg:inline text-white">
       Lars Roettig
     </span>
   </span>

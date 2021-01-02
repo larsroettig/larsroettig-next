@@ -30,7 +30,7 @@ const Image: React.FC<iImage> = ({
           data-src={image.src}
           width={width}
           height={heigth}
-          className="lazyload"
+          className={`lazyload ${className}`}
         />
       </picture>
     );
@@ -46,7 +46,7 @@ const Image: React.FC<iImage> = ({
         data-srcset={image.srcSet}
         width={width}
         height={heigth}
-        className="lazyload"
+        className={`lazyload ${className}`}
       />
     </picture>
   );
