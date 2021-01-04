@@ -13,10 +13,6 @@ interface Props {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
-      <NextSeo
-        title="Blog - Lars Roettig"
-        description="A blog about Software and Magento Development"
-      />
       <div>
         <Hero />
         <Grid posts={posts} />
