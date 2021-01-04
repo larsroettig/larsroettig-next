@@ -45,7 +45,6 @@ function MyApp({ Component, pageProps }: AppProps): any {
         />
       </Head>
       <Header />
-      <DefaultSeo {...SEO} />
       <Component {...pageProps} />
       <ScrollUp />
       <Footer />
