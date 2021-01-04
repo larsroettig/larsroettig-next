@@ -4,11 +4,11 @@ const description = `Senior Developer - Magento and React`;
 const SEO = {
   title,
   description,
-  canonical: `https://larsroettig.dev`,
+  canonical: `https://larsroettig.dev/  `,
   openGraph: {
     type: `website`,
     locale: `en`,
-    url: `https://larsroettig.dev`,
+    url: `https://larsroettig.dev/`,
     title,
     description,
     images: [
