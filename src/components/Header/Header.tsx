@@ -59,9 +59,7 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      <div
-        className={`${isOpen === true ? `block` : `hidden`} sm:hidden absolute`}
-      >
+      <div className={`${isOpen === true ? `block` : `hidden`} sm:hidden`}>
         <div className="px-2 pt-2 pb-3 space-y-1">{Items}</div>
       </div>
     </nav>
