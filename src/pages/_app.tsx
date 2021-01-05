@@ -4,12 +4,9 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import { DefaultSeo } from 'next-seo';
 
 import Header from '../components/Header';
 import ScrollUp from '../components/ScrollUp';
-
-import SEO from '../../next-seo.config';
 
 const Footer = dynamic(() => import(`../components/Footer`));
 

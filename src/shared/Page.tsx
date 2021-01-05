@@ -1,11 +1,14 @@
 import { NextPage } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
-import { NextSeo } from 'next-seo';
+
 import React from 'react';
 import Mailto from 'react-protected-mailto';
 
+import { BasisSeo, defaultUrl } from '@/components/Seo';
+
 import { Image } from '@/components/Mdx';
 import Employer from '@/components/About/employer';
+import { PageHeader } from './Content';
 
 const components = {
   components: {
@@ -15,12 +18,23 @@ const components = {
   },
 };
 
-const Page: NextPage<any> = ({ content, frontMatter }) => {
+type PageProps = {
+  slug: string;
+  content: string;
+  frontMatter: PageHeader;
+};
+
+const Page: NextPage<PageProps> = ({ slug, content, frontMatter }) => {
   const { title, description } = frontMatter;
   const mdxContent = hydrate(content, components);
   return (
     <>
-      <NextSeo title={title} description={description} />
+      <BasisSeo
+        title={title}
+        description={description}
+        url={`${defaultUrl}${slug}`}
+      />
+
       <div className="container mx-auto px-2 sm:px-6 lg:px-8 ">
         <div className="w-full">
           <article className="prose lg:prose-xl max-w-full my-10">

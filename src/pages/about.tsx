@@ -3,10 +3,12 @@ import { GetStaticProps } from 'next';
 import Page from '@/shared/Page';
 
 export const getStaticProps: GetStaticProps<any> = async () => {
-  const { mdxContent, frontMatter } = await getPageBySlug(`about`);
+  const slug = `about`;
+  const { mdxContent, frontMatter } = await getPageBySlug(slug);
 
   return {
     props: {
+      slug,
       content: mdxContent,
       frontMatter,
     },
