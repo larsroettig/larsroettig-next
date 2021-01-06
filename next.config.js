@@ -1,15 +1,11 @@
 // next.config.js
 const withPlugins = require(`next-compose-plugins`);
 const withPWA = require(`next-pwa`);
-const withPreact = require('next-plugin-preact');
+const withPreact = require(`next-plugin-preact`);
 const optimizedImages = require(`next-optimized-images`);
 
 const nextConfig = {
   reactStrictMode: true,
-  i18n: {
-    locales: [`en`],
-    defaultLocale: `en`,
-  },
 };
 
 const withBundleAnalyzer = require(`@next/bundle-analyzer`)({

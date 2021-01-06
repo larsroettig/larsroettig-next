@@ -12,9 +12,9 @@
   ],
   "scripts": {
     "dev": "next",
-    "build": "next build && yarn build:rss",
+    "build": "next build",
     "build:rss": "ts-node src/scripts/generate-rss.ts",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap && yarn build:rss",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "type-check": "tsc",
