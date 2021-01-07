@@ -34,6 +34,7 @@ function MyApp({ Component, pageProps }: AppProps): any {
         <link rel="manifest" href="/manifest.json" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="yandex-verification" content="70c87e285704515f" />
         <script
           async
           defer
