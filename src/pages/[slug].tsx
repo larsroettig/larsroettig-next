@@ -1,7 +1,6 @@
 import React from 'react';
 import hydrate from 'next-mdx-remote/hydrate';
-import { NextSeo } from 'next-seo';
-import { parseISO } from 'date-fns';
+
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 
 import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Content';
@@ -17,12 +16,13 @@ import Supporter from '@/components/Supporter';
 import EditOnGithub from '@/components/EditOnGithub';
 import Share from '@/components/Share';
 import { BlogSeo } from '@/components/Seo';
+import { MdxRemote } from 'next-mdx-remote/types';
 
 import config from '../config.json';
 
 interface Props {
   slug: string;
-  content: string;
+  content: MdxRemote.Source;
   frontMatter: PostHeader;
   readingTime: string;
 }
@@ -32,9 +32,7 @@ const components = {
     Callout,
     Image,
     Breadcrumb,
-    pre: (props: any) => {
-      return <CodePre {...props} />;
-    },
+    pre: (props: any) => <CodePre {...props} />,
     code: CodePrism,
   },
 };
