@@ -4,17 +4,17 @@
         <title>Feed Title</title>
         <link>https://larsroettig.dev</link>
         <description>This is my personal feed!</description>
-        <lastBuildDate>Wed, 06 Jan 2021 13:07:31 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 01 Feb 2021 19:57:03 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <category>Technologie</category>
         <item>
-            <title><![CDATA[How i learned React?]]></title>
+            <title><![CDATA[How I learned React?]]></title>
             <link>https://larsroettig.dev/how-i-learned-react</link>
             <guid>https://larsroettig.dev/how-i-learned-react</guid>
             <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[What you should know before starting a PWA Project bassed on React.]]></description>
+            <description><![CDATA[What you should know before starting a React Project? My personal learning path to tame the technology stack.]]></description>
         </item>
         <item>
             <title><![CDATA[Getting started with PWA Studio Extensibility]]></title>

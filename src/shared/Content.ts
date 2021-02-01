@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { compareDesc } from 'date-fns';
+import { MdxRemote } from 'next-mdx-remote/types';
 
 const readingTime = require(`reading-time`);
 const remarkSlug = require(`remark-slug`);
@@ -97,7 +98,7 @@ export interface PostRss extends Path {
 }
 
 export interface Post extends Path {
-  mdxContent: string;
+  mdxContent: MdxRemote.Source;
   readingTime: string;
   frontMatter: PostHeader;
 }
@@ -108,6 +109,6 @@ export interface PageHeader {
 }
 
 export interface Page extends Path {
-  mdxContent: string;
+  mdxContent: MdxRemote.Source;
   frontMatter: PageHeader;
 }

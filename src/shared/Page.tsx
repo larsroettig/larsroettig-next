@@ -8,6 +8,7 @@ import { BasisSeo, defaultUrl } from '@/components/Seo';
 
 import { Image } from '@/components/Mdx';
 import Employer from '@/components/About/employer';
+import { MdxRemote } from 'next-mdx-remote/types';
 import { PageHeader } from './Content';
 
 const components = {
@@ -20,7 +21,7 @@ const components = {
 
 type PageProps = {
   slug: string;
-  content: string;
+  content: MdxRemote.Source;
   frontMatter: PageHeader;
 };
 

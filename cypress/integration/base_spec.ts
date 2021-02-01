@@ -42,3 +42,5 @@ describe(`basetest`, () => {
     cy.getCookies().should(`have.length`, 0);
   });
 });
+
+export {};
