@@ -6,6 +6,9 @@ const optimizedImages = require(`next-optimized-images`);
 
 const nextConfig = {
   reactStrictMode: true,
+  future: {
+    webpack5: true
+  }
 };
 
 const withBundleAnalyzer = require(`@next/bundle-analyzer`)({
