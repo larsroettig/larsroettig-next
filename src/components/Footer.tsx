@@ -39,24 +39,33 @@ const Footer: React.FC = () => (
           <p className="text-xl font-semibold text-white">Follow me</p>
           <div className=" py-5 flex">
             <div className="px-2">
-              <Link to="/rss.xml">
+              <Link to="/rss.xml" aria-label="Open Rss">
                 <FaRss size={20} />
               </Link>
             </div>
             <div className="px-5">
-              <Link to="https://twitter.com/LarsRoettig">
+              <Link
+                to="https://twitter.com/LarsRoettig"
+                aria-label="Follow me on twitter"
+              >
                 <FaTwitter size={20} />
               </Link>
             </div>
 
             <div className="px-2">
-              <Link to="https://github.com/larsroettig">
+              <Link
+                to="https://github.com/larsroettig"
+                aria-label="Follow me on Github"
+              >
                 <FaGithub size={20} />
               </Link>
             </div>
 
             <div className="px-2">
-              <Link to="https://www.linkedin.com/in/larsroettig/">
+              <Link
+                to="https://www.linkedin.com/in/larsroettig/"
+                aria-label="Follow me on Linkedin"
+              >
                 <FaLinkedin size={20} />
               </Link>
             </div>
