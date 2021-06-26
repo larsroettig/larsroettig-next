@@ -30,13 +30,15 @@ const generated = (): void => {
     },
   });
 
-  getAllPostData().forEach((postData) => {
-    feed.addItem({
-      title: postData.title,
-      id: `${config.baseUrl}/${postData.slug}`,
-      link: `${config.baseUrl}/${postData.slug}`,
-      description: postData.description,
-      date: new Date(postData.date),
+  getAllPostData().then((allPostData) => {
+    allPostData.forEach((postData) => {
+      feed.addItem({
+        title: postData.title,
+        id: `${config.baseUrl}/${postData.slug}`,
+        link: `${config.baseUrl}/${postData.slug}`,
+        description: postData.description,
+        date: new Date(postData.date),
+      });
     });
   });
 

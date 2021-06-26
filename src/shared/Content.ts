@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import renderToString from 'next-mdx-remote/render-to-string';
 import { compareDesc } from 'date-fns';
 import { MdxRemote } from 'next-mdx-remote/types';
+import { getPlaiceholder } from 'plaiceholder';
 
 const readingTime = require(`reading-time`);
 const remarkSlug = require(`remark-slug`);
@@ -17,20 +18,24 @@ export const getPostSlugs = (): string[] => {
   return postPaths.map((postPath) => postPath.replace(`.mdx`, ``));
 };
 
-export function getAllPostData(): PostHeader[] {
+export async function getAllPostData(): Promise<PostHeader[]> {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
-  const postData = postPaths.map((slug) => {
-    const fullPath = path.resolve(POSTS_PATH, `${slug}`);
-    const fileContents = fs.readFileSync(fullPath, `utf8`);
-    const { data } = matter(fileContents);
-    data.slug = slug.replace(`.mdx`, ``);
-    return data;
-  });
+  const postData = await Promise.all(
+    postPaths.map(async (slug) => {
+      const fullPath = path.resolve(POSTS_PATH, `${slug}`);
+      const fileContents = fs.readFileSync(fullPath, `utf8`);
+      const { data } = matter(fileContents);
+      data.slug = slug.replace(`.mdx`, ``);
+
+      const { base64 } = await getPlaiceholder(`/images/${data.hero}`);
+      data.placeHolder = base64;
+      return data;
+    }),
+  );
 
   postData.sort((first, second) =>
     compareDesc(new Date(first.date), new Date(second.date)),
   );
-
   return postData;
 }
 
@@ -88,6 +93,7 @@ export interface PostHeader {
   author?: string;
   hero?: string;
   slug?: string;
+  placeHolder?: string;
 }
 
 export interface PostRss extends Path {

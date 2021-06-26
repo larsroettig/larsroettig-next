@@ -7,16 +7,15 @@ description: What you should know before starting build a Payment Method for PWA
 hero: how-to-create-payment-for-pwastudio/Teaser.jpg
 ---
 
-
 <Callout type={'warning'}>
-The Blogpost is based Check / Money Order feature in the development branch will be available via scaffolding early on <b>April 6, 2021</b>.
-I will update this Blogpost with every release and checkout change.
+  The Blogpost is based Check / Money Order feature in the development branch
+  will be available via scaffolding early on <b>April 6, 2021</b>. I will update
+  this Blogpost with every release and checkout change.
 </Callout>
 
 Before we get started to build a static Payment Method.
 Let's briefly look at how the Checkout Process works in PWA Studio.
 So basically, this is a foundation to describe which components exist and how we can use them.
-
 
 **CheckoutPage/CheckoutPage.js**
 
@@ -24,6 +23,7 @@ This component is the main entry point for the one-step Checkout.
 It renders sections according to the state created by `useCheckoutPage`.
 
 Steps Nummer for section state:
+
 ```js:title=peregrine/lib/talons/CheckoutPage/useCheckoutPage.js
 export const CHECKOUT_STEP = {
     SHIPPING_ADDRESS: 1,
@@ -33,70 +33,72 @@ export const CHECKOUT_STEP = {
 };
 ```
 
-
 **PaymentInformation/paymentInformation.js**
 
 The checkout page will display the component on the checkout step **PAYMENT**.
 
-It  responsible for:
-* `LoadingIndicator/indicator.js` on load
-* `PaymentInformation/summary.js` if doneEditing=true
-* `PaymentInformation/paymentMethods.js` if doneEditing=false
+It responsible for:
+
+- `LoadingIndicator/indicator.js` on load
+- `PaymentInformation/summary.js` if doneEditing=true
+- `PaymentInformation/paymentMethods.js` if doneEditing=false
 
 **PaymentInformation/paymentMethods.js**
 
 Loads all available Payments via usePaymentMethods hook and compares them with `paymentMethodCollection.js`,
 built via Magento Target. It only renders components that both lists contain.
 
-
 **PaymentInformation/summary.js**
 
 Renders information for the ReviewStep
 
-
 ## PWA Studio Checkout Payment Workflow Digramm
 
 <div className="grid grid-cols-1 md:grid-cols-2">
-    <div class="w-80 relative">
-        <a href="https://larsroettig.dev/downloads/PWAStudio_PaymentFlow.jpg">
-            <Image
-                    src="how-to-create-payment-for-pwastudio/PWAStudio_PaymentFlow.jpg"
-                    alt="Image that shows PWA Studio Checkout Payment Workflow"
-                    responsive={false}
-            />
-        </a>
-    </div>
-    <div class="bg-yellow-50 p-10 hidden md:block">
-        <p><b>You can download full-size Workflow via a click on the image!</b></p>
-        <p><a href="https://larsroettig.dev/downloads/PWAStudio_PaymentFlow.jpg">Download workflow</a></p>
-    </div>
+  <div class="w-80 relative">
+    <a href="https://larsroettig.dev/downloads/PWAStudio_PaymentFlow.jpg">
+      <Image
+        src="how-to-create-payment-for-pwastudio/PWAStudio_PaymentFlow.jpg"
+        alt="Image that shows PWA Studio Checkout Payment Workflow"
+        width="400"
+        height="561"
+      />
+    </a>
+  </div>
+  <div class="bg-yellow-50 p-10 hidden md:block">
+    <p>
+      <b>You can download full-size Workflow via a click on the image!</b>
+    </p>
+    <p>
+      <a href="https://larsroettig.dev/downloads/PWAStudio_PaymentFlow.jpg">
+        Download workflow
+      </a>
+    </p>
+  </div>
 </div>
-
 
 ## Checkout Payment Extension point
 
 To extend the Checkout with a new Payment Method we can use a venia target for the `paymentMethodCollection.js`.
 
 > If you are not familiar with targets and how that works,
-[Getting started with PWA Studio Extensibility](https://larsroettig.dev/getting-started-with-pwa-studio-extensibility) describes the foundation concept.
-
+> [Getting started with PWA Studio Extensibility](https://larsroettig.dev/getting-started-with-pwa-studio-extensibility) describes the foundation concept.
 
 <Image
   src="how-to-create-payment-for-pwastudio/Extend_PaymentMethods.jpg"
   alt="Image that show PWA Studio Checkout"
+  heigth="279"
 />
 
 In the Image, we can see the billing address is by design part of the
 payment methods to allow special implementation.
 
 <Callout type={'info'}>
-<b>Note:</b> In default Magento, you need to make sure that the billing address
-is set by before you can complete the order.
+  <b>Note:</b> In default Magento, you need to make sure that the billing
+  address is set by before you can complete the order.
 </Callout>
 
-For 90% of all Payment Methods, the billing address form would be identical. In the current  `develop` branch, you can find  `@magento/venia-ui/lib/components/CheckoutPage/BillingAddress`. You can copy it to start already building your Payment Method.
-
-
+For 90% of all Payment Methods, the billing address form would be identical. In the current `develop` branch, you can find `@magento/venia-ui/lib/components/CheckoutPage/BillingAddress`. You can copy it to start already building your Payment Method.
 
 ```js:title=intercept.js
 module.exports = (targets) => {
@@ -132,23 +134,22 @@ Your payment component gets the following props injected by the parent.
   onPaymentError={onPaymentError}
   resetShouldSubmit={resetShouldSubmit}
   shouldSubmit={shouldSubmit}
-/>;
+/>
 ```
 
-* `onPaymentSuccess:`
-Callback Methode should call to proceed to review step.
-If the Payment method needs a token (nonce), you need to take that
-was generated successfully before calling this method.
+- `onPaymentSuccess:`
+  Callback Methode should call to proceed to review step.
+  If the Payment method needs a token (nonce), you need to take that
+  was generated successfully before calling this method.
 
-* `onPaymentError:`
-Callback to invoke when the payment component throws an errors
+- `onPaymentError:`
+  Callback to invoke when the payment component throws an errors
 
-* `resetShouldSubmit:`
-Callback to reset the review order button flag
+- `resetShouldSubmit:`
+  Callback to reset the review order button flag
 
-* `shouldSubmit (read-only):`
-It will change to true if the review button gets summited.
-
+- `shouldSubmit (read-only):`
+  It will change to true if the review button gets summited.
 
 ## How to build a new payment methode for PWA Studio
 

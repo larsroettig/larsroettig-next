@@ -23,6 +23,7 @@ const Grid: React.FC<GridProps> = ({ posts }) => {
             description={post.description}
             href={`/${post.slug}`}
             img={post.hero}
+            placeHolder={post.placeHolder}
           />
         ))}
       </div>

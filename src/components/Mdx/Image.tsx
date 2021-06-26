@@ -1,7 +1,6 @@
 /*  eslint-disable global-require */
 import React from 'react';
-import 'lazysizes';
-import Image from '../Image';
+import Image from 'next/image';
 
 interface iImage {
   src: string;
@@ -15,38 +14,22 @@ interface iImage {
 const Picture: React.FC<iImage> = ({
   src,
   alt,
-  responsive = true,
   width = `1280`,
   heigth = `780`,
-  className = ``,
+  className = `py-8`,
 }) => {
-  if (responsive === true) {
-    const image = require(`../../../images/${src}?resize&sizes[]=640&sizes[]=768&sizes[]=1024&sizes[]=1280`);
-    const imageWebP = require(`../../../images/${src}?resize&sizes[]=640&sizes[]=768&sizes[]=1024&sizes[]=1280&format=webp`);
-    return (
-      <Image
-        image={image}
-        imageWebP={imageWebP}
-        width={width}
-        heigth={heigth}
-        alt={alt}
-        className={className}
-        responsive
-      />
-    );
-  }
-
-  const image = require(`../../../images/${src}`);
-  const imageWebP = require(`../../../images/${src}?format=webp`);
   return (
-    <Image
-      image={image}
-      imageWebP={imageWebP}
-      width={width}
-      heigth={heigth}
-      alt={alt}
-      className={className}
-    />
+    <div className={className}>
+      <Image
+        src={`/images/${src}`}
+        alt={alt}
+        width={width}
+        height={heigth}
+        placeholder="blur"
+        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMDg2tBwADfgF+TUPnsgAAAABJRU5ErkJggg==
+        "
+      />
+    </div>
   );
 };
 export default Picture;

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import Image from '@/components/Image/';
+import Image from 'next/image';
 import Link from 'next/link';
 
 interface iCard {
@@ -8,19 +8,25 @@ interface iCard {
   href: string;
   description?: string;
   img?: string;
+  placeHolder?: string;
 }
 
-const Card: React.FC<iCard> = ({ title, href, description, img = `` }) => {
+const Card: React.FC<iCard> = ({
+  title,
+  href,
+  description,
+  img = ``,
+  placeHolder = ``,
+}) => {
   const getImage = (src: string): any => {
-    const image = require(`../../../images/${src}?resize&size=640`);
-    const imageWebP = require(`../../../images/${src}?resize&size=640&format=webp`);
     return (
       <Image
-        image={image}
-        imageWebP={imageWebP}
+        src={`/images/${src}`}
         alt={`Teaser for ${title}`}
         width="480"
-        heigth="270"
+        height="270"
+        placeholder="blur"
+        blurDataURL={placeHolder}
       />
     );
   };

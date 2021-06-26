@@ -10,9 +10,8 @@ const generateRssItem = (post: PostRss): string => `
   </item>
 `;
 
-const getLastBuildDate = (posts: PostRss[]): string => {
-  return new Date(posts[0].modifiedAt).toUTCString();
-};
+const getLastBuildDate = (posts: PostRss[]): string =>
+  new Date(posts[0].modifiedAt).toUTCString();
 
 const generateRss = (posts: PostRss[]): string => `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">

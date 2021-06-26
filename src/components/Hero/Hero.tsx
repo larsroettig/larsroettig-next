@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Image from '../Image';
+import Image from 'next/image';
 import Container from '../Container';
 
 const Hero: React.FC = () => (
@@ -9,11 +8,10 @@ const Hero: React.FC = () => (
       <div className="flex flex-wrap -mx-2 overflow-hidden ">
         <div className="px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
           <Image
-            image={require(`../../../images/larsroettig.png`)}
-            imageWebP={require(`../../../images/larsroettig.png?format=webp`)}
+            src="/images/larsroettig.png"
             alt="Profile"
-            width="380"
-            heigth="459"
+            width={380}
+            height={459}
           />
         </div>
         <div className="py-10 md:my-2  px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">

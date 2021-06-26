@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaGithub, FaLinkedin, FaRss, FaTwitter } from 'react-icons/fa';
+import Link from '@bradgarropy/next-link';
+
 import Container from './Container';
-import SocialLink from './SocialLink';
 import LarsLogo from './Brand';
 
 const Footer: React.FC = () => (
@@ -38,26 +39,26 @@ const Footer: React.FC = () => (
           <p className="text-xl font-semibold text-white">Follow me</p>
           <div className=" py-5 flex">
             <div className="px-2">
-              <SocialLink url="/rss.xml">
+              <Link to="/rss.xml">
                 <FaRss size={20} />
-              </SocialLink>
+              </Link>
             </div>
             <div className="px-5">
-              <SocialLink url="https://twitter.com/LarsRoettig">
+              <Link to="https://twitter.com/LarsRoettig">
                 <FaTwitter size={20} />
-              </SocialLink>
+              </Link>
             </div>
 
             <div className="px-2">
-              <SocialLink url="https://github.com/larsroettig">
+              <Link to="https://github.com/larsroettig">
                 <FaGithub size={20} />
-              </SocialLink>
+              </Link>
             </div>
 
             <div className="px-2">
-              <SocialLink url="https://www.linkedin.com/in/larsroettig/">
+              <Link to="https://www.linkedin.com/in/larsroettig/">
                 <FaLinkedin size={20} />
-              </SocialLink>
+              </Link>
             </div>
           </div>
         </div>
