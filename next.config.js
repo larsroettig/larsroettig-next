@@ -1,14 +1,20 @@
 // next.config.js
 const withPlugins = require(`next-compose-plugins`);
 const withPWA = require(`next-pwa`);
-const withPreact = require(`next-plugin-preact`);
-const optimizedImages = require(`next-optimized-images`);
 
 const nextConfig = {
   reactStrictMode: true,
-  future: {
-    webpack5: true
-  }
+  webpack5: true,
+  webpack: (config, { dev, isServer }) => {
+    // Replace React with Preact only in client production build
+    if (!dev && !isServer) {
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      });
+    }
+  },
 };
 
 const withBundleAnalyzer = require(`@next/bundle-analyzer`)({
@@ -17,7 +23,6 @@ const withBundleAnalyzer = require(`@next/bundle-analyzer`)({
 
 module.exports = withPlugins(
   [
-    withPreact(),
     withPWA({
       pwa: {
         disable: process.env.NODE_ENV === `development`,
@@ -26,30 +31,6 @@ module.exports = withPlugins(
       },
     }),
     [withBundleAnalyzer],
-    optimizedImages,
-    {
-      inlineImageLimit: 8192,
-      loader: `responsive-loader`,
-      handleImages: [`jpeg`, `png`, `webp`],
-      removeOriginalExtension: true,
-      optimizeImages: true,
-      optimizeImagesInDev: false,
-      mozjpeg: {
-        quality: 80,
-      },
-      optipng: {
-        optimizationLevel: 3,
-      },
-      responsive: {
-        // eslint-disable-next-line global-require
-        adapter: require(`responsive-loader/sharp`),
-      },
-      pngquant: false,
-      webp: {
-        preset: `default`,
-        quality: 75,
-      },
-    },
   ],
   nextConfig,
 );

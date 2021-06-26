@@ -1,5 +1,5 @@
 import '../styles/tailwind.css';
-import 'styles/code.css';
+import '../styles/code.css';
 import dynamic from 'next/dynamic';
 import React from 'react';
 import type { AppProps } from 'next/app';

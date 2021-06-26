@@ -53,8 +53,7 @@ const PostPage: NextPage<Props> = ({
       return `https://larsroettig.dev/banner.jpg`;
     }
 
-    const heroImg = require(`../../images/${hero}`);
-    return `https://larsroettig.dev${heroImg}`;
+    return `https://larsroettig.dev/images/${hero}`;
   };
 
   return (

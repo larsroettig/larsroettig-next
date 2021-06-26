@@ -10,11 +10,22 @@ const Supporter: React.FC = () => {
   const RandomSupporter: React.FC = () => {
     const random = Math.floor(Math.random() * supporterList.length);
     const supporter = supporterList[random];
-    return <SupporterItem supporter={supporter} />;
+    return (
+      <SupporterItem
+        website={supporter.website}
+        image={supporter.image}
+        alt={supporter.alt}
+      />
+    );
   };
   const SupporterList: React.FC = () => {
     const supporter = supporterList.map((data) => (
-      <SupporterItem key={data.name} supporter={data} />
+      <SupporterItem
+        key={data.name}
+        website={data.website}
+        image={data.image}
+        alt={data.alt}
+      />
     ));
     return <>{supporter}</>;
   };

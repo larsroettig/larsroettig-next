@@ -27,8 +27,7 @@ const Home: NextPage<Props> = ({ posts }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const postData = getAllPostData();
-
+  const postData = await getAllPostData();
   return {
     props: {
       posts: postData,

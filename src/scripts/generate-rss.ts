@@ -17,7 +17,7 @@ const exportFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
 };
 
-const generated = (): void => {
+const generated = async (): Promise<void> => {
   const feed = new Feed({
     title: `Feed Title`,
     description: `This is my personal feed!`,
@@ -30,7 +30,8 @@ const generated = (): void => {
     },
   });
 
-  getAllPostData().forEach((postData) => {
+  const allPostData = await getAllPostData();
+  allPostData.forEach((postData) => {
     feed.addItem({
       title: postData.title,
       id: `${config.baseUrl}/${postData.slug}`,
