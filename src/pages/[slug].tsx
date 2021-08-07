@@ -84,7 +84,6 @@ const PostPage: NextPage<Props> = ({
           </div>
           <div className="w-full lg:w-1/6">
             <Share url={url} title={title} />
-            <Supporter />
           </div>
         </div>
       </div>
