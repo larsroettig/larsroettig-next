@@ -68,7 +68,7 @@ const PostPage: NextPage<Props> = ({
 
       <div className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex flex-wrap">
-          <div className="w-full lg:w-5/6">
+          <div className="w-full">
             <div className="prose lg:prose-xl max-w-full mb-10 ">
               {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
               <h1 className="text-center">{title}</h1>
@@ -81,9 +81,6 @@ const PostPage: NextPage<Props> = ({
               <div>{mdxContent}</div>
               <EditOnGithub slug={slug} />
             </div>
-          </div>
-          <div className="w-full lg:w-1/6">
-            <Share url={url} title={title} />
           </div>
         </div>
       </div>
