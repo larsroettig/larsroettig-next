@@ -12,9 +12,7 @@ import {
   CodePrism,
 } from '@/components/Mdx';
 
-import Supporter from '@/components/Supporter';
 import EditOnGithub from '@/components/EditOnGithub';
-import Share from '@/components/Share';
 import { BlogSeo } from '@/components/Seo';
 import { MdxRemote } from 'next-mdx-remote/types';
 
@@ -70,7 +68,9 @@ const PostPage: NextPage<Props> = ({
         <div className="flex flex-wrap">
           <div className="w-full">
             <div className="prose lg:prose-xl max-w-full mb-10 ">
-              {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
+              <div className="flex justify-center">
+                {hero ? <Image src={hero} alt={`Teaser for ${title}`} /> : ``}
+              </div>
               <h1 className="text-center">{title}</h1>
               <p className="text-center font-mono text-base">
                 <time>{modifiedAt}</time>
