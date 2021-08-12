@@ -15,7 +15,12 @@
     "SharedArrayBuffer": "readonly"
   },
   "plugins": ["import", "jsx-a11y", "react", "react-hooks", "prettier"],
-  "extends": ["airbnb", "eslint-config-prettier", "plugin:cypress/recommended"],
+  "extends": [
+    "airbnb",
+    "eslint-config-prettier",
+    "plugin:cypress/recommended",
+    "plugin:@next/next/recommended"
+  ],
   "rules": {
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
