@@ -26,7 +26,7 @@ const Footer: React.FC = () => (
               </li>
               <li className="mb-2">
                 <Link
-                  to="/imprint"
+                  to="/privacy-statement"
                   className="font-normal text-base text-white hover:text-gray-100"
                 >
                   Privacy Statement
