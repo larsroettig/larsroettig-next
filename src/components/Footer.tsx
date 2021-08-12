@@ -17,20 +17,20 @@ const Footer: React.FC = () => (
           <nav className="mt-4">
             <ul className="grid lg:grid-cols-2">
               <li className="mb-2">
-                <a
-                  href="/imprint"
+                <Link
+                  to="/imprint"
                   className="font-normal text-base text-white hover:text-gray-100"
                 >
                   Imprint
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a
-                  href="/privacy-statement"
+                <Link
+                  to="/privacy-statement"
                   className="font-normal text-base text-white hover:text-gray-100"
                 >
                   Privacy Statement
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>

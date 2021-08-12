@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaBars, FaRss } from 'react-icons/fa';
+import Link from '@bradgarropy/next-link';
 
 import LarsLogo from '../Brand';
 import NavItem from './NavItem';
@@ -39,22 +40,22 @@ const Header: React.FC = () => {
           </div>
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center">
-              <a href="/" data-cy="logo">
+              <Link to="/" data-cy="logo">
                 <LarsLogo />
-              </a>
+              </Link>
             </div>
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">{Items}</div>
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <a
-              href="/rss.xml"
+            <Link
+              to="/rss.xml"
               className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
             >
               <span className="sr-only">Open Rss.xml</span>
               <FaRss />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
