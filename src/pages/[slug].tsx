@@ -1,19 +1,19 @@
 import React from 'react';
 import hydrate from 'next-mdx-remote/hydrate';
 
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticPropsContext, NextPage } from 'next';
 
-import { getPostBySlug, getPostSlugs, PostHeader } from '@/shared/Content';
+import { getPostBySlug, getPostSlugs, PostHeader } from '../shared/Content';
 import {
   Breadcrumb,
   Image,
   Callout,
   CodePre,
   CodePrism,
-} from '@/components/Mdx';
+} from '../components/Mdx';
 
-import EditOnGithub from '@/components/EditOnGithub';
-import { BlogSeo } from '@/components/Seo';
+import EditOnGithub from '../components/EditOnGithub';
+import { BlogSeo } from '../components/Seo';
 import { MdxRemote } from 'next-mdx-remote/types';
 
 import config from '../config.json';
@@ -97,22 +97,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const slug = params.slug as string;
+export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
+  if (params?.slug) {
+    const slug = params.slug as string;
 
-  const { mdxContent, frontMatter, readingTime } = await getPostBySlug(
-    slug,
-    components,
-  );
-
-  return {
-    props: {
+    const { mdxContent, frontMatter, readingTime } = await getPostBySlug(
       slug,
-      content: mdxContent,
-      frontMatter,
-      readingTime,
-    },
-  };
+      components,
+    );
+
+    return {
+      props: {
+        slug,
+        content: mdxContent,
+        frontMatter,
+        readingTime,
+      },
+    };
+  }
 };
 
 export default PostPage;

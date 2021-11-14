@@ -2,7 +2,7 @@ import React from 'react';
 
 import { GetStaticProps, NextPage } from 'next';
 
-import { BasisSeo } from '@/components/Seo';
+import { BasisSeo } from '../components/Seo';
 import Hero from '../components/Hero';
 import { getAllPostData, PostHeader } from '../shared/Content';
 import Grid from '../components/Card';

@@ -1,10 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
+import Prism from 'prism-react-renderer/prism';
 import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import dynamic from 'next/dynamic';
 
 const CopyToClipBoard = dynamic(() => import(`./CopyToClipBoard`));
+
+if (globalThis.window) {
+  (typeof global !== 'undefined' ? global : window).Prism = Prism;
+  require('prismjs/components/prism-php');
+}
 
 export interface CodeProps {
   codeString?: string;

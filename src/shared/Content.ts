@@ -33,9 +33,13 @@ export async function getAllPostData(): Promise<PostHeader[]> {
     }),
   );
 
-  postData.sort((first, second) =>
-    compareDesc(new Date(first.date), new Date(second.date)),
-  );
+  postData.sort((first, second) => {
+    const firstDate = first.modifiedAt || first.date;
+    const secondDate = second.modifiedAt || second.date;
+
+    return compareDesc(new Date(firstDate), new Date(secondDate));
+  });
+  
   return postData;
 }
 
@@ -85,11 +89,11 @@ export interface Path {
 }
 
 export interface PostHeader {
-  title?: string;
+  title: string;
   published?: boolean;
-  date?: string;
+  date: string;
   modifiedAt?: string;
-  description?: string;
+  description: string;
   author?: string;
   hero?: string;
   slug?: string;
