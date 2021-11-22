@@ -3,8 +3,8 @@ import { NextSeo } from 'next-seo';
 import { OpenGraph } from 'next-seo/lib/types';
 
 interface BlogProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   openGraph?: OpenGraph;
   url?: string;
 }

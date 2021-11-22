@@ -28,7 +28,9 @@ const Blog: React.FC<BlogProps> = ({
     },
   ];
 
-  const articleImages = [image] || [`https://larsroettig.dev/banner.jpg`];
+  const articleImages = image
+    ? [image]
+    : [`https://larsroettig.dev/banner.jpg`];
 
   return (
     <>

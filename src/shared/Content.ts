@@ -5,10 +5,10 @@ import renderToString from 'next-mdx-remote/render-to-string';
 import { compareDesc } from 'date-fns';
 import { MdxRemote } from 'next-mdx-remote/types';
 import { getPlaiceholder } from 'plaiceholder';
+import remarkSlug from 'remark-slug';
+import remarkHeadings from 'remark-autolink-headings';
 
 const readingTime = require(`reading-time`);
-const remarkSlug = require(`remark-slug`);
-const remarkHeadings = require(`remark-autolink-headings`);
 
 export const PAGES_PATH = path.join(`content`, `pages`);
 export const POSTS_PATH = path.join(`content`, `posts`);
@@ -18,7 +18,11 @@ export const getPostSlugs = (): string[] => {
   return postPaths.map((postPath) => postPath.replace(`.mdx`, ``));
 };
 
-export async function getAllPostData(): Promise<PostHeader[]> {
+type GenerateRssReturn = {
+  frontmatter: Frontmatter[];
+};
+
+export async function getAllPostData(): Promise<GenerateRssReturn> {
   const postPaths = fs.readdirSync(path.resolve(POSTS_PATH));
   const postData = await Promise.all(
     postPaths.map(async (slug) => {
@@ -33,16 +37,16 @@ export async function getAllPostData(): Promise<PostHeader[]> {
     }),
   );
 
-  postData.sort((first, second) =>
-    compareDesc(new Date(first.date), new Date(second.date)),
-  );
-  return postData;
+  postData.sort((first, second) => {
+    const firstDate = first.modifiedAt || first.date;
+    const secondDate = second.modifiedAt || second.date;
+    return compareDesc(new Date(firstDate), new Date(secondDate));
+  });
+
+  return { frontmatter: postData };
 }
 
-export const getPostBySlug = async (
-  slug: string,
-  components = {},
-): Promise<Post> => {
+export const getPostBySlug = async (slug: string, components = {}) => {
   const fullPath = path.resolve(POSTS_PATH, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, `utf8`);
   const { content, data } = matter(fileContents);
@@ -85,11 +89,11 @@ export interface Path {
 }
 
 export interface PostHeader {
-  title?: string;
+  title: string;
   published?: boolean;
-  date?: string;
+  date: string;
   modifiedAt?: string;
-  description?: string;
+  description: string;
   author?: string;
   hero?: string;
   slug?: string;

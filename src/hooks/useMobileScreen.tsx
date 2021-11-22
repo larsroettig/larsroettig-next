@@ -4,9 +4,11 @@ interface useMobileScreen {
   width?: number;
 }
 
-const useMobileScreen = (width = 1024): boolean => {
+const useMobileScreen = (width = 1024): boolean | undefined => {
   const windowSize = useWindowSize();
-  return windowSize.width < width;
+  if (windowSize.width) {
+    return windowSize.width < width;
+  }
 };
 
 export default useMobileScreen;
