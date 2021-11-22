@@ -1534,14 +1534,6 @@
   resolved "https://registry.npmjs.org/@south-paw/react-obfuscate-ts/-/react-obfuscate-ts-1.0.2.tgz"
   integrity sha512-gfOmkzpAPNY2gu49SGpUNYRFLQrad4/5YRYw0toirW0cyvMZ7T4yJ/2j4BBMO/zVIX1HqZ0h4bQv/gwNqiW6tA==
 
-"@stefanprobst/remark-shiki@2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@stefanprobst/remark-shiki/-/remark-shiki-2.0.2.tgz#ad2974fb79e3078a04f92e50a0bbe61dbbbbc891"
-  integrity sha512-uDSbKzKukKYtdNCEfOMQIGBVMUxQW+6iQNfAqzN+Igi3XU590qWmhxOuUoTHZhq+uL6yGd+HLarpn395wuto2w==
-  dependencies:
-    unified "^10.1.0"
-    unist-util-visit "^4.0.0"
-
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
   resolved "https://registry.npmjs.org/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-2.2.3.tgz"
@@ -4801,15 +4793,6 @@ gray-matter@4.0.3, gray-matter@^4.0.3:
     section-matter "^1.0.0"
     strip-bom-string "^1.0.0"
 
-gridsome-plugin-remark-shiki@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/gridsome-plugin-remark-shiki/-/gridsome-plugin-remark-shiki-0.6.0.tgz#88110d129e4fe56317b4be82792e910490f722fb"
-  integrity sha512-2V+P/O9vumRxa6ymcqAn5V6pAsv/iYffzV6i6vFmZHL/+asFlXeFXEOYwbyccCjIqXDiLzB//oaz+PHwFpkw6A==
-  dependencies:
-    shiki "^0.2.6"
-    shiki-languages "^0.2.6"
-    unist-util-visit "^2.0.1"
-
 gzip-size@^6.0.0:
   version "6.0.0"
   resolved "https://registry.npmjs.org/gzip-size/-/gzip-size-6.0.0.tgz"
@@ -5756,17 +5739,12 @@ json5@^1.0.1:
   dependencies:
     minimist "^1.2.0"
 
-json5@^2.1.0, json5@^2.1.2, json5@^2.2.0:
+json5@^2.1.2, json5@^2.2.0:
   version "2.2.0"
   resolved "https://registry.npmjs.org/json5/-/json5-2.2.0.tgz"
   integrity sha512-f+8cldu7X/y7RAJurMEJmdoKXGB/X550w2Nr3tTbezL6RwEE/iMcm+tZnXeoZtKuOq6ft8+CqzEkrIgx1fPoQA==
   dependencies:
     minimist "^1.2.5"
-
-jsonc-parser@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.0.0.tgz#abdd785701c7e7eaca8a9ec8cf070ca51a745a22"
-  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
 
 jsonfile@^4.0.0:
   version "4.0.0"
@@ -6086,13 +6064,6 @@ lowercase-keys@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/lowercase-keys/-/lowercase-keys-2.0.0.tgz"
   integrity sha512-tqNXrS78oMOE73NMxK4EMLQsQowWf8jKooH9g7xPavRT706R6bkQJ6DY2Te7QukaZsulxa30wQ7bk0pm4XiHmA==
-
-lru-cache@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
-  integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
-  dependencies:
-    yallist "^3.0.2"
 
 lru-cache@^6.0.0:
   version "6.0.0"
@@ -7250,13 +7221,6 @@ onetime@^5.1.0, onetime@^5.1.2:
   integrity sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==
   dependencies:
     mimic-fn "^2.1.0"
-
-onigasm@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/onigasm/-/onigasm-2.2.5.tgz#cc4d2a79a0fa0b64caec1f4c7ea367585a676892"
-  integrity sha512-F+th54mPc0l1lp1ZcFMyL/jTs2Tlq4SqIHKIXGZOR/VkHkF9A7Fr5rRr5+ZG/lWeRsyrClLYRq7s/yFQ/XhWCA==
-  dependencies:
-    lru-cache "^5.1.1"
 
 opener@^1.5.2:
   version "1.5.2"
@@ -8551,40 +8515,6 @@ shell-quote@1.7.3:
   resolved "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.3.tgz"
   integrity sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw==
 
-shiki-languages@^0.2.6, shiki-languages@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/shiki-languages/-/shiki-languages-0.2.7.tgz#7230b675b96d37a36ac1bf995525375ce69f3924"
-  integrity sha512-REmakh7pn2jCn9GDMRSK36oDgqhh+rSvJPo77sdWTOmk44C5b0XlYPwJZcFOMJWUZJE0c7FCbKclw4FLwUKLRw==
-  dependencies:
-    vscode-textmate "^5.2.0"
-
-shiki-themes@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/shiki-themes/-/shiki-themes-0.2.7.tgz#6e04451d832152e0fc969876a7bd926b3963c1f2"
-  integrity sha512-ZMmboDYw5+SEpugM8KGUq3tkZ0vXg+k60XX6NngDK7gc1Sv6YLUlanpvG3evm57uKJvfXsky/S5MzSOTtYKLjA==
-  dependencies:
-    json5 "^2.1.0"
-    vscode-textmate "^5.2.0"
-
-shiki@0.9.12:
-  version "0.9.12"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.9.12.tgz#70cbc8c1bb78ff7b356f84a7eecdb040efddd247"
-  integrity sha512-VXcROdldv0/Qu0w2XvzU4IrvTeBNs/Kj/FCmtcEXGz7Tic/veQzliJj6tEiAgoKianhQstpYmbPDStHU5Opqcw==
-  dependencies:
-    jsonc-parser "^3.0.0"
-    onigasm "^2.2.5"
-    vscode-textmate "5.2.0"
-
-shiki@^0.2.6:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/shiki/-/shiki-0.2.7.tgz#d2547548ed8742673730e1e4bbe792a77c445540"
-  integrity sha512-bwVc7cdtYYHEO9O+XJ8aNOskKRfaQd5Y4ovLRfbQkmiLSUaR+bdlssbZUUhbQ0JAFMYcTcJ5tjG5KtnufttDHQ==
-  dependencies:
-    onigasm "^2.2.5"
-    shiki-languages "^0.2.7"
-    shiki-themes "^0.2.7"
-    vscode-textmate "^5.2.0"
-
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/side-channel/-/side-channel-1.0.4.tgz"
@@ -9481,7 +9411,7 @@ unified@9.2.0:
     trough "^1.0.0"
     vfile "^4.0.0"
 
-unified@^10.0.0, unified@^10.1.0:
+unified@^10.0.0:
   version "10.1.1"
   resolved "https://registry.npmjs.org/unified/-/unified-10.1.1.tgz"
   integrity sha512-v4ky1+6BN9X3pQrOdkFIPWAaeDsHPE1svRDxq7YpTc2plkIqFMwukfqM+l0ewpP9EfwARlt9pPFAeWYhHm8X9w==
@@ -9610,7 +9540,7 @@ unist-util-visit-parents@^5.0.0:
     "@types/unist" "^2.0.0"
     unist-util-is "^5.0.0"
 
-unist-util-visit@2.0.3, unist-util-visit@^2.0.0, unist-util-visit@^2.0.1:
+unist-util-visit@2.0.3, unist-util-visit@^2.0.0:
   version "2.0.3"
   resolved "https://registry.npmjs.org/unist-util-visit/-/unist-util-visit-2.0.3.tgz"
   integrity sha512-iJ4/RczbJMkD0712mGktuGpm/U4By4FfDonL7N/9tATGIF4imikjOuagyMY53tnZq3NP6BcmlrHhEKAfGWjh7Q==
@@ -9784,16 +9714,6 @@ vm-browserify@1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vscode-textmate@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.2.0.tgz#01f01760a391e8222fe4f33fbccbd1ad71aed74e"
-  integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
-
-vscode-textmate@^5.2.0:
-  version "5.5.0"
-  resolved "https://registry.yarnpkg.com/vscode-textmate/-/vscode-textmate-5.5.0.tgz#d83776562c07d1e3181c2c7f1b3d5f20afcab483"
-  integrity sha512-jToQkPGMNKn0eyKyitYeINJF0NoD240aYyKPIWJv5W2jfPt++jIRg0OSergubtGhbw6SoefkvBYEpX7TsfoSUQ==
 
 watchpack@2.1.1:
   version "2.1.1"
@@ -10138,11 +10058,6 @@ y18n@^5.0.5:
   version "5.0.8"
   resolved "https://registry.npmjs.org/y18n/-/y18n-5.0.8.tgz"
   integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
-
-yallist@^3.0.2:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.1.1.tgz#dbb7daf9bfd8bac9ab45ebf602b8cbad0d5d08fd"
-  integrity sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==
 
 yallist@^4.0.0:
   version "4.0.0"
