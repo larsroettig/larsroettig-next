@@ -2,17 +2,15 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { PostHeader } from '../../shared/Content';
-import { modifyRouteRegex } from 'next/dist/lib/load-custom-routes';
-
-interface CardProps {
-  post: PostHeader;
-}
 
 const isUpdated = (
-  createdAt: string,
+  createdAt: string | undefined,
   modifiedAt: string | undefined,
 ): boolean => {
+  if (!createdAt || !modifiedAt) {
+    return false;
+  }
+
   const creatDate = new Date(createdAt);
   const modiDate = new Date(modifiedAt || createdAt);
   const lastUpdate = modiDate >= creatDate ? modiDate : creatDate;
@@ -21,11 +19,17 @@ const isUpdated = (
   return current.getTime() <= lastUpdate.getTime();
 };
 
-const Card: React.FC<CardProps> = ({ post }) => {
+type CardProps = {
+  post: FrontmatterType;
+};
+
+const Card = ({ post }: CardProps) => {
   const { title, description, placeHolder, hero: img, modifiedAt, date } = post;
   const href = `/${post.slug}`;
 
   const getImage = (src: string): any => {
+    const blurDataURL = placeHolder as string;
+
     return (
       <Image
         src={`/images/${src}`}
@@ -33,7 +37,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
         width="480"
         height="270"
         placeholder="blur"
-        blurDataURL={placeHolder}
+        blurDataURL={blurDataURL}
       />
     );
   };
@@ -43,7 +47,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
       Update
     </span>
   ) : (
-    ''
+    ``
   );
 
   return (
@@ -51,7 +55,8 @@ const Card: React.FC<CardProps> = ({ post }) => {
       <Link href={href}>
         <a>
           <div className="relative">
-            {img ? getImage(img) : ``}{' '}
+            {img ? getImage(img) : ``}
+            {` `}
             <div className="absolute top-2.5 right-2.5">{update}</div>
           </div>
           <span className="flex items-center justify-between leading-tight p-2 md:p-4">

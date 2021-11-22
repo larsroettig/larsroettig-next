@@ -2,7 +2,7 @@ import React from 'react';
 import CodeBlock from './Prism';
 
 export interface CodeProps {
-  codeString?: string;
+  codeString: string;
   noLineNumbers?: boolean;
   metastring?: string;
   className?: string;
@@ -20,7 +20,7 @@ interface preToCodeBlockProps {
 }
 
 const CodePre: React.FC<any> = (props: preToCodeBlockProps) => {
-  const codeBlock = (): CodeProps => {
+  const codeBlock = (): CodeProps | null => {
     if (
       !props.children ||
       !props.children.props ||
@@ -34,6 +34,10 @@ const CodePre: React.FC<any> = (props: preToCodeBlockProps) => {
       className = ``,
       ...properties
     } = props.children.props;
+
+    if (!codeString) {
+      return null;
+    }
 
     const matches = className.match(/language-(?<lang>.*)/);
 

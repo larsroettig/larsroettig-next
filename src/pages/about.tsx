@@ -1,6 +1,6 @@
 import { getPageBySlug } from '../shared/Content';
 import { GetStaticProps } from 'next';
-import Page from '../shared/Page';
+import Page from '../rootComponents/Page';
 
 export const getStaticProps: GetStaticProps<any> = async () => {
   const slug = `about`;

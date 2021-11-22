@@ -8,12 +8,12 @@ import dynamic from 'next/dynamic';
 const CopyToClipBoard = dynamic(() => import(`./CopyToClipBoard`));
 
 if (globalThis.window) {
-  (typeof global !== 'undefined' ? global : window).Prism = Prism;
-  require('prismjs/components/prism-php');
+  (typeof global !== `undefined` ? global : window).Prism = Prism;
+  require(`prismjs/components/prism-php`);
 }
 
 export interface CodeProps {
-  codeString?: string;
+  codeString: string;
   noLineNumbers?: boolean;
   metastring?: string;
   blockClassName?: string;
@@ -22,18 +22,20 @@ export interface CodeProps {
 
 interface getParameterReturn {
   language: Language;
-  title?: string;
+  title: string | null;
 }
 
 const getParameters = (className: string): getParameterReturn => {
   const [lang = ``, parameters = ``] = className.split(`:`);
   const [key, value] = parameters.split(`=`);
-  let title = null;
+  let title: string | null = null;
   if (key === `title`) {
-    title = value;
+    title = value as string;
   }
-
+  // TODO add typing here
+  // @ts-ignore: split hard to type
   const language = lang.split(`language-`).pop().split(`{`).shift() as Language;
+
   return { language, title };
 };
 
@@ -44,12 +46,16 @@ const calculateLinesToHighlight = (meta: string) => {
   if (!RE.test(meta)) {
     return () => false;
   }
+  // @ts-ignore strange regex type error revisted later
   const lineNumbers = RE.exec(meta)?.[1]
     .split(`,`)
     .map((v) => v.split(`-`).map((x) => Number.parseInt(x, 10)));
   return (index: number) => {
     const lineNumber = index + 1;
+
+    // @ts-ignore
     const inRange = lineNumbers.some(([start, end]) =>
+      // @ts-ignore
       end ? lineNumber >= start && lineNumber <= end : lineNumber === start,
     );
     return inRange;

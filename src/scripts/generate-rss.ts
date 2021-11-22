@@ -1,5 +1,5 @@
 import { Feed } from 'feed';
-import { getAllPostData } from '../shared/Content';
+
 import config from '../config.json';
 
 const path = require(`path`);
@@ -17,10 +17,16 @@ const exportFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
 };
 
-const generated = async (): Promise<void> => {
+type GenerateRssProps = {
+  postData: Frontmatter[];
+};
+
+export const generateRss = async ({
+  postData,
+}: GenerateRssProps): Promise<void> => {
   const feed = new Feed({
-    title: `Feed Title`,
-    description: `This is my personal feed!`,
+    title: `LarsRoettig.dev`,
+    description: `A blog about Software and Magento Development`,
     id: `${config.baseUrl}`,
     link: `${config.baseUrl}`,
     language: `en`,
@@ -30,21 +36,20 @@ const generated = async (): Promise<void> => {
     },
   });
 
-  const allPostData = await getAllPostData();
-  allPostData.forEach((postData) => {
+  console.log();
+
+  postData.forEach((postData: Frontmatter) => {
     feed.addItem({
-      title: postData.title,
+      title: postData.title as string,
       id: `${config.baseUrl}/${postData.slug}`,
       link: `${config.baseUrl}/${postData.slug}`,
       description: postData.description,
-      date: new Date(postData.date),
+      date: new Date(postData.date as string),
     });
   });
 
-  feed.addCategory(`Technologie`);
+  feed.addCategory(`Technology`);
 
   exportFile(getPath(`public`, `rss.xml`), feed.rss2());
   exportFile(getPath(`public`, `atom.xml`), feed.atom1());
 };
-
-generated();

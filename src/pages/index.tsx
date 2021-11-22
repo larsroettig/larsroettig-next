@@ -1,17 +1,18 @@
 import React from 'react';
 
-import { GetStaticProps, NextPage } from 'next';
+import { GetStaticProps } from 'next';
 
 import { BasisSeo } from '../components/Seo';
 import Hero from '../components/Hero';
-import { getAllPostData, PostHeader } from '../shared/Content';
+import { getAllPostData } from '../shared/Content';
 import Grid from '../components/Card';
+import { generateRss } from '@/scripts/generate-rss';
 
-interface Props {
-  posts: PostHeader[];
-}
+type HomeProps = {
+  posts: Frontmatter[];
+};
 
-const Home: NextPage<Props> = ({ posts }) => {
+const Home = ({ posts }: HomeProps) => {
   return (
     <>
       <BasisSeo
@@ -26,8 +27,12 @@ const Home: NextPage<Props> = ({ posts }) => {
   );
 };
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const postData = await getAllPostData();
+export const getStaticProps: GetStaticProps = async () => {
+  const allPostData = await getAllPostData();
+  const postData = allPostData.frontmatter;
+
+  generateRss({ postData });
+
   return {
     props: {
       posts: postData,
