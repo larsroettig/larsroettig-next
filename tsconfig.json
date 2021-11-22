@@ -1,23 +1,29 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["ES2021", "DOM", "DOM.Iterable"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "es2020",
+    "target": "es2020",
+    "importsNotUsedAsValues": "error",
+    "jsx": "preserve",
+    "noUncheckedIndexedAccess": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "importsNotUsedAsValues": "remove",
     "isolatedModules": true,
-    "jsx": "preserve",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"],
+      "@/public/*": ["./public/*"]
     },
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "typeRoots": ["types", "node_modules/@types"],
+  "exclude": ["node_modules", ".yarn/cache"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

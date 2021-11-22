@@ -2,18 +2,18 @@ import { NextPage } from 'next';
 import hydrate from 'next-mdx-remote/hydrate';
 
 import React from 'react';
-import Mailto from 'react-protected-mailto';
+import Obfuscate from 'react-obfuscate';
 
-import { BasisSeo, defaultUrl } from '@/components/Seo';
+import { BasisSeo, defaultUrl } from '../components/Seo';
 
-import { Image } from '@/components/Mdx';
-import Employer from '@/components/About/employer';
+import { Image } from '../components/Mdx';
+import Employer from '../components/About/employer';
 import { MdxRemote } from 'next-mdx-remote/types';
-import { PageHeader } from './Content';
+import { PageHeader } from '../shared/Content';
 
 const components = {
   components: {
-    Mailto,
+    Obfuscate,
     Image,
     Employer,
   },

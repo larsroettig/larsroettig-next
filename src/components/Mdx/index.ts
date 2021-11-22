@@ -1,7 +1,7 @@
-import Breadcrumb from '@/components/Mdx/Breadcrumb';
-import Callout from '@/components/Mdx/Callout';
-import Image from '@/components/Mdx/Image';
-import CodePre from '@/components/Mdx/Code/Pre';
-import CodePrism from '@/components/Mdx/Code/Prism';
+import Breadcrumb from './Breadcrumb';
+import Callout from './Callout';
+import Image from './Image';
+import CodePre from './Code/Pre';
+import CodePrism from './Code/Prism';
 
 export { Breadcrumb, Callout, Image, CodePre, CodePrism };

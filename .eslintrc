@@ -1,39 +1,14 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2019,
-    "sourceType": "module"
-  },
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "plugins": ["import", "jsx-a11y", "react", "react-hooks", "prettier"],
-  "extends": [
-    "airbnb",
-    "eslint-config-prettier",
-    "plugin:cypress/recommended",
-    "plugin:@next/next/recommended"
-  ],
+  "plugins": ["prettier"],
+  "extends": ["next", "next/core-web-vitals", "prettier"],
   "rules": {
     "prettier/prettier": "error",
+    "camelcase": "off",
     "import/prefer-default-export": "off",
-    "react/prop-types": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": "off",
-    "cypress/no-assigning-return-values": "error",
-    "cypress/no-unnecessary-waiting": "error",
-    "cypress/assertion-before-screenshot": "warn",
-    "cypress/no-force": "warn",
-    "cypress/no-async-tests": "error",
-    "global-require": 0,
-    "import/no-dynamic-require": 0,
+    "react/no-unused-prop-types": "off",
+    "react/require-default-props": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -44,23 +19,26 @@
         "jsx": "never"
       }
     ],
-    "quotes": ["error", "backtick"]
+    "quotes": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ]
   },
   "overrides": [
     {
       "files": "**/*.+(ts|tsx)",
       "parser": "@typescript-eslint/parser",
-      "plugins": ["@typescript-eslint/eslint-plugin", "cypress"],
-      "extends": ["plugin:@typescript-eslint/recommended"],
+      "plugins": ["@typescript-eslint/eslint-plugin"],
+      "extends": ["plugin:@typescript-eslint/recommended", "prettier"],
       "rules": {
-        "@typescript-eslint/explicit-function-return-type": [
-          "warn",
-          {
-            "allowExpressions": true
-          }
-        ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
         "no-use-before-define": [0],
-        "arrow-body-style": 0,
         "@typescript-eslint/no-use-before-define": [1],
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-var-requires": "off",
@@ -73,12 +51,5 @@
         ]
       }
     }
-  ],
-  "settings": {
-    "import/resolver": {
-      "typescript": {
-        "project": "."
-      }
-    }
-  }
+  ]
 }

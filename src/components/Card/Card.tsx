@@ -3,22 +3,33 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface iCard {
-  title: string;
-  href: string;
-  description?: string;
-  img?: string;
-  placeHolder?: string;
-}
+const isUpdated = (
+  createdAt: string | undefined,
+  modifiedAt: string | undefined,
+): boolean => {
+  if (!createdAt || !modifiedAt) {
+    return false;
+  }
 
-const Card: React.FC<iCard> = ({
-  title,
-  href,
-  description,
-  img = ``,
-  placeHolder = ``,
-}) => {
+  const creatDate = new Date(createdAt);
+  const modiDate = new Date(modifiedAt || createdAt);
+  const lastUpdate = modiDate >= creatDate ? modiDate : creatDate;
+  const current = new Date();
+  current.setDate(current.getDate() - 30);
+  return current.getTime() <= lastUpdate.getTime();
+};
+
+type CardProps = {
+  post: FrontmatterType;
+};
+
+const Card = ({ post }: CardProps) => {
+  const { title, description, placeHolder, hero: img, modifiedAt, date } = post;
+  const href = `/${post.slug}`;
+
   const getImage = (src: string): any => {
+    const blurDataURL = placeHolder as string;
+
     return (
       <Image
         src={`/images/${src}`}
@@ -26,16 +37,28 @@ const Card: React.FC<iCard> = ({
         width="480"
         height="270"
         placeholder="blur"
-        blurDataURL={placeHolder}
+        blurDataURL={blurDataURL}
       />
     );
   };
+
+  const update = isUpdated(date, modifiedAt) ? (
+    <span className="px-2 py-1 text-xs font-bold leading-none text-indigo-100 bg-indigo-700 rounded">
+      Update
+    </span>
+  ) : (
+    ``
+  );
 
   return (
     <div className="overflow-hidden shadow-lg">
       <Link href={href}>
         <a>
-          {img ? getImage(img) : ``}
+          <div className="relative">
+            {img ? getImage(img) : ``}
+            {` `}
+            <div className="absolute top-2.5 right-2.5">{update}</div>
+          </div>
           <span className="flex items-center justify-between leading-tight p-2 md:p-4">
             <span className="text-lg">
               <p className="max-w-4xl text-lg sm:text-2xl font-medium">

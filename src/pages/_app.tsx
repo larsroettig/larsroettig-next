@@ -6,7 +6,6 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import Header from '../components/Header';
-import ScrollUp from '../components/ScrollUp';
 
 const Footer = dynamic(() => import(`../components/Footer`));
 
@@ -44,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps): any {
       </Head>
       <Header />
       <Component {...pageProps} />
-      <ScrollUp />
+
       <Footer />
     </>
   );
