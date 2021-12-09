@@ -21,10 +21,12 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@atomiks/mdx-pretty-code": "0.0.2",
     "@bradgarropy/next-link": "^1.0.2",
+    "@kentcdodds/md-temp": "1.1.0",
     "@plaiceholder/next": "^2.1.0",
     "@south-paw/react-obfuscate-ts": "^1.0.2",
-    "@tailwindcss/typography": "^0.4.0",
+    "@tailwindcss/typography": "tailwindcss/typography",
     "cross-env": "^7.0.3",
     "cypress-expect": "^2.2.1",
     "date-fns": "^2.19.0",
@@ -53,10 +55,13 @@
     "remark-copy-linked-files": "1.2.0",
     "remark-gfm": "^3.0.1",
     "remark-images": "2.0.0",
+    "remark-shiki-twoslash": "3.0.6",
     "remark-slug": "7.0.1",
     "responsive-loader": "2.0.0",
     "sharp": "0.27.1",
-    "tslib": "^2.3.1"
+    "shiki": "0.9.15",
+    "tslib": "^2.3.1",
+    "unist-util-visit": "2"
   },
   "devDependencies": {
     "@commitlint/cli": "15.0.0",
@@ -89,7 +94,7 @@
     "lint-staged": "12.0.2",
     "postcss": "8.3.11",
     "prettier": "^2.4.1",
-    "tailwindcss": "2.2.19",
+    "tailwindcss": "3.0.0",
     "typescript": "^4.5.2"
   },
   "packageManager": "yarn@3.1.0"
