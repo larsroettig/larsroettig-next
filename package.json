@@ -24,7 +24,7 @@
     "@bradgarropy/next-link": "^1.0.2",
     "@plaiceholder/next": "^2.1.0",
     "@south-paw/react-obfuscate-ts": "^1.0.2",
-    "@tailwindcss/typography": "^0.6.0",
+    "@tailwindcss/typography": "^0.5.0",
     "cross-env": "^7.0.3",
     "cypress-expect": "^2.2.1",
     "date-fns": "^2.19.0",
