@@ -4,11 +4,18 @@
         <title>LarsRoettig.dev</title>
         <link>https://larsroettig.dev</link>
         <description>A blog about Software and Magento Development</description>
-        <lastBuildDate>Thu, 09 Dec 2021 21:42:20 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 12 Dec 2021 17:27:33 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <category>Technology</category>
+        <item>
+            <title><![CDATA[How I learned React?]]></title>
+            <link>https://larsroettig.dev/how-i-learned-react</link>
+            <guid>https://larsroettig.dev/how-i-learned-react</guid>
+            <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[What you should know before starting a React Project? My personal learning path to tame the technology stack.]]></description>
+        </item>
         <item>
             <title><![CDATA[Getting started with Magento PWA Studio]]></title>
             <link>https://larsroettig.dev/getting-started-with-magento-pwa-studio</link>
@@ -17,25 +24,11 @@
             <description><![CDATA[Is PWA the right technology for me from a business point? The second part will show how you can build your own PWA Theme for Magento 2.]]></description>
         </item>
         <item>
-            <title><![CDATA[React Advanced London 2021]]></title>
-            <link>https://larsroettig.dev/react-advanced-london-2021</link>
-            <guid>https://larsroettig.dev/react-advanced-london-2021</guid>
-            <pubDate>Fri, 04 Jun 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[React Advanced conference, addressing most complex and trickiest corners of React.]]></description>
-        </item>
-        <item>
             <title><![CDATA[Demystified Magento PWA Studio Checkout]]></title>
             <link>https://larsroettig.dev/demystified-pwa-studio-checkout</link>
             <guid>https://larsroettig.dev/demystified-pwa-studio-checkout</guid>
             <pubDate>Sat, 13 Mar 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[What you should know before starting build a Payment Method for PWA Studio.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[How I learned React?]]></title>
-            <link>https://larsroettig.dev/how-i-learned-react</link>
-            <guid>https://larsroettig.dev/how-i-learned-react</guid>
-            <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[What you should know before starting a React Project? My personal learning path to tame the technology stack.]]></description>
         </item>
         <item>
             <title><![CDATA[Getting started with PWA Studio Extensibility]]></title>
