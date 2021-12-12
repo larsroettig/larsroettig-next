@@ -5,6 +5,10 @@ import Highlight, { defaultProps, Language } from 'prism-react-renderer';
 import theme from 'prism-react-renderer/themes/nightOwl';
 import dynamic from 'next/dynamic';
 
+(typeof global !== `undefined` ? global : window).Prism = Prism;
+
+require(`prismjs/components/prism-php`);
+
 const CopyToClipBoard = dynamic(() => import(`./CopyToClipBoard`));
 
 if (globalThis.window) {
