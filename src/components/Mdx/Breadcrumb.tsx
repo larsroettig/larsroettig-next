@@ -9,13 +9,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
   elements,
   className = ``,
 }) => {
-  const [elementList, setEelementList] = useState([``]);
-  const [lastEelement, setLastElement] = useState(``);
+  const [elementList, setElementList] = useState([``]);
+  const [lastElement, setLastElement] = useState(``);
 
   useEffect(() => {
     if (elements && elements.length >= 1) {
       setLastElement(elements.pop() || ``);
-      setEelementList(elements);
+      setElementList(elements);
     }
   }, [elements]);
 
@@ -28,7 +28,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
         </React.Fragment>
       ))}
       <span>
-        <b>{lastEelement}</b>
+        <b>{lastElement}</b>
       </span>
     </div>
   );

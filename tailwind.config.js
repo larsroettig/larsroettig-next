@@ -1,6 +1,9 @@
 module.exports = {
   content: [`./src/**/*.tsx`, `./content/**/*.mdx`],
   theme: {
+    color: {
+      midnight: '#0e0e12',
+    },
     extend: {
       typography: {
         default: {

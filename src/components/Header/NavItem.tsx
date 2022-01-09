@@ -8,8 +8,8 @@ type NavItemProps = {
 };
 
 const NavItem: React.FC<NavItemProps> = ({ href, title }) => (
-  <Link href={href}>
-    <a className="hover:bg-gray-900 text-white px-3 py-2 rounded-md font-medium">
+  <Link href={href} prefetch={true}>
+    <a className="text-lg hover:bg-gray-900 text-white px-3 py-2 rounded-md font-medium">
       {title}
     </a>
   </Link>

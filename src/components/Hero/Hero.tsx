@@ -3,26 +3,28 @@ import Image from 'next/image';
 import Container from '../Container';
 
 const Hero: React.FC = () => (
-  <div className="bg-gray-800 text-gray-100 p-10 pb-0 mb-10">
+  <div className="bg-[#0e0e12] text-gray-100 p-10  mb-10">
     <Container>
-      <div className="flex flex-wrap -mx-2 overflow-hidden ">
-        <div className="px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
+      <div className="flex flex-wrap overflow-hidden justify-center justify-items-center ">
+        <div className="overflow-hidden mt-10 mr-20">
           <Image
-            src="/images/larsroettig.png"
+            className="hero-image"
+            src="/images/larsroettig.jpg"
             alt="Profile"
-            width={380}
-            height={459}
+            width={300}
+            height={300}
           />
         </div>
-        <div className="py-10 md:my-2  px-2 w-full overflow-hidden lg:w-1/2 xl:w-1/2">
+
+        <div className="py-10 lg:my-10">
           <div className="m-auto" style={{ maxWidth: `600px` }}>
-            <h1 className="text-3xl tracking-tight sm:text-4xl">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl tracking-tight">
               <span className="block font-extrabold py-5">
-                Hi, I&apos;m Lars Roettig
+                Hi, I&apos;m
+                <span className="highlight-text"> Lars Roettig</span>
               </span>
               <span className="block text-2xl">
-                I write this blog about Software Architecture and Magento
-                Development
+                Helping people write stable software with quality.
               </span>
             </h1>
           </div>
