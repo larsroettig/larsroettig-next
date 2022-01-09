@@ -123,7 +123,7 @@ export const getPageBySlug = async (
     scope: data,
     components,
     mdxOptions: {
-      remarkPlugins: [remarkSlug, remarkHeadings],
+      remarkPlugins: [remarkSlug],
       filepath: path.join(POSTS_PATH, slug),
     },
   });
