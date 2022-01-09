@@ -34,8 +34,9 @@ const Card = ({ post }: CardProps) => {
       <Image
         src={`/images/${src}`}
         alt={`Teaser for ${title}`}
-        width="480"
-        height="270"
+        width="551"
+        height="310"
+        className="rounded-md"
         placeholder="blur"
         blurDataURL={blurDataURL}
       />
@@ -51,7 +52,7 @@ const Card = ({ post }: CardProps) => {
   );
 
   return (
-    <div className="overflow-hidden shadow-lg">
+    <div className="overflow-hidden hover:shadow-md rounded-b-md">
       <Link href={href}>
         <a>
           <div className="relative">

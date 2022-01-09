@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+.highlight-text {
+  background: -webkit-linear-gradient( 6deg ,#93C5FD,#7c53ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-image{
+  border-radius: 50%;
+  margin: auto;
+}
+
+.prose  h1, h2,h3 {
+  margin-left: 1rem;
+}

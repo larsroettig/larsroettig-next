@@ -22,6 +22,7 @@ const Picture: React.FC<iImage> = ({
     <div className={className}>
       <Image
         src={`/images/${src}`}
+        className="rounded-md"
         alt={alt}
         width={width}
         height={heigth}

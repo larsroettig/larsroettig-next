@@ -19,7 +19,7 @@ const Home = ({ posts }: HomeProps) => {
         title="Blog"
         description="A Blog about Magento and JavaScript Development"
       />
-      <div>
+      <div className="isolate">
         <Hero />
         <Grid posts={posts} />
       </div>

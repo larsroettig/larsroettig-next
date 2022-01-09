@@ -6,13 +6,13 @@ import Container from './Container';
 import LarsLogo from './Brand';
 
 const Footer: React.FC = () => (
-  <footer className="bg-gray-800 text-gray-300 px-6 lg:px-8 py-12 content-auto">
+  <footer className="bg-[#0e0e12] text-gray-300 px-6 lg:px-8 py-12 content-auto">
     <Container>
-      <div className="grid grid-cols-8 md:grid-cols-9  lg:grid-cols-8  divide-gray-700 divide-y-2 md:divide-x-2 md:divide-y-0 md:-mx-8">
-        <div className="col-span-8 md:col-span-3 lg:col-span-2 md:px-8 py-4 md:py-0">
+      <div className="grid grid-cols-8   divide-gray-700 divide-y-2 lg:divide-x-2 lg:divide-y-0 lg:-mx-8">
+        <div className="col-span-8  lg:col-span-3 lg:px-8 py-4 lg:py-0">
           <LarsLogo />
         </div>
-        <div className="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
+        <div className="col-span-8  lg:col-span-2 lg:px-8 py-4 lg:py-0 text-center">
           <p className="text-xl font-semibold text-white">Legal</p>
           <nav className="mt-4">
             <ul className="grid lg:grid-cols-2">
@@ -35,9 +35,9 @@ const Footer: React.FC = () => (
             </ul>
           </nav>
         </div>
-        <div className="col-span-8 md:col-span-3 lg:col-span-3 md:px-8 py-4 md:py-0">
+        <div className="col-span-8  lg:col-span-3 lg:px-8 py-4 lg:py-0 text-center">
           <p className="text-xl font-semibold text-white">Follow me</p>
-          <div className=" py-5 flex">
+          <div className=" py-5 flex justify-center">
             <div className="px-2">
               <Link to="/rss.xml" aria-label="Open Rss">
                 <FaRss size={20} />

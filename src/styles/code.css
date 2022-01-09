@@ -10,6 +10,7 @@ p > code li > code {
   margin-left: 0;
   margin-right: 0;
   margin-bottom: 1rem;
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 pre.prism-code {
@@ -119,6 +120,7 @@ pre[class~='language-diff']:before {
 }
 .code-title {
   padding: 0.5em;
+  border-radius: 0.5em 0.5em 0 0;
   background-color: rgb(191 210 231);
   hyphens: auto;
   word-wrap: break-word;
