@@ -6,6 +6,7 @@
   background: -webkit-linear-gradient( 6deg ,#93C5FD,#7c53ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
 }
 
 .hero-image{
