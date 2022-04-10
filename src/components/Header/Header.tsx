@@ -119,7 +119,7 @@ const Header: React.FC = () => {
 
   return (
     <nav className="bg-[#0e0e12]">
-      <div className="container mx-auto px-2 sm:px-6 lg:px-8 relative py-6 lg:py-8 flex items-center justify-between  font-semibold text-sm leading-6 text-gray-200">
+      <div className="container mx-auto p-2 relative flex items-center justify-between  font-semibold text-sm leading-6 text-gray-200">
         <ExternalLink to="/" data-cy="logo">
           <LarsLogo />
         </ExternalLink>

@@ -6,9 +6,9 @@ import { compareDesc } from 'date-fns';
 import { MdxRemote } from 'next-mdx-remote/types';
 import { getPlaiceholder } from 'plaiceholder';
 import remarkSlug from 'remark-slug';
-
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
+const rehypePrettyCode = require('rehype-pretty-code');
 const readingTime = require(`reading-time`);
 
 export const PAGES_PATH = path.join(`content`, `pages`);
@@ -52,13 +52,36 @@ export const getPostBySlug = async (slug: string, components = {}) => {
   const fileContents = fs.readFileSync(fullPath, `utf8`);
   const { content, data } = matter(fileContents);
 
+  const options = {
+    theme: JSON.parse(
+      fs.readFileSync(require.resolve('/assets/moonlight-ii.json'), 'utf-8')
+    ),
+    onVisitLine(node) {
+      // Prevent lines from collapsing in `display: grid` mode, and allow empty
+      // lines to be copy/pasted
+      if (node.children.length === 0) {
+        node.children = [{type: 'text', value: ' '}];
+      }
+    },
+    onVisitHighlightedLine(node) {
+      node.properties.className.push('line--highlighted');
+    },
+    onVisitHighlightedWord(node) {
+      node.properties.className = ['word'];
+    },
+  };
+
+
   const mdxContent = await renderToString(content, {
+    experimental: {esmExternals: true},
     scope: data,
     components,
     mdxOptions: {
       remarkPlugins: [remarkSlug],
       rehypePlugins: [
+        [rehypePrettyCode, options],
         [
+
           rehypeAutolinkHeadings,
           {
             content: {
@@ -123,7 +146,7 @@ export const getPageBySlug = async (
     scope: data,
     components,
     mdxOptions: {
-      remarkPlugins: [remarkSlug, remarkHeadings],
+      remarkPlugins: [remarkSlug],
       filepath: path.join(POSTS_PATH, slug),
     },
   });

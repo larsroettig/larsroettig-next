@@ -36,7 +36,7 @@ const Page: NextPage<PageProps> = ({ slug, content, frontMatter }) => {
         url={`${defaultUrl}${slug}`}
       />
 
-      <div className="container mx-auto px-2 sm:px-6 lg:px-8 ">
+      <div className="container mx-auto px-2">
         <div className="w-full">
           <article className="prose lg:prose-xl max-w-full my-10">
             {mdxContent}

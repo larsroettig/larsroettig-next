@@ -1,7 +1,7 @@
 ---
-title: How to create a GraphQL Endpoint for Magento 2.3
+title: How to create a GraphQL Endpoint for Magento
 date: '2019-11-03'
-modifiedAt: '2020-03-11'
+modifiedAt: '2021-04-10'
 author: Lars Roettig
 description: In this Magento 2 GraphQL Tutorial, I will show how to build a GraphQL API endpoint and extend it with a custom filter logic.
 hero: how-to-create-a-graph-ql-endpoint/GrapQL_Query_Teaser.jpg
@@ -11,7 +11,7 @@ In this Magento 2 GraphQL Tutorial, I will show how to build a GraphQL API endpo
 Our use case for this Tutorial is a Pickup from Store endpoint what our frontend team needs to create an interactive map.
 The team decided to provide data to the frontend via a GraphQL API.
 
-**In the story we have the following acceptance criteria:**
+**In the story, we have the following acceptance criteria:**
 
 As a frontend developer, I need an Endpoint to search for the next Pickup Store in a Postcode Area.
 
@@ -75,22 +75,22 @@ bin/magento deploy:mode:set developer
 **Table of Content:**
 
 1. [How to create the basic Magento 2 Module](#1-how-to-create-the-basic-magento-2-module)
-2. [How to add Magento 2 GraphQL specific impelemention](#2-how-to-add-magento-2-graphql-specific-impelemention)
+2. [How to add Magento 2 GraphQL specific implementation](#2-how-to-add-magento-2-graphql-specific-impelemention)
 3. [Github Repo and how to install](#3-installation)
 4. [How to use GraphQL with Magento](#4-how-to-use-graphql)
 
 ## 1. How to create the basic Magento 2 Module
 
 **This section is not GraphQL specific and can be applied to any Magento2 Module!**
-In this part, we learn how to creat a new Database table and fill it with some sample data.
+In this part, we learn how to create a new Database table and fill it with some sample data.
 
 - Repository pattern for Magento 2
 - Database Model and Collection
 - How to write a Data Patch for Magento2
 
-Lets start with a new folder under **app/code/LarsRoettig/GraphQLStorePickup** in your installed magento.
+Let's start with a new folder under **app/code/LarsRoettig/GraphQLStorePickup** in your installed magento.
 
-```php:title=app/code/LarsRoettig/GraphQLStorePickup/registration.php
+```php title="app/code/LarsRoettig/GraphQLStorePickup/registration.php"
 <?php
 
 declare(strict_types=1);
@@ -102,7 +102,7 @@ Magento\Framework\Component\ComponentRegistrar::register(
 );
 ```
 
-```xml:title=GraphQLStorePickup/etc/module.xml
+```xml title="GraphQLStorePickup/etc/module.xml"
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
 	<module name="LarsRoettig_GraphQLStorePickup" setup_version="1.0.0">
@@ -135,7 +135,7 @@ The declaration will change by running `bin/magento setup:install` or
 
 <p />
 
-```xml:title=GraphQLStorePickup/etc/db_schema.xml
+```xml title="GraphQLStorePickup/etc/db_schema.xml"
 <?xml version="1.0"?>
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
@@ -156,7 +156,7 @@ The declaration will change by running `bin/magento setup:install` or
 </schema>
 ```
 
-```php:title=GraphQLStorePickup/Api/Data/StoreInterface.php
+```php title="GraphQLStorePickup/Api/Data/StoreInterface.php"
 <?php
 
 declare(strict_types=1);
@@ -213,7 +213,7 @@ interface StoreInterface
 }
 ```
 
-```php:title=GraphQLStorePickup/Model/Store.php
+```php title="GraphQLStorePickup/Model/Store.php"
 <?php
 
 declare(strict_types=1);
@@ -304,7 +304,7 @@ class Store extends AbstractExtensibleModel implements StoreInterface
 }
 ```
 
-```php:title=GraphQLStorePickup/Model/ResourceModel/Store.php
+```php title="GraphQLStorePickup/Model/ResourceModel/Store.php"
 <?php
 declare(strict_types=1);
 
@@ -336,7 +336,7 @@ class Store extends AbstractDb
 }
 ```
 
-```php:title=GraphQLStorePickup/Model/ResourceModel/StoreCollection.php
+```php title="GraphQLStorePickup/Model/ResourceModel/StoreCollection.php"
 <?php
 declare(strict_types=1);
 
@@ -358,7 +358,7 @@ class StoreCollection extends AbstractCollection
 }
 ```
 
-```php:title=GraphQLStorePickup/Api/StoreRepositoryInterface.php
+```php title="GraphQLStorePickup/Api/StoreRepositoryInterface.php"
 <?php
 declare(strict_types=1);
 
@@ -396,9 +396,9 @@ interface StoreRepositoryInterface
 A repository is an architecture layer that handles communication between the application and the data source (DataBase).
 Repository Pattern helps to switch to another data source or making structural changes to the existing data source.
 
-For all my repositories, usually, i have an interface that helps to decouple the implementation.
+For all my repositories, usually, I have an interface that helps to decouple the implementation.
 
-```php:title=GraphQLStorePickup/Model/StoreRepository.ph
+```php title="GraphQLStorePickup/Model/StoreRepository.php"
 <?php
 declare(strict_types=1);
 
@@ -489,9 +489,9 @@ class StoreRepository implements StoreRepositoryInterface
 
 ```
 
-**9. Create di.xml to link interface to impelemention **
+**9. Create di.xml to link interface to implementation **
 
-```xml:title=GraphQLStorePickup/etc/di.xml
+```xml title="GraphQLStorePickup/etc/di.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
@@ -519,7 +519,7 @@ over data changes.
   </p>
 </div>
 
-```php:title=GraphQLStorePickup/Setup/Patch/Data/InitializePickUpStores.php
+```php title="GraphQLStorePickup/Setup/Patch/Data/InitializePickUpStores.php"
 <?php
 
 declare(strict_types=1);
@@ -620,7 +620,7 @@ class InitializePickUpStores implements DataPatchInterface
 
 ```
 
-## 2. How to add Magento 2 GraphQL specific impelemention
+## 2. How to add Magento 2 GraphQL specific implementation
 
 **1.Create GraphQL Schema File **
 
@@ -633,7 +633,7 @@ The _schema.graphql_ contains the following information:
 - Defines which objects are cached.
 
 <div className={'border-l-4 p-2 text-lg'}>
-  <p className={'p-2'}>Full Magento Dokumentation: </p>
+  <p className={'p-2'}>Full Magento Documentation: </p>
   <p>
     <a
       class="text-techdivision p-2"
@@ -648,7 +648,7 @@ The _schema.graphql_ contains the following information:
 
 <p class="p-2" />
 
-```graphql:title=GraphQLStorePickup/etc/schema.graphqls
+```graphql title="GraphQLStorePickup/etc/schema.graphqls"
 type Query {
   pickUpStores(
     filter: PickUpStoresFilterInput @doc(description: "")
@@ -693,7 +693,7 @@ This PHP Class represents the Service implementation of our
 GraphQL Query Endpoint `pickUpStores`. This Class is called in every query to `pickUpStores`.
 Every resolver needs to implement the `Magento\Framework\GraphQl\Query\ResolverInterface` to work correctly.
 
-```php:title=GraphQLStorePickup/Model/Resolver/PickUpStores.php
+```php title="GraphQLStorePickup/Model/Resolver/PickUpStores.php"
 <?php
 
 declare(strict_types=1);
@@ -771,9 +771,9 @@ class PickUpStores implements ResolverInterface
 **3.Create Dependencies Injection File (di.xml)**
 
 We need this file to inject our FilterArgument Class that maps the
-graph attribute for filtering. Currently there is no general implementation.
+graph attribute for filtering. Currently, there is no general implementation.
 
-```xml:title=GraphQLStorePickup/etc/di.xml
+```xml title="GraphQLStorePickup/etc/di.xml"
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="LarsRoettig\GraphQLStorePickup\Api\Data\StoreInterface" type="LarsRoettig\GraphQLStorePickup\Model\Store"/>
@@ -803,7 +803,7 @@ Currently, there is no implementation in the Magento core that will do it automa
 
 #### Code for Magento 2.3
 
-```php:title=GraphQLStorePickup/Model/Resolver/FilterArgument.php
+```php title="GraphQLStorePickup/Model/Resolver/FilterArgument.php"
 <?php
 declare(strict_types=1);
 
@@ -903,7 +903,7 @@ bin/magento setup:upgrade
 
 **Test for your new endpoint (Client Sample Call)**
 
-I recommend to use [Altair GraphQL Client](https://altair.sirmuel.design/) as testing client tool.
+I recommend using [Altair GraphQL Client](https://altair.sirmuel.design/) as testing client tool.
 
 If you like Pto use Postman, please use the following link:
 

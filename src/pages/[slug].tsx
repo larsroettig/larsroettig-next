@@ -8,8 +8,6 @@ import {
   Breadcrumb,
   Image,
   Callout,
-  CodePre,
-  CodePrism,
 } from '../components/Mdx';
 
 import EditOnGithub from '../components/EditOnGithub';
@@ -29,9 +27,7 @@ const components = {
   components: {
     Callout,
     Image,
-    Breadcrumb,
-    pre: (props: any) => <CodePre {...props} />,
-    code: CodePrism,
+    Breadcrumb
   },
 };
 

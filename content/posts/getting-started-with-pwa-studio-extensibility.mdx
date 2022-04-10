@@ -35,7 +35,7 @@ targets.of('@magento/peregrine').talons.tap(talons => {
 })
 ```
 
-```javascript:title=log-wrapper.js
+```javascript title="log-wrapper.js"
 export default function wrapUseApp(original) {
     return function useApp(...args) {
         console.log('calling useApp with', ...args);
@@ -70,7 +70,7 @@ UAK:
 
 **Command to create a new Project:**
 
-```bash
+```bash title="Execute this in your terminal"
 yarn create @magento/pwa
 ```
 <Image
@@ -81,14 +81,14 @@ yarn create @magento/pwa
 
 **Create SSL Cerficate:**
 
-```bash
+```bash title="Execute this in your terminal"
 cd <your_pwa_studio>
 yarn install
 yarn buildpack create-custom-origin ./
 ```
 
 **Create your own Module**
-```bash
+```bash title="Execute this in your terminal"
 cd ../
 mkdir -p larsroettig/top-bar-plugin
 cd larsroettig/top-bar-plugin
@@ -102,7 +102,7 @@ Alternatively we can define the main file in the `package.json` via <br/> `{"mai
 More Information you can find here https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/
 </Callout>
 
-```javascript:title=package.json
+```json title="package.json"
 {
   "name": "@larsroettig/top-bar-plugin",
   "version": "1.0.0",
@@ -124,7 +124,7 @@ More Information you can find here https://hacks.mozilla.org/2018/03/es-modules-
 }
 ```
 
-```javascript:title=intercept.js {12}
+```javascript title="intercept.js" {12}
 const moduleOverridePlugin = require('./moduleOverrideWebpackPlugin');
 const componentOverrideMapping = {
     '@magento/venia-ui/lib/components/Main/main.js': './lib/overwrites/components/Main/main.js',
@@ -152,7 +152,7 @@ The Webpack has ships [NormalModuleReplacementPlugin](https://webpack.js.org/plu
 This very helpful for replacing one file. But I want to show you how we can write our Plugin very essay.
 From my point of view, this plugin has a better developer experience, because we can overwrite multiple files and don't need to use a regex.
 
-```javascript:title=moduleOverrideWebpackPlugin.js
+```javascript title="moduleOverrideWebpackPlugin.js"
 const path = require('path');
 const glob = require('glob');
 
@@ -229,7 +229,7 @@ module.exports = class NormalModuleOverridePlugin {
 
 #### Create your own PWA Component
 
-```css:title=lib/components/TopBar/topbar.css
+```css title="lib/components/TopBar/topbar.css"
 .root {
     background-color: rgb(var(--venia-teal));
     padding: 0.5rem;
@@ -255,7 +255,7 @@ module.exports = class NormalModuleOverridePlugin {
 }
 ```
 
-```javascript:title=lib/components/TopBar/topbar.js
+```javascript title="lib/components/TopBar/topbar.js"
 import React from 'react';
 import {mergeClasses} from '@magento/venia-ui/lib/classify';
 import Button from '@magento/venia-ui/lib/components/Button/button';
@@ -279,18 +279,18 @@ const TopBar = () => {
 export default TopBar;
 ```
 
-```javascript:title=lib/components/TopBar/index.js
+```javascript title="lib/components/TopBar/index.js"
 export { default } from './topbar';
 ```
 
 #### Replace Main PWA Component
 
-``` bash
+```bash title="Execute this in your terminal"
 mkdir lib/overwrites/components/Main
 cp node_modules/@magento/venia-ui/lib/components/Main/main.js lib/overwrites/components/Main/main.js
 ```
 
-```javascript:title=lib/overwrites/components/Main/main.js {8,9,10,23}
+```javascript title="lib/overwrites/components/Main/main.js" {8,9,10,23}
 import React from 'react';
 import {bool, shape, string} from 'prop-types';
 import {useScrollLock} from '@magento/peregrine';

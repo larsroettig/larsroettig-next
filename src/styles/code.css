@@ -1,170 +1,34 @@
-p > code li > code {
-  word-wrap: break-word;
-}
-.code-highlight {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  background-color: #011627;
-  overflow: auto;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 1rem;
-  border-radius: 0 0 0.5em 0.5em;
+code {
+  counter-reset: line;
 }
 
-pre.prism-code {
-  padding: 1rem;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  overflow: initial;
-  float: left;
-}
+code > .line::before {
+  counter-increment: line;
+  content: counter(line);
 
-pre[class*='language-']:before {
-  border-radius: 0 0 0.25rem 0.25rem;
-  background-color: #fff;
-  color: #000;
-  font-size: 12px;
-  letter-spacing: 0.025rem;
-  padding: 0.1rem 0.5rem;
-  position: absolute;
-  left: 1rem;
-  text-align: right;
-  text-transform: uppercase;
-  top: 0;
-}
-pre[class~='language-javascript']:before {
-  content: 'js';
-  background-color: #f7df1e;
-  color: black;
-}
-pre[class~='language-js']:before {
-  content: 'js';
-  background-color: #f7df1e;
-  color: black;
-}
-pre[class~='language-jsx']:before {
-  content: 'jsx';
-  background-color: #61dafb;
-  color: black;
-}
-pre[class~='language-ts']:before {
-  content: 'ts';
-  background-color: #61dafb;
-  color: black;
-}
-pre[class~='language-tsx']:before {
-  content: 'tsx';
-  background-color: #61dafb;
-  color: black;
-}
-pre[class~='language-html']:before {
-  content: 'html';
-  background-color: #005a9c;
-  color: white;
-}
-pre[class~='language-graphql']:before {
-  content: 'GraphQL';
-  background-color: #e10098;
-}
-pre[class~='language-css']:before {
-  content: 'css';
-  background-color: #ff9800;
-  color: black;
-}
-pre[class~='language-mdx']:before {
-  content: 'mdx';
-  background-color: #f9ac00;
-  color: black;
-}
-pre[class~='language-php']:before {
-  content: 'php';
-  background-color: #2a4365;
-  color: #fff;
-}
-pre[class~='language-text']:before {
-  content: 'text';
-}
-pre[class~='language-shell']:before {
-  content: 'shell';
-}
-pre[class~='language-sh']:before {
-  content: 'sh';
-}
-pre[class~='language-bash']:before {
-  content: 'bash';
-}
-pre[class~='language-yaml']:before {
-  content: 'yaml';
-  background-color: #ffa8df;
-}
-pre[class~='language-markdown']:before {
-  content: 'md';
-}
-pre[class~='language-json']:before pre[class~='language-json5']:before {
-  content: 'json';
-  background-color: linen;
-}
-pre[class~='language-diff']:before {
-  content: 'diff';
-  background-color: #e6ffed;
-}
-
-.line-number-style {
+  /* Other styling */
   display: inline-block;
-  width: 3em;
-  opacity: 0.3;
-  text-align: center;
-  position: relative;
+  width: 1rem;
+  margin-right: 2rem;
+  text-align: right;
+  color: gray;
 }
-.code-title {
-  padding: 0.5em;
+
+[data-rehype-pretty-code-title] {
+  padding: 5px 5px 5px 20px;
   border-radius: 0.5em 0.5em 0 0;
-  background-color: rgb(191 210 231);
-  hyphens: auto;
-  word-wrap: break-word;
-  color: black;
-  font-family: monospace;
+  font-size: 1rem;
+  line-height: 2.25;
+  color: white;
+  background-color: rgba(14, 14, 18, 0.85);
+  font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
-.highlight-line {
-  background-color: rgb(2 55 81);
-  border-left: 4px solid rgb(2 155 206);
+[data-rehype-pretty-code-fragment] {
+  margin: 1.5rem 0;
 }
 
-.scroll-container {
-  position: fixed;
-  padding: 5px;
-  right: -100px;
-  bottom: 150px;
-  cursor: pointer;
-  background-color: #1f2937;
-  color: #fff;
-  border-radius: 20px;
-}
-
-.scroll-transtion {
-  right: 20px;
-}
-.copy-button {
-  position: absolute;
-  right: 22px;
-  top: 10px;
-  padding: 5px 9px;
-  border: 3px solid rgba(255, 255, 255, 0.5);
-  border-radius: 5px;
-  background: none;
-  display: none;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-@media (min-width: 640px) {
-  .copy-button {
-    display: block;
-  }
-}
-
-.aboutImg {
-    margin: 0 !important;
+.prose :where(pre):not(:where([class~="not-prose"] *)) {
+  margin: 0;
+  border-radius: 0 0 0.5em 0.5em;
 }
