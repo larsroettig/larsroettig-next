@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import '../styles/tailwind.css';
 import '../styles/code.css';
 import dynamic from 'next/dynamic';
@@ -9,7 +11,7 @@ import Header from '../components/Header';
 
 const Footer = dynamic(() => import(`../components/Footer`));
 
-function MyApp({ Component, pageProps }: AppProps): any {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -48,5 +50,3 @@ function MyApp({ Component, pageProps }: AppProps): any {
     </>
   );
 }
-
-export default MyApp;

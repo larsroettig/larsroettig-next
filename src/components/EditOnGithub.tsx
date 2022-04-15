@@ -10,7 +10,6 @@ const EditOnGithub: React.FC<EditOnGithubProps> = ({ slug }) => {
   return (
     <a
       className="font-mono text-sm"
-      style={{ color: `#2b6cb0`, textDecoration: `none` }}
       target="_blank"
       rel="noopener noreferrer"
       href={editLink}

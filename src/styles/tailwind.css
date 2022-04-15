@@ -17,3 +17,14 @@
 .prose  h1, h2,h3 {
   margin-left: 1rem;
 }
+
+
+html::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient( 179deg ,#93C5FD,#7c53ff);
+  max-width: 20%;
+}
