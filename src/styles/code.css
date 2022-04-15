@@ -1,3 +1,6 @@
+
+
+
 code {
   counter-reset: line;
 }
@@ -33,10 +36,21 @@ code > .line::before {
 
 }
 
-@media (min-width: theme('screens.lg')) {
 [data-rehype-pretty-code-fragment] {
   border-radius: theme('borderRadius.lg');
   margin-left: -5rem;
   margin-right: -5rem;
 }
+
+
+@media (max-width: theme('screens.lg')) {
+  [data-rehype-pretty-code-fragment] {
+    border-radius: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
 }

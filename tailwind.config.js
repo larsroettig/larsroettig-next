@@ -10,7 +10,7 @@ module.exports = {
       zIndex: {
         '-10': '-10',
       },
-      
+
       fontSize: {
         xl: '1.375rem', // 22px
         '2xl': '1.5625rem', // 25px
@@ -20,41 +20,13 @@ module.exports = {
         '6xl': '3.75rem', // 60px
         '7xl': '4.375rem', // 70px
       },
-      gridTemplateRows: {
-        'max-content': 'max-content',
-      },
-      spacing: {
-        '5vw': '5vw', // pull featured sections and navbar in the margin
-        '8vw': '8vw', // positions hero img inside the margin
-        '10vw': '10vw', // page margin
-      },
-      height: {
-        hero: 'min(60rem, calc(100vh - 10rem))', // screen - navbar height (lg: only)
-      },
-      maxWidth: {
-        '8xl': '96rem',
-      },
-      maxHeight: {
-        '50vh': '50vh', // max height for medium size hero images
-        '75vh': '75vh', // max height for giant size hero images
-      },
-      rotate: {
-        '-135': '-135deg',
-        135: '135deg',
-      },
 
-      typography: theme => {
+      typography: (theme) => {
         // some fontSizes return [size, props], others just size :/
-        const fontSize = size => {
-          const result = theme(`fontSize.${size}`)
-          return Array.isArray(result) ? result[0] : result
-        }
-
-        const breakout = {
-          marginLeft: 0,
-          marginRight: 0,
-          gridColumn: '2 / span 10',
-        }
+        const fontSize = (size) => {
+          const result = theme(`fontSize.${size}`);
+          return Array.isArray(result) ? result[0] : result;
+        };
 
         return {
           // DEFAULT only holds shared stuff and not the things that change
@@ -62,13 +34,6 @@ module.exports = {
           DEFAULT: {
             css: [
               {
-                '> *': {
-                  gridColumn: '1 / -1',
-
-                  [`@media (min-width: ${theme('screens.lg')})`]: {
-                    gridColumn: '3 / span 8',
-                  },
-                },
                 p: {
                   marginTop: 0,
                   marginBottom: theme('spacing.8'),
@@ -80,7 +45,7 @@ module.exports = {
                   fontSize: fontSize('lg'),
                 },
                 a: {
-                  color: '#4c3399',
+                  color: '#7c53ff',
                   textDecoration: 'none',
                 },
                 'a:hover,a:focus': {
@@ -123,19 +88,11 @@ module.exports = {
                       borderLeftColor: theme('colors.blue.400'),
                     },
                   },
-
-                  [`@media (min-width: ${theme('screens.lg')})`]: {
-                    borderRadius: theme('borderRadius.lg'),
-                    ...breakout,
-                  },
                 },
                 '.embed': {
                   position: 'relative',
                   marginLeft: '-10vw',
                   marginRight: '-10vw',
-                  [`@media (min-width: ${theme('screens.lg')})`]: {
-                    ...breakout,
-                  },
                 },
                 '.embed > div': {
                   height: '0px',
@@ -212,65 +169,6 @@ module.exports = {
               },
             ],
           },
-          // use prose-light instead of default, so it's easier to see theme differences
-          light: {
-            css: [
-              {
-                color: theme('colors.gray.500'),
-                a: {
-                  color: theme('colors.team.current'),
-                },
-                strong: {
-                  color: theme('colors.black'),
-                },
-                hr: {
-                  borderColor: theme('colors.gray.200'),
-                },
-                code: {
-                  color: theme('colors.gray.800'),
-                },
-                'h1, h2, h3, h4, h5, h6': {
-                  color: theme('colors.black'),
-                },
-                blockquote: {
-                  color: theme('colors.gray.500'),
-                  backgroundColor: theme('colors.gray.100'),
-                },
-                'thead, tbody tr': {
-                  borderBottomColor: theme('colors.gray.200'),
-                },
-              },
-            ],
-          },
-          dark: {
-            css: [
-              {
-                color: theme('colors.blueGray.500'),
-                a: {
-                  color: theme('colors.team.current'),
-                },
-                strong: {
-                  color: theme('colors.white'),
-                },
-                hr: {
-                  borderColor: theme('colors.gray.600'),
-                },
-                code: {
-                  color: theme('colors.gray.100'),
-                },
-                'h1, h2, h3, h4, h5, h6': {
-                  color: theme('colors.white'),
-                },
-                blockquote: {
-                  color: theme('colors.blueGray.500'),
-                  backgroundColor: theme('colors.gray.800'),
-                },
-                'thead, tbody tr': {
-                  borderBottomColor: theme('colors.gray.600'),
-                },
-              },
-            ],
-          },
         };
       },
     },
@@ -281,4 +179,4 @@ module.exports = {
     content: [`./src/**/*.tsx`, `./content/**/*.mdx`],
   },
   plugins: [require('@tailwindcss/typography')],
-}
+};

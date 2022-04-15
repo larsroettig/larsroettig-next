@@ -2,6 +2,7 @@ import React from 'react';
 import { Breadcrumb, Image, Callout } from '../components/Mdx';
 
 import EditOnGithub from '../components/EditOnGithub';
+import BlogPostFooter from '../components/BlogPost/BlogPostFooter';
 import { BlogSeo } from '../components/Seo';
 
 import config from '../config.json';
@@ -58,7 +59,7 @@ export default function Post({ post }: { post: Blog }) {
                   } as any
                 }
               />
-              <EditOnGithub slug={slug} />
+              <BlogPostFooter slug={slug} title={title} />
             </div>
           </div>
         </div>
