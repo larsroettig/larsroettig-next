@@ -5,10 +5,9 @@ interface BreadcrumbProps {
   className?: string;
 }
 
-const Breadcrumb: React.FC<BreadcrumbProps> = ({
-  elements,
-  className = ``,
-}) => {
+const Breadcrumb = (props: BreadcrumbProps) => {
+  const { elements, className = `` } = props;
+
   const [elementList, setElementList] = useState([``]);
   const [lastElement, setLastElement] = useState(``);
 

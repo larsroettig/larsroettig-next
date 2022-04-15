@@ -1,14 +1,17 @@
 import React from 'react';
 
 type CalloutProps = {
-  type?: string;
+  type?: 'info' | 'warning' | 'danger';
+  children?: React.ReactNode;
 };
 
 interface Map {
   [key: string]: string | undefined;
 }
 
-const Callout: React.FC<CalloutProps> = ({ type, children }) => {
+const Callout = (props: CalloutProps) => {
+  const { type, children } = props;
+
   const variantStyles: Map = {
     info: `border-blue-600 bg-blue-100 `,
     warning: `border-yellow-600 bg-yellow-100 `,

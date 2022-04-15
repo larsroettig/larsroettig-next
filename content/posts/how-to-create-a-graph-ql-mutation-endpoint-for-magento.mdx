@@ -1,8 +1,7 @@
 ---
-title: How to create a GraphQL Mutation Endpoint for Magento 2.3
+title: How to create a GraphQL Mutation Endpoint for Magento
 date: '2019-11-25'
 modifiedAt: '2019-11-25'
-author: Lars Roettig
 description: How to build a Mutation Endpoint with GraphQL for Magento 2.3. In this tutorial, we will extend our query endpoint with saving logic.
 hero: how-to-create-a-graph-ql-mutation/GrapQL_Mutation_Teaser.jpg
 ---
@@ -34,7 +33,7 @@ Before we can start here, you can find the first module that we need ground for 
 This Class holds the logic for that endpoint is responsible for any GraphQL call that creates a new pickup store in the Database.
 Every Resolver Class is forced to implements `Magento\Framework\GraphQl\Query\ResolverInterface` to work correctly.
 
-```php:title=GraphQLStorePickup/Model/Resolver/CreatPickUpStore.php
+```php title="GraphQLStorePickup/Model/Resolver/CreatPickUpStore.php"
 <?php
 
 declare(strict_types=1);
@@ -79,7 +78,7 @@ class CreatPickUpStore implements ResolverInterface
 The second step is to create a service class that will convert a given array to a pickup store and saves them in the database.
 A service class help us to have single small bussiness logic that can be used by differnt other php services.
 
-```php:title=GraphQLStorePickup/Model/CreatePickUpStore.php
+```php title="GraphQLStorePickup/Model/CreatePickUpStore.php"
 <?php
 declare(strict_types=1);
 
@@ -190,9 +189,9 @@ class CreatePickUpStore
 
 ```
 
-This need to be added to the file:
+This needs to be added to the file:
 
-```graphql:title=GraphQLStorePickup/etc/schema.graphqls
+```graphql title="GraphQLStorePickup/etc/schema.graphqls"
 type Mutation {
   createPickUpStores(input: PickUpStoreInput!): PickUpStoreOutput
     @resolver(
@@ -293,7 +292,7 @@ bin/magento setup:upgrade
 
 <div className={'border-l-4 p-2 bg-gray-200 text-lg'}>
   <p className={'p-2'}> The repo bramch can founded at Github: </p>
-  <p class="text-techdivision p-2">
+  <p className="text-techdivision p-2">
     {' '}
     <a
       href="https://github.com/larsroettig/module-graphqlstorepickup/tree/2.0-develop"
@@ -307,7 +306,7 @@ bin/magento setup:upgrade
 
 #### How to call your GraphQL Endpoint
 
-<p class="p-2" />
+<p className="p-2" />
 
 <div className={'border-l-4 p-2 bg-orange-300 text-lg'}>
   <p className={'p-2'}>
@@ -316,16 +315,14 @@ bin/magento setup:upgrade
   </p>
 </div>
 
-<p class="p-2" />
+<p className="p-2" />
 
 <Image
   src="how-to-create-a-graph-ql-mutation/graphql-playground_mutation.jpg"
   alt="GraphQL_Playground Sample"
 />
 
-**GraphQL-Mutation:**
-
-```graphql
+```graphql title="GraphQL-Mutation Example"
 mutation {
   createPickUpStores(
     input: {

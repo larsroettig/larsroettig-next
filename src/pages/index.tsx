@@ -1,18 +1,14 @@
 import React from 'react';
 
-import { GetStaticProps } from 'next';
-
 import { BasisSeo } from '../components/Seo';
 import Hero from '../components/Hero';
-import { getAllPostData } from '../shared/Content';
+
 import Grid from '../components/Card';
 import { generateRss } from '@/scripts/generate-rss';
+import { allBlogs } from 'contentlayer/generated';
+import { pick } from '@/utils';
 
-type HomeProps = {
-  posts: Frontmatter[];
-};
-
-const Home = ({ posts }: HomeProps) => {
+const Home = ({ posts }) => {
   return (
     <>
       <BasisSeo
@@ -27,17 +23,25 @@ const Home = ({ posts }: HomeProps) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const allPostData = await getAllPostData();
-  const postData = allPostData.frontmatter;
+export async function getStaticProps() {
+  const posts = allBlogs
+    .map((post) =>
+      pick(post, [
+        `slug`,
+        `title`,
+        `description`,
+        `published`,
+        `hero`,
+        `placeHolder`,
+        `modifiedAt`,
+      ]),
+    )
+    .sort(
+      (a, b) => Number(new Date(b.modifiedAt)) - Number(new Date(a.modifiedAt)),
+    );
 
-  generateRss({ postData });
+  generateRss({ postData: posts });
 
-  return {
-    props: {
-      posts: postData,
-    },
-  };
-};
-
+  return { props: { posts } };
+}
 export default Home;
