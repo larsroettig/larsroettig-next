@@ -2,7 +2,6 @@
 title: How to create a GraphQL Endpoint for Magento
 date: '2019-11-03'
 modifiedAt: '2021-04-10'
-author: Lars Roettig
 description: In this Magento 2 GraphQL Tutorial, I will show how to build a GraphQL API endpoint and extend it with a custom filter logic.
 hero: how-to-create-a-graph-ql-endpoint/GrapQL_Query_Teaser.jpg
 ---
@@ -20,42 +19,42 @@ As a frontend developer, I need an Endpoint to search for the next Pickup Store 
 
 **The API will return the following attributes for a Pickup Store:**
 
-<p class="p-2" />
-<table class="table-auto w-full">
+<p className="p-2" />
+<table className="table-auto w-full">
   <thead>
-    <tr class="border bg-gray-100">
-      <th class="px-4 py-2">Attribute Name</th>
-      <th class="px-4 py-2">GraphQL field</th>
+    <tr className="border bg-gray-100">
+      <th className="px-4 py-2">Attribute Name</th>
+      <th className="px-4 py-2">GraphQL field</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="border px-4 py-2">Name</td>
-      <td class="border px-4 py-2">name</td>
+      <td className="border px-4 py-2">Name</td>
+      <td className="border px-4 py-2">name</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">Postcode</td>
-      <td class="border px-4 py-2">postcode</td>
+      <td className="border px-4 py-2">Postcode</td>
+      <td className="border px-4 py-2">postcode</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">Street</td>
-      <td class="border px-4 py-2">street</td>
+      <td className="border px-4 py-2">Street</td>
+      <td className="border px-4 py-2">street</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">Street Number</td>
-      <td class="border px-4 py-2">street_num</td>
+      <td className="border px-4 py-2">Street Number</td>
+      <td className="border px-4 py-2">street_num</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">City</td>
-      <td class="border px-4 py-2">city</td>
+      <td className="border px-4 py-2">City</td>
+      <td className="border px-4 py-2">city</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">Longitude</td>
-      <td class="border px-4 py-2">longitude</td>
+      <td className="border px-4 py-2">Longitude</td>
+      <td className="border px-4 py-2">longitude</td>
     </tr>
     <tr>
-      <td class="border px-4 py-2">Latitude</td>
-      <td class="border px-4 py-2">latitude</td>
+      <td className="border px-4 py-2">Latitude</td>
+      <td className="border px-4 py-2">latitude</td>
     </tr>
   </tbody>
 </table>
@@ -120,10 +119,10 @@ The declaration will change by running `bin/magento setup:install` or
 `bin/magento setup:upgrade`. We, as Developers, are no longer forced to write PHP scripts for every new version. Additionally, this approach handles that the data is deleted when a module is uninstalled.
 
 <Callout>
-  <p class="p-2">More Information you find here:</p>
+  <p className="p-2">More Information you find here:</p>
   <p>
     <a
-      class="text-techdivision p-2"
+      className="text-techdivision p-2"
       href="https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/"
       target="_blank"
       rel="nofollow noopener noreferrer"
@@ -636,7 +635,7 @@ The _schema.graphql_ contains the following information:
   <p className={'p-2'}>Full Magento Documentation: </p>
   <p>
     <a
-      class="text-techdivision p-2"
+      className="text-techdivision p-2"
       href="https://devdocs.magento.com/guides/v2.3/graphql/develop/create-graphqls-file.html"
       target="_blank"
       rel="nofollow noopener noreferrer"
@@ -646,7 +645,7 @@ The _schema.graphql_ contains the following information:
   </p>
 </div>
 
-<p class="p-2" />
+<p className="p-2" />
 
 ```graphql title="GraphQLStorePickup/etc/schema.graphqls"
 type Query {
@@ -790,7 +789,7 @@ graph attribute for filtering. Currently, there is no general implementation.
 </config>
 ```
 
-<p class="p-2" />
+<p className="p-2" />
 
 **4. Create FilterArgument File **
 
@@ -887,7 +886,7 @@ bin/magento setup:upgrade
 
 <Callout>
   <p className={'p-2'}> The repo can founded at Github: </p>
-  <p class="text-techdivision p-2">
+  <p className="text-techdivision p-2">
     {' '}
     <a
       href="https://github.com/larsroettig/module-graphqlstorepickup"
@@ -911,9 +910,8 @@ If you like Pto use Postman, please use the following link:
 
 <Callout type={'warning'}>
   <p>
-  <b>Attention the Url https://your_domain.test/graphql
-   work only with an valid GraphQL-Request!
-  </b>
+  Attention the Url https://your_domain.test/graphql  work only with an valid GraphQL-Request!
+
   </p>
 
 The following error occurs for a invalid Request:

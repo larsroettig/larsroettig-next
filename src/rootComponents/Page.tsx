@@ -1,5 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { NextPage } from 'next';
-import hydrate from 'next-mdx-remote/hydrate';
 
 import React from 'react';
 import Obfuscate from 'react-obfuscate';
@@ -8,38 +9,38 @@ import { BasisSeo, defaultUrl } from '../components/Seo';
 
 import { Image } from '../components/Mdx';
 import Employer from '../components/About/employer';
-import { MdxRemote } from 'next-mdx-remote/types';
-import { PageHeader } from '../shared/Content';
 
-const components = {
-  components: {
-    Obfuscate,
-    Image,
-    Employer,
-  },
-};
+import { useMDXComponent } from 'next-contentlayer/hooks';
+import { Pages } from 'contentlayer/generated';
 
 type PageProps = {
   slug: string;
-  content: MdxRemote.Source;
-  frontMatter: PageHeader;
+  content: Pages;
 };
 
-const Page: NextPage<PageProps> = ({ slug, content, frontMatter }) => {
-  const { title, description } = frontMatter;
-  const mdxContent = hydrate(content, components);
+const Page: NextPage<PageProps> = ({ slug, content }) => {
+  const Component = useMDXComponent(content.body.code);
+
   return (
     <>
       <BasisSeo
-        title={title}
-        description={description}
+        title={content.title}
+        description={content.description}
         url={`${defaultUrl}${slug}`}
       />
 
       <div className="container mx-auto px-2">
         <div className="w-full">
           <article className="prose lg:prose-xl max-w-full my-10">
-            {mdxContent}
+            <Component
+              components={
+                {
+                  Obfuscate,
+                  Image,
+                  Employer,
+                } as any
+              }
+            />
           </article>
         </div>
       </div>

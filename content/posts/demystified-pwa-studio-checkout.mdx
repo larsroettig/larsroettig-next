@@ -2,15 +2,16 @@
 title: Demystified Magento PWA Studio Checkout
 date: '2021-03-13'
 modifiedAt: '2022-04-10'
-author: Lars Roettig
 description: What you should know before starting build a Payment Method for PWA Studio.
 hero: how-to-create-payment-for-pwastudio/Teaser.jpg
 ---
 
-Before we start building a static Payment Method, let's briefly look at how the Checkout Process works in PWA Studio.
-So basically, this is a foundation to describe which components exist and how we should use them.
+By default, PWAStudio ships with Braintree Credit card and [Check MO (Money Order)](https://github.com/magento/pwa-studio/tree/develop/packages/extensions/venia-sample-payments-checkmo) as a Payment Method.
+I would say this is good starting but for your project, maybe not enough. Before we learn to build a Payment Method,
+it is definitely better to understand how the Checkout Process works in PWA Studio.
+So basically, this is a foundation which components exist and how we should use them.
 
-**CheckoutPage/CheckoutPage.js**
+`CheckoutPage/CheckoutPage.js`
 
 This component is the main entry point for the one-step Checkout.
 It renders sections according to the state created by `useCheckoutPage`.
@@ -25,23 +26,28 @@ export const CHECKOUT_STEP = {
     REVIEW: 4
 };
 ```
+https://github.com/magento/pwa-studio/blob/develop/packages/peregrine/lib/talons/CheckoutPage/useCheckoutPage.js
 
-**PaymentInformation/paymentInformation.js**
+`PaymentInformation/paymentInformation.js`
 
 The checkout page will display the component on the checkout step **PAYMENT**.
 
 It is responsible for:
 
 - `LoadingIndicator/indicator.js` on load
-- `PaymentInformation/summary.js` if doneEditing=true
-- `PaymentInformation/paymentMethods.js` if doneEditing=false
+- `PaymentInformation/summary.js` if `doneEditing=true`
+- `PaymentInformation/paymentMethods.js` if `doneEditing=false`
 
-**PaymentInformation/paymentMethods.js**
+`PaymentInformation/paymentMethods.js`
 
-Loads all available Payments via usePaymentMethods hook and compares them with `paymentMethodCollection.js`,
-built via Magento Target. It only renders components that both lists contain.
+Loads all available Payments via `usePaymentMethods` hook and compares them with `paymentMethodCollection.js`,
+built via Magento Target.
 
-```js title="paymentMethods.js" {4}
+<Callout type={"danger"}>
+It only renders components that both lists contain!
+</Callout>
+
+```js title="CheckoutPage/PaymentInformation/paymentMethods.js" {4}
 const radios = availablePaymentMethods
     .map(({ code, title }) => {
         // If we don't have an implementation for a method type, ignore it.
@@ -74,26 +80,25 @@ const radios = availablePaymentMethods
     })
     .filter(paymentMethod => !!paymentMethod);
 ```
-
 https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/CheckoutPage/PaymentInformation/paymentMethods.js#L42
 
 [**PaymentInformation/summary.js**](https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/CheckoutPage/PaymentInformation/summary.js).
 Renders information for the ReviewStep
 
-## PWA Studio Checkout Payment Workflow Diagram
+### PWA Studio Checkout Payment Workflow Diagram
 
 <div className="grid grid-cols-1 md:grid-cols-2">
-  <div class="w-80 relative">
+  <div className="w-80 relative">
     <a href="https://larsroettig.dev/downloads/PWAStudio_PaymentFlow.jpg">
       <Image
         src="how-to-create-payment-for-pwastudio/PWAStudio_PaymentFlow.jpg"
-        alt="Image that shows PWA Studio Checkout Payment Workflow"
+        alt="Checkout Payment Workflow Diagram"
         width="400"
         height="561"
       />
     </a>
   </div>
-  <div class="bg-yellow-50 p-10 hidden md:block">
+  <div className="bg-yellow-50 p-10 hidden md:block">
     <p>
       <b>You can download full-size Workflow via a click on the image!</b>
     </p>
@@ -115,7 +120,7 @@ To extend the Checkout with a new Payment Method, we can use a venia target for 
 <Image
   src="how-to-create-payment-for-pwastudio/Extend_PaymentMethods.jpg"
   alt="Image that show PWA Studio Checkout"
-  heigth="279"
+  height="279"
 />
 
 In the Image, we can see the billing address is by design part of the
@@ -126,7 +131,9 @@ payment methods to allow special implementation.
   address is set by before you can complete the order.
 </Callout>
 
-For 90% of all Payment Methods, the billing address form would be identical. In the current `develop` branch, you can find `@magento/venia-ui/lib/components/CheckoutPage/BillingAddress`. You can copy it to start already building your Payment Method.
+For most of all Payment Methods, the billing address form would be identical.
+In the current `develop` branch, you can find `@magento/venia-ui/lib/components/CheckoutPage/BillingAddress`.
+You can copy it to start already building your Payment Method.
 
 ```js title="intercept.js"
 module.exports = (targets) => {
@@ -139,7 +146,7 @@ module.exports = (targets) => {
     flags[targets.name] = {
       esModules: true,
       cssModules: true,
-      graphqlQueries: true,
+      graphqlQueries: true
     };
   });
 
@@ -148,7 +155,7 @@ module.exports = (targets) => {
   checkoutPagePaymentTypes.tap((payments) =>
     payments.add({
       paymentCode: "payment-code",
-      importPath: "@your-namespace/components/payment.js",
+      importPath: "@your-namespace/components/payment.js"
     })
   );
 };
@@ -179,12 +186,19 @@ Your payment component gets the following props injected by the parent.
 - `shouldSubmit (read-only):`
   It will change to true if the review button gets summited.
 
-## How to build a new payment method for PWA Studio
-
+<iframe
+    title="How to build a static payment method for PWA Studio"
+    width="100%"
+    height="500"
+    src="https://www.youtube-nocookie.com/embed/BK5Ogoh3kEU"
+    allow="autoplay; encrypted-media"
+    allowFullScreen
+    loading="lazy"
+></iframe>
 
 
 There are many payment methods first can split them in to offline and online.
-In option there are two main types in Context / Dropin and Redirect/ Hosted payment page.
+In option there are two main types of Context / Dropin and Redirect/ Hosted payment page.
 
 <Callout>
   Before you select an PSP you check if they support a properer GraphQL Backend API if not you will spend hours
@@ -201,7 +215,7 @@ In option there are two main types in Context / Dropin and Redirect/ Hosted paym
 Here you find which workflow Adobe Commerce supports by default.
 https://devdocs.magento.com/guides/v2.4/graphql/payment-methods/paypal-express-checkout.html
 
-## Workflow for Adyen Credit Card Payment [8.2.0](https://github.com/Adyen/adyen-magento2/releases/tag/8.2.0)
+### Workflow for Adyen Credit Card Payment [8.2.0](https://github.com/Adyen/adyen-magento2/releases/tag/8.2.0)
 
 With the last Module version, Adyen released a ready to use GraphQL API for Adobe Commerce.
 
@@ -209,7 +223,7 @@ A very good starting point is using their [web drop in](https://docs.adyen.com/o
 render this in the payment section you schedule store results in memory because you need to transmit it as well on place
 order mutation.
 
-``` graphql title="Place Order Muatation "
+``` graphql title="Place Order Muatation"
 mutation setPaymentMethodAndPlaceOrder(
     $cartId: String!
     $stateData: String!
@@ -253,22 +267,22 @@ mutation setPaymentMethodAndPlaceOrder(
 ```
 
 <div className="grid grid-cols-1 md:grid-cols-2">
-  <div class="w-80 relative">
-    <a href="https://larsroettig.dev/downloads/pwa_studio_adyen_workflow.png">
+  <div className="w-80 relative">
+    <a href="/downloads/pwa_studio_adyen_workflow.png">
       <Image
-        src="https://larsroettig.dev/downloads/pwa_studio_adyen_workflow.png"
+        src="/downloads/pwa_studio_adyen_workflow.png"
         alt="PWA Studio Checkout Payment Workflow Ayden Credit Card"
         width="400"
         height="561"
       />
     </a>
   </div>
-  <div class="bg-yellow-50 p-10 hidden md:block">
+  <div className="bg-yellow-50 p-10 hidden md:block">
     <p>
       <b>You can download full-size Workflow via a click on the image!</b>
     </p>
     <p>
-      <a href="https://larsroettig.dev/downloads/pwa_studio_adyen_workflow.png">
+      <a href="/downloads/pwa_studio_adyen_workflow.png">
         Download workflow
       </a>
     </p>
@@ -276,17 +290,277 @@ mutation setPaymentMethodAndPlaceOrder(
 </div>
 
 
-**How to build a static payment method for PWA Studio:**
+### Replace PWAStudio place order button
 
-<iframe
-  title="How to build a static payment method for PWA Studio"
-  width="100%"
-  height="500"
-  src="https://www.youtube-nocookie.com/embed/BK5Ogoh3kEU"
-  frameborder="0"
-  allow="autoplay; encrypted-media"
-  allowfullscreen
-  loading="lazy"
-></iframe>
+Some Payment method needs additional APIs call instead of using the default custom button.
 
+In terms of implementing PayPal express, you want to replace the default place order with a custom one.
+
+```js title="@custom/checkout/src/components/PlaceOrderButton"
+import React from 'react';
+import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
+
+import { usePlaceOrderButton } from '../talons/usePlaceOrderButton';
+import placeOrderButtonCollection from './placeOrderButtonCollection';
+
+/**
+ * Replace the default place order button with a custom one.
+ * @see @custom/checkout/src/target/extend-intercept.js
+ *
+ * @param {object} props
+ * @param {React.ReactElement} props.originalPlaceOrderButton
+ * @param {function} props.handlePlaceOrder
+ * @returns {React.ReactElement}
+ */
+const PlaceOrderButton = props => {
+    const { originalPlaceOrderButton, handlePlaceOrder } = props;
+
+    // should fetch the current payment method from cart via a query or context
+    const { paymentMethod, loading } = usePlaceOrderButton();
+
+
+    if (loading && !paymentMethod) {
+        return (
+            <LoadingIndicator/>
+        );
+    }
+
+    const PlaceOrderButton = placeOrderButtonCollection[paymentMethod] || null;
+
+    if (PlaceOrderButton) {
+        // custom place order button if payment method matches with a collection
+        return <PlaceOrderButton handlePlaceOrder={handlePlaceOrder} />;
+    }
+
+    return originalPlaceOrderButton;
+};
+
+export default PlaceOrderButton;
+```
+
+
+```js title="@custom/checkout/src/components/placeOrderButtonCollection"
+/**
+* This will be populated via webpack and target from a pwa studio
+*/
+export default {};
+```
+
+<Callout>
+We required to create new extensions point via intercept and declaring files.
+The `pwa-studio.targets.intercept` and `pwa-studio.targets.declare` definitions in your `package.json` need to path to these files.
+</Callout>
+
+```js title="@custom/checkout/src/target/declare.js"
+/**
+ * These targets are available for interception to modules which depend on `@custom/checkout`.
+ *
+ * Their implementations can found in `./intercept.js`.
+ *
+ */
+module.exports = targets => {
+    targets.declare({
+        orderButtonTypes: new targets.types.Sync(['orderButtonTypes']),
+    });
+};
+```
+
+```js title="@custom/checkout/src/target/intercept.js"
+const { Targetables } = require('@magento/pwa-buildpack');
+const OrderButtonTypes = require("./OrderButtonTypes");
+
+module.exports = targets => {
+    targets.of('@magento/pwa-buildpack').specialFeatures.tap(flags => {
+        /**
+         *  Wee need to activated esModules and cssModules to allow build pack to load our extension
+         * {@link https://magento.github.io/pwa-studio/pwa-buildpack/reference/configure-webpack/#special-flags}.
+         */
+        flags[targets.name] = {
+            esModules: true,
+            graphqlQueries: true,
+        };
+    });
+
+    // Make payment button collection extendable
+    const venia = Targetables.using(targets);
+    new OrderButtonTypes(venia);
+
+    const CheckoutPageComponent = venia.reactComponent(
+        '@magento/venia-ui/lib/components/CheckoutPage/checkoutPage'
+    );
+
+    /**
+     * Replace the place order button to the checkout page
+     */
+    const placeOrderButton = '{placeOrderButton}';
+    CheckoutPageComponent.insertBeforeSource(
+        placeOrderButton,
+        '{customPlaceOrderButton}',
+        {
+            remove: placeOrderButton.length
+        }
+    );
+
+    const CustomPlaceOrder = CheckoutPageComponent.addImport(
+        "CustomPlaceOrder from '@custom/checkout/src/components/placeOrderButton'"
+    );
+
+    /**
+     * Define the custom place order button
+     */
+    CheckoutPageComponent.insertBeforeSource(
+        'const orderSummary',
+        `const customPlaceOrderButton = checkoutStep === CHECKOUT_STEP.REVIEW ? (<${CustomPlaceOrder} originalPlaceOrderButton={placeOrderButton} handlePlaceOrder={handlePlaceOrder}></${CustomPlaceOrder}>): null;\n`
+    );
+}
+```
+
+```json title="@custom/checkout/package.json"
+{
+  "name": "@custom/checkout",
+  "version": "0.1.0",
+  "main": "src/targets/intercept.js",
+
+  "pwa-studio": {
+    "targets": {
+      "intercept": "src/targets/intercept.js"
+    }
+  }
+}
+```
+
+**How to use the created target in your module:**
+
+```js title="@my-payment/src/target/intercept.js"
+module.exports = targets => {
+    targets.of('@magento/pwa-buildpack').specialFeatures.tap(flags => {
+        /**
+         *  Wee need to activated esModules and cssModules to allow build pack to load our extension
+         * {@link https://magento.github.io/pwa-studio/pwa-buildpack/reference/configure-webpack/#special-flags}.
+         */
+        flags[targets.name] = {
+            esModules: true,
+            cssModules: true,
+            graphqlQueries: true,
+            i18n: true
+        };
+    });
+    const { orderButtonTypes } = targets.of('@custom/checkout');
+    orderButtonTypes.tap(buttons =>
+        buttons.add({
+            paymentCode: 'payment_method_code',
+            importPath: '@my-payment/src/components/placeOrderButtonExpress.js'
+        })
+    );
+}
+```
+
+### Replace PWAStudio handlePlaceOrder mutation / action
+
+If your PSP provider needs a different place order like ayden, then you are
+required to wrap `useCheckout.js`.
+
+For this, we can already use building in a mechanism from `peregrine` use.
+When Peregrine talons are invoked, and/or to modify the behavior and output of those talons.
+It is like the around plugin concept known as the interceptor pattern of Magento.
+
+<Callout type="warning">
+ You must also follow here the limitation of React that all React Hooks must be called in the `exact same order` in every component render.
+ Currently there is **no eslint error** if you try to early bailout this lead to that your app have memory leaks or is not stable!!!
+    If your lucky React will punch a errors in the console that a `useEffect` is called conditionally.
+</Callout>
+
+
+```js title="intercept.js" {22-26}
+module.exports = targets => {
+    targets.of('@magento/pwa-buildpack').specialFeatures.tap(flags => {
+        /**
+         *  Wee need to activated esModules and cssModules to allow build pack to load our extension
+         * {@link https://magento.github.io/pwa-studio/pwa-buildpack/reference/configure-webpack/#special-flags}.
+         */
+        flags[targets.name] = {
+            esModules: true,
+            cssModules: true,
+            graphqlQueries: true,
+            i18n: true
+        };
+    });
+    const { orderButtonTypes } = targets.of('@custom/checkout');
+    orderButtonTypes.tap(buttons =>
+        buttons.add({
+            paymentCode: 'payment_method_code',
+            importPath: '@my-payment/src/components/placeOrderButtonExpress.js'
+        })
+    );
+
+ targets.of('@magento/peregrine').talons.tap(talons => {
+        talons.CheckoutPage.useCheckoutPage.wrapWith(
+            `@my-payment/src/wrapers/uwCheckout`
+        );
+    });
+}
+```
+
+```js
+import { useCheckoutFlow } from "../talons/useCheckoutFlow";
+
+
+/**
+ * Allow extending useCheckout to overwrite function of the hook
+ *
+ * @param origUseCheckout
+ * @returns {function(*): *&{orderNumber: *, placeOrderLoading: boolean, clearCart: ((function(): Promise<void>)|*), orderDetailsLoading: boolean, handlePlaceOrder: ((function(): void)|*), adyenCheckoutAction: *, orderDetailsData: *}}
+ */
+export default function wrapUseCheckout(origUseCheckout) {
+    return function(props) {
+        // we cloud also overwrite some props before we execute the useCheckout function.
+        const originalReturn = origUseCheckout(props);
+        // we partly overwrite the result and extend it
+        return { ...originalReturn,...useCheckoutFlow(originalReturn) };
+    };
+}
+```
+
+```js title="talons/useCheckoutFlow.js"
+export const useCheckoutFlow = (props) => {
+  const handleAdyenPlaceOrder = useCallback(() => {
+    async function placeOrderAndCleanup() {
+      await getOrderDetails({
+        variables: {
+          cartId,
+        },
+      });
+    }
+
+    placeOrderAndCleanup();
+  }, [cartId, getOrderDetails]);
+
+  /**
+   * @param methodeCode string
+   * @returns {*}
+   */
+  const isMyPaymentFlow = (methodeCode) => {
+    return methodeCode.startsWith('my_payment');
+  };
+
+  if (isMyPaymentFlow(checkoutState.method) === false) {
+    return {
+      ...props,
+      adyenCheckoutAction,
+      orderDetailsLoading,
+      clearCart
+    };
+  }
+
+  return {
+    orderNumber,
+    orderDetailsData,
+    orderDetailsLoading,
+    handlePlaceOrder: handleAdyenPlaceOrder,
+    placeOrderLoading,
+    adyenCheckoutAction,
+    clearCart
+  };
+};
+```
 

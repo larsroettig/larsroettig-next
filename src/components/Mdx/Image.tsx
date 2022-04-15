@@ -7,17 +7,19 @@ interface iImage {
   alt: string;
   responsive?: boolean;
   width?: string;
-  heigth?: string;
+  height?: string;
   className?: string;
 }
 
-const Picture: React.FC<iImage> = ({
-  src,
-  alt,
-  width = `1280`,
-  heigth = `780`,
-  className = `py-8`,
-}) => {
+const Picture = (props: iImage) => {
+  const {
+    src,
+    alt,
+    width = `1280`,
+    height = `780`,
+    className = `py-8`,
+  } = props;
+
   return (
     <div className={className}>
       <Image
@@ -25,7 +27,7 @@ const Picture: React.FC<iImage> = ({
         className="rounded-md"
         alt={alt}
         width={width}
-        height={heigth}
+        height={height}
         placeholder="blur"
         blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mMMDg2tBwADfgF+TUPnsgAAAABJRU5ErkJggg==
         "

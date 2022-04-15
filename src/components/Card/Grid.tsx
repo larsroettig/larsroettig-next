@@ -1,14 +1,13 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
-import Container from '../Container';
 
-const Card = dynamic(() => import(`./Card`));
+import Container from '../Container';
+import Card from '@/components/Card/Card';
 
 interface GridProps {
   posts: FrontmatterType[];
 }
 
-const Grid: React.FC<GridProps> = ({ posts }) => {
+const Grid = ({ posts }: GridProps) => {
   return (
     <Container>
       <h2 className="text-4xl sm:text-5xl leading-none font-extrabold tracking-tight text-gray-900 mt-10 mb-8 sm:mt-14 sm:mb-10">

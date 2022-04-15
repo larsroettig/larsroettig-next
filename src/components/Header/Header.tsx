@@ -31,6 +31,7 @@ const MOBILE_LINKS = [{ name: `Home`, to: `/` }, ...LINKS];
 type LinkProps = {
   href: string;
   onClick: React.MouseEventHandler;
+  children?: React.ReactNode;
 };
 
 const MobileNavLink: FunctionComponent<LinkProps> = ({

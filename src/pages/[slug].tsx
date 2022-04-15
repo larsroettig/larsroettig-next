@@ -1,46 +1,21 @@
 import React from 'react';
-import hydrate from 'next-mdx-remote/hydrate';
-
-import { GetStaticPaths, GetStaticPropsContext, NextPage } from 'next';
-
-import { getPostBySlug, getPostSlugs, PostHeader } from '../shared/Content';
-import {
-  Breadcrumb,
-  Image,
-  Callout,
-} from '../components/Mdx';
+import { Breadcrumb, Image, Callout } from '../components/Mdx';
 
 import EditOnGithub from '../components/EditOnGithub';
 import { BlogSeo } from '../components/Seo';
-import { MdxRemote } from 'next-mdx-remote/types';
 
 import config from '../config.json';
 
-interface Props {
-  slug: string;
-  content: MdxRemote.Source;
-  frontMatter: PostHeader;
-  readingTime: string;
-}
+import { allBlogs } from 'contentlayer/generated';
+import type { Blog } from 'contentlayer/generated';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 
-const components = {
-  components: {
-    Callout,
-    Image,
-    Breadcrumb
-  },
-};
-
-const PostPage: NextPage<Props> = ({
-  slug,
-  content,
-  frontMatter,
-  readingTime,
-}) => {
-  const { title, description, date, hero, modifiedAt } = frontMatter;
+export default function Post({ post }: { post: Blog }) {
+  const { title, description, date, hero, modifiedAt, readingTime, slug } =
+    post;
   const url = `${config.baseUrl}/${slug}`;
 
-  const mdxContent = hydrate(content, components);
+  const Component = useMDXComponent(post.body.code);
 
   const getSchemaImage = (): string => {
     if (!hero) {
@@ -71,10 +46,18 @@ const PostPage: NextPage<Props> = ({
               <p className="text-center font-mono text-base">
                 <time>{modifiedAt}</time>
                 <span className="inline-flex text-sm px-2"> — </span>
-                {readingTime && <span>{readingTime}</span>}
+                {readingTime && <span>{readingTime.text}</span>}
               </p>
               <EditOnGithub slug={slug} />
-              <div>{mdxContent}</div>
+              <Component
+                components={
+                  {
+                    Breadcrumb,
+                    Image,
+                    Callout,
+                  } as any
+                }
+              />
               <EditOnGithub slug={slug} />
             </div>
           </div>
@@ -82,35 +65,18 @@ const PostPage: NextPage<Props> = ({
       </div>
     </>
   );
-};
+}
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const postSlugs = getPostSlugs();
-
+export async function getStaticPaths() {
   return {
-    paths: postSlugs.map((postSlug) => ({ params: { slug: postSlug } })),
+    paths: allBlogs.map((p) => ({ params: { slug: p.slug } })),
     fallback: false,
   };
-};
+}
 
-export const getStaticProps = async ({ params }: GetStaticPropsContext) => {
-  if (params?.slug) {
-    const slug = params.slug as string;
+export async function getStaticProps({ params }) {
+  console.log(params);
+  const post = allBlogs.find((post) => post.slug === params.slug);
 
-    const { mdxContent, frontMatter, readingTime } = await getPostBySlug(
-      slug,
-      components,
-    );
-
-    return {
-      props: {
-        slug,
-        content: mdxContent,
-        frontMatter,
-        readingTime,
-      },
-    };
-  }
-};
-
-export default PostPage;
+  return { props: { post } };
+}

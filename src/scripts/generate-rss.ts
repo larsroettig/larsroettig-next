@@ -18,7 +18,15 @@ const exportFile = (filePath: string, content: string): void => {
 };
 
 type GenerateRssProps = {
-  postData: Frontmatter[];
+  postData: {
+    description: string;
+    slug: string;
+    title: string;
+    published: boolean;
+    hero: string;
+    placeHolder: string;
+    modifiedAt?: string;
+  }[];
 };
 
 export const generateRss = async ({

@@ -4,7 +4,7 @@
         <title>LarsRoettig.dev</title>
         <link>https://larsroettig.dev</link>
         <description>A blog about Software and Magento Development</description>
-        <lastBuildDate>Sun, 10 Apr 2022 12:18:45 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 15 Apr 2022 15:35:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -13,77 +13,77 @@
             <title><![CDATA[Demystified Magento PWA Studio Checkout]]></title>
             <link>https://larsroettig.dev/demystified-pwa-studio-checkout</link>
             <guid>https://larsroettig.dev/demystified-pwa-studio-checkout</guid>
-            <pubDate>Sat, 13 Mar 2021 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[What you should know before starting build a Payment Method for PWA Studio.]]></description>
         </item>
         <item>
             <title><![CDATA[How I learned React?]]></title>
             <link>https://larsroettig.dev/how-i-learned-react</link>
             <guid>https://larsroettig.dev/how-i-learned-react</guid>
-            <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[What you should know before starting a React Project? My personal learning path to tame the technology stack.]]></description>
         </item>
         <item>
             <title><![CDATA[Getting started with Magento PWA Studio]]></title>
             <link>https://larsroettig.dev/getting-started-with-magento-pwa-studio</link>
             <guid>https://larsroettig.dev/getting-started-with-magento-pwa-studio</guid>
-            <pubDate>Wed, 11 Mar 2020 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[Is PWA the right technology for me from a business point? The second part will show how you can build your own PWA Theme for Magento 2.]]></description>
         </item>
         <item>
             <title><![CDATA[How to create a GraphQL Endpoint for Magento]]></title>
-            <link>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento-2-3</link>
-            <guid>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento-2-3</guid>
-            <pubDate>Sun, 03 Nov 2019 00:00:00 GMT</pubDate>
+            <link>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento</link>
+            <guid>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento</guid>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[In this Magento 2 GraphQL Tutorial, I will show how to build a GraphQL API endpoint and extend it with a custom filter logic.]]></description>
         </item>
         <item>
             <title><![CDATA[Getting started with PWA Studio Extensibility]]></title>
             <link>https://larsroettig.dev/getting-started-with-pwa-studio-extensibility</link>
             <guid>https://larsroettig.dev/getting-started-with-pwa-studio-extensibility</guid>
-            <pubDate>Fri, 03 Jul 2020 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[In this tutorial I want to show how you can use the PWA Studio Extensibility framework.]]></description>
         </item>
         <item>
             <title><![CDATA[A Review of Magento PWA Studio]]></title>
             <link>https://larsroettig.dev/a-review-of-magento-pwa-studio</link>
             <guid>https://larsroettig.dev/a-review-of-magento-pwa-studio</guid>
-            <pubDate>Wed, 26 Feb 2020 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[Is PWA Studio ready or not, and what we should know before starting a project. I would like to have a look at that with you.]]></description>
         </item>
         <item>
             <title><![CDATA[How to write proper Software Documentation?]]></title>
             <link>https://larsroettig.dev/how-to-write-proper-software-documentation</link>
             <guid>https://larsroettig.dev/how-to-write-proper-software-documentation</guid>
-            <pubDate>Mon, 06 Jan 2020 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[Is documentation essential or not, and what we should know about this topic. I share my knowledge to help you write better software documentation.]]></description>
         </item>
         <item>
             <title><![CDATA[Book Review of Object Design Style Guide by Matthias Noback]]></title>
             <link>https://larsroettig.dev/book-review-of-object-design-style-guide-by-matthias-noback</link>
             <guid>https://larsroettig.dev/book-review-of-object-design-style-guide-by-matthias-noback</guid>
-            <pubDate>Wed, 16 Oct 2019 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[Book Review Object Design Style Guide by Matthias Noback. It contains tips and facts to building software objects the way every developer should.]]></description>
         </item>
         <item>
-            <title><![CDATA[How to create a GraphQL Mutation Endpoint for Magento 2.3]]></title>
-            <link>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3</link>
-            <guid>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3</guid>
-            <pubDate>Mon, 25 Nov 2019 00:00:00 GMT</pubDate>
+            <title><![CDATA[How to create a GraphQL Mutation Endpoint for Magento]]></title>
+            <link>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento</link>
+            <guid>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento</guid>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[How to build a Mutation Endpoint with GraphQL for Magento 2.3. In this tutorial, we will extend our query endpoint with saving logic.]]></description>
         </item>
         <item>
             <title><![CDATA[Enable Notify me when this product is in stock in Magento 2]]></title>
             <link>https://larsroettig.dev/enable-notify-me-when-this-product-is-in-stock-in-magento-2</link>
             <guid>https://larsroettig.dev/enable-notify-me-when-this-product-is-in-stock-in-magento-2</guid>
-            <pubDate>Mon, 10 Dec 2018 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[In this tutorial, I show how to enable Notify me when the product back is in stock for Magento 2]]></description>
         </item>
         <item>
             <title><![CDATA[Getting started with software quality]]></title>
             <link>https://larsroettig.dev/getting-started-with-software-quality</link>
             <guid>https://larsroettig.dev/getting-started-with-software-quality</guid>
-            <pubDate>Thu, 08 Aug 2019 00:00:00 GMT</pubDate>
+            <pubDate>Invalid Date</pubDate>
             <description><![CDATA[For me, they are four crucial pillars to make sure you get fewer blocker tickets]]></description>
         </item>
     </channel>

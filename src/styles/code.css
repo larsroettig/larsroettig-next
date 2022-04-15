@@ -15,20 +15,28 @@ code > .line::before {
 }
 
 [data-rehype-pretty-code-title] {
-  padding: 5px 5px 5px 20px;
-  border-radius: 0.5em 0.5em 0 0;
-  font-size: 1rem;
-  line-height: 2.25;
+  padding: 2px 2px 2px 20px;
+  font-size: 0.9em;
   color: white;
-  background-color: rgba(14, 14, 18, 0.85);
+
   font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
 [data-rehype-pretty-code-fragment] {
   margin: 1.5rem 0;
+  background-color: rgb(1, 22, 39);
+  border-radius: 1em;
 }
 
 .prose :where(pre):not(:where([class~="not-prose"] *)) {
   margin: 0;
-  border-radius: 0 0 0.5em 0.5em;
+
+}
+
+@media (min-width: theme('screens.lg')) {
+[data-rehype-pretty-code-fragment] {
+  border-radius: theme('borderRadius.lg');
+  margin-left: -5rem;
+  margin-right: -5rem;
+}
 }

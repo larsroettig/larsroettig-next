@@ -1,6 +1,7 @@
 // next.config.js
 const withPlugins = require(`next-compose-plugins`);
 const withPWA = require(`next-pwa`);
+const { withContentlayer } = require('next-contentlayer');
 
 const nextConfig = {
   reactStrictMode: true,
@@ -18,11 +19,16 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: 'how-to-create-a-graph-ql-endpoint-for-magento-2-3',
-        destination: 'how-to-create-a-graph-ql-endpoint-for-magento', // Matched parameters can be used in the destination
+        source: '/how-to-create-a-graph-ql-endpoint-for-magento-2-3',
+        destination: '/how-to-create-a-graph-ql-endpoint-for-magento', // Matched parameters can be used in the destination
         permanent: true,
       },
-    ]
+      {
+        source: '/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3',
+        destination: '/how-to-create-a-graph-ql-mutation-endpoint-for-magento', // Matched parameters can be used in the destination
+        permanent: true,
+      },
+    ];
   },
 };
 
@@ -40,6 +46,7 @@ module.exports = withPlugins(
       },
     }),
     [withBundleAnalyzer],
+    [withContentlayer()],
   ],
   nextConfig,
 );

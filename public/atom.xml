@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://larsroettig.dev</id>
     <title>LarsRoettig.dev</title>
-    <updated>2022-04-10T12:18:45.939Z</updated>
+    <updated>2022-04-11T11:49:29.346Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://larsroettig.dev"/>
     <link rel="self" href="https://larsroettig.dev/atom.xml"/>
@@ -31,8 +31,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[How to create a GraphQL Endpoint for Magento]]></title>
-        <id>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento-2-3</id>
-        <link href="https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento-2-3"/>
+        <id>https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento</id>
+        <link href="https://larsroettig.dev/how-to-create-a-graph-ql-endpoint-for-magento"/>
         <updated>2019-11-03T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[In this Magento 2 GraphQL Tutorial, I will show how to build a GraphQL API endpoint and extend it with a custom filter logic.]]></summary>
     </entry>
@@ -65,9 +65,9 @@
         <summary type="html"><![CDATA[Book Review Object Design Style Guide by Matthias Noback. It contains tips and facts to building software objects the way every developer should.]]></summary>
     </entry>
     <entry>
-        <title type="html"><![CDATA[How to create a GraphQL Mutation Endpoint for Magento 2.3]]></title>
-        <id>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3</id>
-        <link href="https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3"/>
+        <title type="html"><![CDATA[How to create a GraphQL Mutation Endpoint for Magento]]></title>
+        <id>https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento</id>
+        <link href="https://larsroettig.dev/how-to-create-a-graph-ql-mutation-endpoint-for-magento"/>
         <updated>2019-11-25T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[How to build a Mutation Endpoint with GraphQL for Magento 2.3. In this tutorial, we will extend our query endpoint with saving logic.]]></summary>
     </entry>
