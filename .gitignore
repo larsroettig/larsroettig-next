@@ -38,3 +38,4 @@ public/atom.xml
 public/rss.xml
 public/sw.js
 public/workbox-*.js
+public/sitemap*.xml
