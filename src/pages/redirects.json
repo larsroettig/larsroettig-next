@@ -1,0 +1,10 @@
+{
+  "/how-to-create-a-graph-ql-endpoint-for-magento-2-3": {
+    "destination": "how-to-create-a-graph-ql-endpoint-for-magento",
+    "permanent": true
+  },
+  "/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3": {
+    "destination": "how-to-create-a-graph-ql-mutation-endpoint-for-magento",
+    "permanent": true
+  }
+}

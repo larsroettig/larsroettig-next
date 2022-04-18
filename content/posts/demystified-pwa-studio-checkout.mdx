@@ -6,19 +6,22 @@ description: What you should know before starting build a Payment Method for PWA
 hero: how-to-create-payment-for-pwastudio/Teaser.jpg
 ---
 
-By default, PWAStudio ships with Braintree Credit card and [Check MO (Money Order)](https://github.com/magento/pwa-studio/tree/develop/packages/extensions/venia-sample-payments-checkmo) as a Payment Method.
-I would say this is good starting but for your project, maybe not enough. Before we learn to build a Payment Method,
+By default,
+PWAStudio ships with Braintree Credit card and [Check MO (Money Order)](https://github.com/magento/pwa-studio/tree/develop/packages/extensions/venia-sample-payments-checkmo) as a Payment Method.
+I would say this is good starting but for your project, maybe not enough.
+Before we learn to build a Payment Method,
 it is definitely better to understand how the Checkout Process works in PWA Studio.
-So basically, this is a foundation which components exist and how we should use them.
+So basically, this is a foundation which components exist and how we utilize them for our
+payment integration.
 
-`CheckoutPage/CheckoutPage.js`
+`CheckoutPage.js`
 
 This component is the main entry point for the one-step Checkout.
 It renders sections according to the state created by `useCheckoutPage`.
 
 Steps Number for section state:
 
-```js title="peregrine/lib/talons/CheckoutPage/useCheckoutPage.js"
+```js title="peregrine/lib/talons/useCheckoutPage.js"
 export const CHECKOUT_STEP = {
     SHIPPING_ADDRESS: 1,
     SHIPPING_METHOD: 2,
@@ -26,7 +29,7 @@ export const CHECKOUT_STEP = {
     REVIEW: 4
 };
 ```
-https://github.com/magento/pwa-studio/blob/develop/packages/peregrine/lib/talons/CheckoutPage/useCheckoutPage.js
+[GitHub Corefile](https://github.com/magento/pwa-studio/blob/develop/packages/peregrine/lib/talons/useCheckoutPage.js)
 
 `PaymentInformation/paymentInformation.js`
 
@@ -47,7 +50,7 @@ built via Magento Target.
 It only renders components that both lists contain!
 </Callout>
 
-```js title="CheckoutPage/PaymentInformation/paymentMethods.js" {4}
+```js title="PaymentInformation/paymentMethods.js" {4}
 const radios = availablePaymentMethods
     .map(({ code, title }) => {
         // If we don't have an implementation for a method type, ignore it.
@@ -80,9 +83,10 @@ const radios = availablePaymentMethods
     })
     .filter(paymentMethod => !!paymentMethod);
 ```
-https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/CheckoutPage/PaymentInformation/paymentMethods.js#L42
 
-[**PaymentInformation/summary.js**](https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/CheckoutPage/PaymentInformation/summary.js).
+[GitHub Corefile](https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/PaymentInformation/paymentMethods.js#L42)
+
+[**PaymentInformation/summary.js**](https://github.com/magento/pwa-studio/blob/develop/packages/venia-ui/lib/components/PaymentInformation/summary.js).
 Renders information for the ReviewStep
 
 ### PWA Studio Checkout Payment Workflow Diagram
@@ -132,7 +136,7 @@ payment methods to allow special implementation.
 </Callout>
 
 For most of all Payment Methods, the billing address form would be identical.
-In the current `develop` branch, you can find `@magento/venia-ui/lib/components/CheckoutPage/BillingAddress`.
+In the current `develop` branch, you can find `@magento/venia-ui/lib/components/BillingAddress`.
 You can copy it to start already building your Payment Method.
 
 ```js title="intercept.js"
@@ -212,16 +216,47 @@ In option there are two main types of Context / Dropin and Redirect/ Hosted paym
   * [Mollie](https://docs.mollie.com/payments/hosted-checkout) (*Backend API ready*)
   * [MultiSafe PWA Studio plugin](https://docs.multisafepay.com/pwa-studio/)
 
-Here you find which workflow Adobe Commerce supports by default.
-https://devdocs.magento.com/guides/v2.4/graphql/payment-methods/paypal-express-checkout.html
+Here you find which workflow [Adobe Commerce](https://devdocs.magento.com/guides/v2.4/graphql/payment-methods/paypal-express-checkout.html) supports by default.
 
 ### Workflow for Adyen Credit Card Payment [8.2.0](https://github.com/Adyen/adyen-magento2/releases/tag/8.2.0)
 
 With the last Module version, Adyen released a ready to use GraphQL API for Adobe Commerce.
 
 A very good starting point is using their [web drop in](https://docs.adyen.com/online-payments/web-drop-in)
-render this in the payment section you schedule store results in memory because you need to transmit it as well on place
-order mutation.
+render this in the payment section. To simplify your application flow, you should set payment method code already
+in the payment section.
+
+```graphql
+mutation setAdyenPaymentOnCartWithAdditionalData(
+	$cartId: String!
+	$paymentMethod: String!
+) {
+	setPaymentMethodOnCart(
+		input: { cart_id: $cartId, payment_method: { code: $paymentMethod } }
+	) {
+		cart {
+			id
+			selected_payment_method {
+				code
+				title
+			}
+		}
+	}
+}
+```
+
+<Callout type={'danger'}>
+     <b>Attention !!</b>
+
+     I recommend to create a new checkout context and store the result from the drop in memory on client side.
+     In terms of PCI compliance Adyen dont store the encrypted data see `setPaymentMethodAndPlaceOrder`.
+
+    Necessary Data to store
+    * `current CartId`
+    * Json encoded `stateData`
+    * `cc_type`
+</Callout>
+
 
 ``` graphql title="Place Order Muatation"
 mutation setPaymentMethodAndPlaceOrder(
@@ -268,7 +303,7 @@ mutation setPaymentMethodAndPlaceOrder(
 
 <div className="grid grid-cols-1 md:grid-cols-2">
   <div className="w-80 relative">
-    <a href="/downloads/pwa_studio_adyen_workflow.png">
+    <a href="/downloads/PWAStudio_AdyenWorkflow.jpg">
       <Image
         src="how-to-create-payment-for-pwastudio/PWAStudio_AdyenWorkflow.jpg"
         alt="PWA Studio Checkout Payment Workflow Ayden Credit Card"
@@ -282,7 +317,7 @@ mutation setPaymentMethodAndPlaceOrder(
       <b>You can download full-size Workflow via a click on the image!</b>
     </p>
     <p>
-      <a href="/downloads/pwa_studio_adyen_workflow.png">
+      <a href="/downloads/PWAStudio_AdyenWorkflow.jpg">
         Download workflow
       </a>
     </p>
@@ -386,7 +421,7 @@ module.exports = targets => {
     new OrderButtonTypes(venia);
 
     const CheckoutPageComponent = venia.reactComponent(
-        '@magento/venia-ui/lib/components/CheckoutPage/checkoutPage'
+        '@magento/venia-ui/lib/components/checkoutPage'
     );
 
     /**

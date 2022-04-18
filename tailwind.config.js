@@ -69,11 +69,9 @@ module.exports = {
                   marginRight: `-${theme('spacing.10vw')}`,
                   padding: theme('spacing.8'),
                   borderRadius: 0,
+                  wordBreak: 'break-all',
 
                   '> code': {
-                    display: 'grid',
-                    counterReset: 'line',
-
                     '.word': {
                       background: '#023751',
                       padding: '0.25rem',
@@ -162,6 +160,8 @@ module.exports = {
                   padding: theme('spacing.8'),
                   marginTop: 0,
                   marginBottom: theme('spacing.10'),
+                  color: theme('colors.gray.500'),
+                  backgroundColor: theme('colors.gray.100'),
                 },
                 'blockquote > :last-child': {
                   marginBottom: 0,
@@ -173,10 +173,6 @@ module.exports = {
       },
     },
   },
-  purge: {
-    mode: 'layers',
-    enabled: process.env.NODE_ENV === 'production',
-    content: [`./src/**/*.tsx`, `./content/**/*.mdx`],
-  },
+  content: [`./src/**/*.tsx`, `./content/**/*.mdx`],
   plugins: [require('@tailwindcss/typography')],
 };

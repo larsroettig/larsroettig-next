@@ -21,7 +21,7 @@ code > .line::before {
   padding: 2px 2px 2px 20px;
   font-size: 0.9em;
   color: white;
-
+  word-wrap: break-word;
   font-family: Fira Code VF, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
 }
 
@@ -40,17 +40,23 @@ code > .line::before {
   border-radius: theme('borderRadius.lg');
   margin-left: -5rem;
   margin-right: -5rem;
+  padding: 0 5rem;
 }
 
 
 @media (max-width: theme('screens.lg')) {
   [data-rehype-pretty-code-fragment] {
-    border-radius: 0;
     width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    padding: 0 16px;
+    border-radius: 0;
   }
+}
+
+a, code {
+  overflow-wrap: break-word;
 }

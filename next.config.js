@@ -16,20 +16,6 @@ const nextConfig = {
       });
     }
   },
-  async redirects() {
-    return [
-      {
-        source: '/how-to-create-a-graph-ql-endpoint-for-magento-2-3',
-        destination: '/how-to-create-a-graph-ql-endpoint-for-magento', // Matched parameters can be used in the destination
-        permanent: true,
-      },
-      {
-        source: '/how-to-create-a-graph-ql-mutation-endpoint-for-magento-2-3',
-        destination: '/how-to-create-a-graph-ql-mutation-endpoint-for-magento', // Matched parameters can be used in the destination
-        permanent: true,
-      },
-    ];
-  },
 };
 
 const withBundleAnalyzer = require(`@next/bundle-analyzer`)({

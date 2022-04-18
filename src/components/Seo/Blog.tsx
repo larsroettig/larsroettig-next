@@ -6,6 +6,7 @@ interface BlogProps {
   title: string;
   description: string;
   publishedAt: string;
+  modifiedAt: string;
   url: string;
   image?: string;
 }
@@ -16,9 +17,10 @@ const Blog: React.FC<BlogProps> = ({
   publishedAt,
   url,
   image,
+  modifiedAt,
 }) => {
   const date = new Date(publishedAt).toISOString();
-
+  const dateModified = new Date(modifiedAt).toISOString();
   const images = [
     {
       url: image || `https://larsroettig.dev/banner.jpg`,
@@ -42,6 +44,8 @@ const Blog: React.FC<BlogProps> = ({
           type: `article`,
           article: {
             publishedTime: date,
+            modifiedTime: dateModified,
+            authors: [`Lars Roettig`],
           },
           url,
           title,
@@ -51,7 +55,7 @@ const Blog: React.FC<BlogProps> = ({
       />
       <ArticleJsonLd
         authorName="Lars Roettig"
-        dateModified={date}
+        dateModified={dateModified}
         datePublished={date}
         description={description}
         images={articleImages}

@@ -34,6 +34,7 @@ export default function Post({ post }: { post: Blog }) {
         url={url}
         publishedAt={date}
         image={getSchemaImage()}
+        modifiedAt={modifiedAt}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -76,7 +77,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params);
   const post = allBlogs.find((post) => post.slug === params.slug);
 
   return { props: { post } };

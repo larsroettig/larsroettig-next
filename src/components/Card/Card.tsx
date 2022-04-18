@@ -24,7 +24,6 @@ type CardProps = {
 };
 
 const Card: React.FC<CardProps> = ({ post }) => {
-  console.log(post);
   const { title, description, placeHolder, hero: img, modifiedAt, date } = post;
   const href = `/${post.slug}`;
 

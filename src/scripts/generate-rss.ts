@@ -44,8 +44,6 @@ export const generateRss = async ({
     },
   });
 
-  console.log();
-
   postData.forEach((postData: Frontmatter) => {
     feed.addItem({
       title: postData.title as string,
