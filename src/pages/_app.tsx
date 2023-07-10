@@ -36,12 +36,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="yandex-verification" content="70c87e285704515f" />
-        <script
-          async
-          defer
-          data-domain="larsroettig.dev"
-          src="https://stats.larsroettig.dev/js/plausible.outbound-links.js"
-        />
       </Head>
       <Header />
       <Component {...pageProps} />
