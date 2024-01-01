@@ -60,7 +60,7 @@ const BlogPostFooter = ({ slug, title }: BlogPostFooterProps) => {
           My personal goal is to teach you how to write stable software with
           quality.
         </p>
-        <Link href="/about">
+        <Link href="/about" legacyBehavior>
           <span className="font-mono text-md hover:underline">
             <a>Learn more about Lars</a>
           </span>

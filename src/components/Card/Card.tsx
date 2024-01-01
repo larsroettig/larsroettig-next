@@ -53,7 +53,7 @@ const Card: React.FC<CardProps> = ({ post }) => {
 
   return (
     <div className="overflow-hidden hover:shadow-md rounded-b-md">
-      <Link href={href}>
+      <Link href={href} legacyBehavior>
         <a>
           <div className="relative">
             {img ? getImage(img) : ``}

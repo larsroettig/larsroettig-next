@@ -8,11 +8,13 @@ type NavItemProps = {
 };
 
 const NavItem: React.FC<NavItemProps> = ({ href, title }) => (
-  <Link href={href}>
-    <a className="text-lg hover:bg-gray-900 text-white px-3 py-2 rounded-md font-medium">
-      {title}
-    </a>
-  </Link>
+  (<Link
+    href={href}
+    className="text-lg hover:bg-gray-900 text-white px-3 py-2 rounded-md font-medium">
+
+    {title}
+
+  </Link>)
 );
 
 export default NavItem;

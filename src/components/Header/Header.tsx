@@ -39,13 +39,13 @@ const MobileNavLink: FunctionComponent<LinkProps> = ({
   onClick,
   children,
 }) => (
-  <Link href={href}>
-    <a href={href} onClick={onClick}>
-      <span className=" block px-5 py-2 list-none w-full text-center border-b-2">
-        {children}
-      </span>
-    </a>
-  </Link>
+  (<Link href={href} onClick={onClick}>
+
+    <span className=" block px-5 py-2 list-none w-full text-center border-b-2">
+      {children}
+    </span>
+
+  </Link>)
 );
 
 function MobileMenuList() {
